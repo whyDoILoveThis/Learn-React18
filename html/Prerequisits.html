@@ -30,123 +30,127 @@
             alt=""
             class="recipe__image"
           />
-          <div class="collapsible">
-            <h4 class="collapsible__heading">
-              What is Typescript?
-              <br />
-              Why would I want it?
-              <br />
-              What does it mean to be statically typed?
-            </h4>
-            <div class="collapsible__content">
-              <p>
-                <b>TypeScript</b> is a statically typed superset of JavaScript,
-                which means it builds upon JavaScript by adding static typing
-                features. Here's a breakdown of what TypeScript is and why you
-                might want to use it:
-              </p>
-              <p>
-                <b>1. Static Typing:</b> TypeScript introduces the concept of
-                static typing, which means you can specify the data types of
-                variables and function parameters in your code. This allows the
-                TypeScript compiler to catch type-related errors during
-                development, before the code is executed. This is in contrast to
-                JavaScript, which is dynamically typed, meaning data types are
-                determined at runtime.
-              </p>
-              <p>
-                <b>2. Type Annotations:</b> In TypeScript, you can explicitly
-                annotate variables, function parameters, and return types with
-                their expected data types. For example: typescript Copy code
-              </p>
-              <div class="code code--js">
-                <p>
-                  <em class="blu">let</em> <em class="red">name</em>:
-                  <em class="orng">string</em> = "<em class="grn">John</em>";
-                </p>
-                <p>
-                  <em class="blu">function</em> <em class="red">add</em>(x:
-                  <em class="orng">number</em>, y:
-                  <em class="orng">number</em>): <em class="orng">number</em> {
-                </p>
-                <p><em class="blu">return</em> y;</p>
-                <p>}</p>
-              </div>
-              <p>
-                <b>3. Code Quality and Safety</b>: Static typing provides
-                several benefits:
+          <article class="centerer">
+            <div class="collapsible">
+              <h4 class="collapsible__heading">
+                What is Typescript?
                 <br />
-                <b><em class="undrln">Early Error Detection</em></b
-                >: Type-related errors are caught at compile-time, reducing the
-                chances of runtime errors.
+                Why would I want it?
                 <br />
-                <b> <em class="undrln">Code Documentation</em> </b>: Type
-                annotations serve as documentation for your code, making it
-                easier for developers to understand how to use functions and
-                variables. <b><em class="undrln">Enhanced Tooling</em></b
-                >: Editors and IDEs can provide intelligent code completion and
-                better code analysis because they have information about data
-                types.
-              </p>
-              <p>
-                <b>4. Enhanced Developer Experience:</b> TypeScript provides
-                features like interfaces, enums, and advanced tooling for
-                refactoring and code navigation. It enhances the development
-                experience and productivity.
-              </p>
-              <p>
-                <b>5. Compatibility with JavaScript:</b> TypeScript is a
-                superset of JavaScript, which means you can write and execute
-                JavaScript code directly in TypeScript. You can gradually adopt
-                TypeScript by adding type annotations to your existing
-                JavaScript code.
-              </p>
-              <p>
-                <b>6. Community and Ecosystem:</b> TypeScript is widely adopted
-                in the JavaScript community and has a large ecosystem of
-                libraries and tools. Many modern web development frameworks and
-                libraries, like Angular and React, provide TypeScript support.
-              </p>
-              <p>
-                <b>7. Compile to JavaScript:</b> TypeScript code is transpiled
-                to plain JavaScript, making it compatible with all modern
-                browsers and runtime environments.
-              </p>
-              <h4>
-                Being a "statically typed" language means that, in TypeScript:
+                What does it mean to be statically typed?
               </h4>
-              <p>
-                <b>Data Types are Known at Compile Time:</b> The data types of
-                variables, function parameters, and return values are determined
-                and checked at compile time. This is in contrast to dynamically
-                typed languages like JavaScript, where types are resolved at
-                runtime.
-                <br />
-                <b> Type Errors are Caught Early: </b> Static typing allows the
-                TypeScript compiler to catch type-related errors during the
-                development phase. For example, if you attempt to assign a
-                string to a variable declared as a number, TypeScript will
-                generate a compile-time error.
-                <br />
-                <b>Type Safety:</b>
-                Statically typed languages aim to ensure type safety, reducing
-                the risk of unexpected type-related errors that can occur in
-                dynamically typed languages.
-                <br />
-                <br />
-                In summary, TypeScript is a statically typed superset of
-                JavaScript that offers improved code quality, early error
-                detection, and enhanced tooling, making it a popular choice for
-                web and application development, particularly in projects that
-                require maintainability, scalability, and robustness.
-              </p>
+              <div class="collapsible__content">
+                <p>
+                  <b>TypeScript</b> is a statically typed superset of
+                  JavaScript, which means it builds upon JavaScript by adding
+                  static typing features. Here's a breakdown of what TypeScript
+                  is and why you might want to use it:
+                </p>
+                <p>
+                  <b>1. Static Typing:</b> TypeScript introduces the concept of
+                  static typing, which means you can specify the data types of
+                  variables and function parameters in your code. This allows
+                  the TypeScript compiler to catch type-related errors during
+                  development, before the code is executed. This is in contrast
+                  to JavaScript, which is dynamically typed, meaning data types
+                  are determined at runtime.
+                </p>
+                <p>
+                  <b>2. Type Annotations:</b> In TypeScript, you can explicitly
+                  annotate variables, function parameters, and return types with
+                  their expected data types. For example: typescript Copy code
+                </p>
+                <div class="code code--js">
+                  <p>
+                    <em class="blu">let</em> <em class="red">name</em>:
+                    <em class="orng">string</em> = "<em class="grn">John</em>";
+                  </p>
+                  <p>
+                    <em class="blu">function</em> <em class="red">add</em>(x:
+                    <em class="orng">number</em>, y:
+                    <em class="orng">number</em>):
+                    <em class="orng">number</em> {
+                  </p>
+                  <p><em class="blu">return</em> y;</p>
+                  <p>}</p>
+                </div>
+                <p>
+                  <b>3. Code Quality and Safety</b>: Static typing provides
+                  several benefits:
+                  <br />
+                  <b><em class="undrln">Early Error Detection</em></b
+                  >: Type-related errors are caught at compile-time, reducing
+                  the chances of runtime errors.
+                  <br />
+                  <b> <em class="undrln">Code Documentation</em> </b>: Type
+                  annotations serve as documentation for your code, making it
+                  easier for developers to understand how to use functions and
+                  variables. <b><em class="undrln">Enhanced Tooling</em></b
+                  >: Editors and IDEs can provide intelligent code completion
+                  and better code analysis because they have information about
+                  data types.
+                </p>
+                <p>
+                  <b>4. Enhanced Developer Experience:</b> TypeScript provides
+                  features like interfaces, enums, and advanced tooling for
+                  refactoring and code navigation. It enhances the development
+                  experience and productivity.
+                </p>
+                <p>
+                  <b>5. Compatibility with JavaScript:</b> TypeScript is a
+                  superset of JavaScript, which means you can write and execute
+                  JavaScript code directly in TypeScript. You can gradually
+                  adopt TypeScript by adding type annotations to your existing
+                  JavaScript code.
+                </p>
+                <p>
+                  <b>6. Community and Ecosystem:</b> TypeScript is widely
+                  adopted in the JavaScript community and has a large ecosystem
+                  of libraries and tools. Many modern web development frameworks
+                  and libraries, like Angular and React, provide TypeScript
+                  support.
+                </p>
+                <p>
+                  <b>7. Compile to JavaScript:</b> TypeScript code is transpiled
+                  to plain JavaScript, making it compatible with all modern
+                  browsers and runtime environments.
+                </p>
+                <h4>
+                  Being a "statically typed" language means that, in TypeScript:
+                </h4>
+                <p>
+                  <b>Data Types are Known at Compile Time:</b> The data types of
+                  variables, function parameters, and return values are
+                  determined and checked at compile time. This is in contrast to
+                  dynamically typed languages like JavaScript, where types are
+                  resolved at runtime.
+                  <br />
+                  <b> Type Errors are Caught Early: </b> Static typing allows
+                  the TypeScript compiler to catch type-related errors during
+                  the development phase. For example, if you attempt to assign a
+                  string to a variable declared as a number, TypeScript will
+                  generate a compile-time error.
+                  <br />
+                  <b>Type Safety:</b>
+                  Statically typed languages aim to ensure type safety, reducing
+                  the risk of unexpected type-related errors that can occur in
+                  dynamically typed languages.
+                  <br />
+                  <br />
+                  In summary, TypeScript is a statically typed superset of
+                  JavaScript that offers improved code quality, early error
+                  detection, and enhanced tooling, making it a popular choice
+                  for web and application development, particularly in projects
+                  that require maintainability, scalability, and robustness.
+                </p>
+              </div>
+              <img
+                src="../imgs/R.png"
+                alt=""
+                class="icon collapsible__button"
+              />
             </div>
-            <img
-              src="../imgs/R.png"
-              alt=""
-              class="icon collapsible__recipe-button"
-            />
-          </div>
+          </article>
         </div>
         <p>
           <b>

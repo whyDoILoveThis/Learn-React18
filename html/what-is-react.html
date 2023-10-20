@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <title>Notes React18 Mosh</title>
+  </head>
+  <body>
+    <section class="centerer">
+      <article class="main-wrap">
+        <a href="../index.html" class="home">HOME</a>
+        <h1>What is React?</h1>
+        <h3>
+          React is a JS library used for making interactive and dynamic
+          webpages.
+        </h3>
+        <h3>
+          It was created by Facebook in 2011, and is the most widely used JS
+          library for frontend development.
+        </h3>
+        <h2>Why was React created?</h2>
+        <h3>
+          As you know, when a webpage loads the browser takes the html code and
+          cosntructs a tree like structure we call DOM.
+        </h3>
+        <h3>
+          This allows us to use JS to change the page content based on user
+          actions.
+        </h3>
+        <h4>for example...</h4>
+        <div class="code code--js">
+          <p>
+            <em class="blu">const</em> btn =
+            <em class="red">document</em>.querySelector('<em class="grn"
+              >#btn</em
+            >');
+          </p>
+          <p>
+            btn.addEventListener('<em class="grn">click</em>',
+            <em class="orng">() =></em> {
+          </p>
+          <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;<em class="blu">const</em> div =
+            <em class="red">document</em>.queryselector('<em class="grn"
+              >#div</em
+            >');
+          </p>
+          <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;div.style.display = '<em class="grn"
+              >none</em
+            >';
+          </p>
+          <p>});</p>
+        </div>
+        <h3>Above we have hidden an element upon a button click.</h3>
+        <h3>This is 'vanilla' or 'plain' JavaScript.</h3>
+        <h2>With React, we dont have to do this anymore.</h2>
+        <h3>
+          Instead, we build componants in such a way that, in essence, we create
+          our own html elements that have a complex structure.
+        </h3>
+        <h3>
+          Then, instead of mainipulating the DOM, we describe the state of our
+          componants and react manipulates the DOM under the hood
+        </h3>
+        <h3>
+          React components help us write reuseable, modular, better organized
+          code.
+        </h3>
+        <h2>Imagine This Example</h2>
+        <h3>We have a site for finding video games.</h3>
+
+        <img src="../imgs/screenshot-exampls/react-layout.PNG" alt="" />
+        <h3>We could make it out of components like this...</h3>
+        <img src="../imgs/screenshot-exampls/react-components.PNG" alt="" />
+        <h3>You'll have components like this game card...</h3>
+        <img src="../imgs/screenshot-exampls/card-inside-grid.PNG" alt="" />
+        <h3>
+          Which are made of other components, and will be used in the
+          construction of other components.
+        </h3>
+        <img src="../imgs/screenshot-exampls/likeBtn-inside-card.PNG" alt="" />
+        <img src="../imgs/screenshot-exampls/componant-hierarchy.PNG" alt="" />
+        <h3>
+          In essence, a React application is a tree of componants, with the app
+          being the root connecting everything together.
+        </h3>
+        <h3>
+          We build components, make components out of those components, use
+          those components that are made of components to make more complex
+          components, then put everything together in the app component.
+        </h3>
+      </article>
+    </section>
+  </body>
+</html>

@@ -1,8 +1,12 @@
 const collapsibles = document.querySelectorAll(".collapsible");
+const collapseBtns = document.querySelectorAll(".collapsible__button")
 collapsibles.forEach((item) =>
-  item.addEventListener("click", function () {
-    this.classList.toggle("collapsible--expanded");
-  })
+  
+    collapseBtns.forEach((btn) =>
+    btn.addEventListener("click", function() {
+      item.classList.toggle("collapsible--expanded");
+    }))
+  
 );
 
 const cards = document.querySelectorAll('.card');

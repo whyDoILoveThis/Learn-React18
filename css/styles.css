@@ -1,14 +1,20 @@
 
+:root {
+    --color--btn:  rgba(240, 248, 255, 0.095);
+}
+
 @font-face {
     font-family: LucidaConsole;
     src: url(../fonts/lucon.ttf);
 }
 
 body {
+    box-sizing: border-box;
     background-color: rgb(33, 27, 35);
     color: rgb(222, 220, 220);
     font-family: Roboto;
     padding: 40px 10%;
+    letter-spacing: 0.03rem;
 }
 
 .centerer {
@@ -31,6 +37,7 @@ em {
 h1 {
     text-align: center;
     color: #ebffc2;
+    letter-spacing: 2px;
 }
 
 h2 {
@@ -41,6 +48,7 @@ h2 {
 
 h3 {
     color: rgb(182, 190, 205);
+    font-weight: 500;
 }
 
 h4 {
@@ -84,20 +92,22 @@ a:hover {
 
 .home, 
 .home:hover {
-    background-color: #ffffff28;
+    background-color:var(--color--btn);
     padding: 0.5rem 0.8rem;
     border-radius: 10px;
     font-size: 20px;
+    color: #a686ff;
 }
 
 .undrln {
     text-decoration: underline;
 }
 
-.section-list {
-    display: flex;
-    justify-content: center;
+img {
+    width: 100%;
+    
 }
+
 
 /** COLLAPSIBLES */
 
@@ -108,7 +118,7 @@ a:hover {
     flex-direction: column;
     border: 1px solid rgba(255, 255, 255, 0.302);
     border-radius: 10px;
-    width: fit-content;
+    width: 100%;
     padding: 0 1rem 1rem 1rem;
     line-height: 1.47rem;
    
@@ -143,17 +153,17 @@ line-height: 1.5rem;
     
 }
 
-.collapsible__recipe-button {
+.collapsible__button {
     transform: rotatex(-180deg);
     transition: transform 0.5s;
     align-self: center;
     width: 30px;
-    background-color: rgba(240, 248, 255, 0.095);
+    background-color:var(--color--btn);
     padding: 0.5rem 1rem;
     border-radius: 10px;
 }
 
-.collapsible--expanded .collapsible__recipe-button {
+.collapsible--expanded .collapsible__button {
     transform: rotatex(0);
     top: 100%;
     transition: transform 0.32s;
@@ -164,7 +174,6 @@ line-height: 1.5rem;
 
 .code {
     font-family: LucidaConsole, Arial, Helvetica, sans-serif;
-    white-space: nowrap;
     background-color: black;
     color: white;
     font-style: normal;
@@ -173,6 +182,7 @@ line-height: 1.5rem;
     flex-direction: column;
     border-radius: 6px;
     overflow: auto;
+    letter-spacing: -0.7px;
 }
 
 .code p::selection,
