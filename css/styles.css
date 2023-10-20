@@ -1,0 +1,259 @@
+
+@font-face {
+    font-family: LucidaConsole;
+    src: url(../fonts/lucon.ttf);
+}
+
+body {
+    background-color: rgb(33, 27, 35);
+    color: rgb(222, 220, 220);
+    font-family: Roboto;
+    padding: 40px 10%;
+}
+
+.centerer {
+    display: flex;
+    justify-content: center;
+}
+
+.main-wrap {
+    max-width: 800px;
+}
+
+b{
+    color: rgb(186, 225, 255);
+}
+
+em {
+    font-style: normal;
+}
+
+h1 {
+    text-align: center;
+    color: #ebffc2;
+}
+
+h2 {
+    text-align: center;
+    border-bottom: 1px solid;
+    margin-top: 4rem;
+}
+
+h3 {
+    color: rgb(182, 190, 205);
+}
+
+h4 {
+    text-align: center;
+    margin: 1rem;
+}
+
+ol {
+    display: flex;
+    flex-direction: column;
+   width: 400px;
+    line-height: 40px;
+    color: rgb(138, 255, 140);
+    font-size: 18px;
+    align-self: center;
+    padding: 0;
+}
+
+li {
+    padding: 0 10px 0 10px;
+}
+
+li:nth-child(odd){
+    background-color: rgba(187, 187, 187, 0.09);
+    border-radius: 8px;
+   
+}
+
+
+a {
+    color: rgb(123, 191, 255);
+    text-decoration: none;
+    font-size: 22px;
+    transition: all 0.5s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    font-size: 24px;
+}
+
+.home, 
+.home:hover {
+    background-color: #ffffff28;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.undrln {
+    text-decoration: underline;
+}
+
+.section-list {
+    display: flex;
+    justify-content: center;
+}
+
+/** COLLAPSIBLES */
+
+/*^ '.collapsible' can be found in 'main.js' */
+
+.collapsible {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.302);
+    border-radius: 10px;
+    width: fit-content;
+    padding: 0 1rem 1rem 1rem;
+    line-height: 1.47rem;
+   
+}
+
+.collapsible > * {
+    transition: all 1s;
+}
+
+.collapsible__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible__heading {
+line-height: 1.5rem;    
+}
+
+.collapsible__content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    
+}
+
+
+.collapsible--expanded .collapsible__content{
+    max-height: 500vh;
+    opacity: 1;
+    transition: max-height 5s 
+    opacity 1.5s; 
+    
+}
+
+.collapsible__recipe-button {
+    transform: rotatex(-180deg);
+    transition: transform 0.5s;
+    align-self: center;
+    width: 30px;
+    background-color: rgba(240, 248, 255, 0.095);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+.collapsible--expanded .collapsible__recipe-button {
+    transform: rotatex(0);
+    top: 100%;
+    transition: transform 0.32s;
+}
+
+
+/** CODE */
+
+.code {
+    font-family: LucidaConsole, Arial, Helvetica, sans-serif;
+    white-space: nowrap;
+    background-color: black;
+    color: white;
+    font-style: normal;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    overflow: auto;
+}
+
+.code p::selection,
+.code em::selection {
+    background: rgba(214, 172, 238, 0.273);
+    color: inherit;
+}
+
+.code::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+    height: 7px;
+}
+.code::-webkit-scrollbar-thumb {
+    border-radius: 1px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+.code::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 1px;
+    background-color: #F5F5F5;
+}
+
+
+.code::before {
+    content: 'bash shell';
+    background-color: rgb(55, 55, 55);
+    
+    
+    align-self: flex-start;
+    
+    color: rgb(184, 184, 184);
+    padding: 0.25rem 0.4rem 0.1rem 0.4rem;
+    border-radius: 6px 0px 6px 0;
+    font-size: 12px;
+}
+
+.code--html::before {
+    content: 'HTML';
+    color: rgb(255, 72, 0);
+    letter-spacing: 1px;
+}
+
+.code--js::before {
+   content: 'javascript';
+   color: yellow;
+}
+
+.code--json::before {
+    content: 'json';
+    color: rgb(93, 184, 93);
+}
+
+.code--file-struct::before {
+    content: '📁';
+    font-size: 20px;
+}
+
+.code p {
+    margin: 0.5rem 0 0.5rem 2rem;
+    display: inline-block;
+    flex: 0 0 100%;
+}
+
+.comnt {
+    color: rgb(123, 123, 123);
+}
+
+.orng {
+    color: orange;
+}
+
+.grn {
+    color: rgb(60, 162, 60);
+}
+
+.blu {
+    color: rgb(74, 189, 255);
+}
+
+.red {
+    color: rgb(246, 46, 83);
+}
