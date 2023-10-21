@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <title>Creating a React Component</title>
+  </head>
+  <body>
+    <a href="../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Creating a React Component</h1>
+        <h2>The Componant</h2>
+        <h3>
+          Right click the scr folder and create a new file called 'Message.tsx'
+        </h3>
+        <h3>The extension of a typescript file can be either .ts or .tsx</h3>
+        <h3>
+          Often, .ts is used for plain typescript files, and .tsx is used for
+          React components.
+        </h3>
+        <h2>2 Ways to Create a Component</h2>
+        <h3>We can use a JS class to make them, or a function.</h3>
+        <h3>
+          These days functions are most popular, because they're more consise,
+          and easier to write.
+        </h3>
+        <h3>
+          If you need to maintain an older codebase that uses classes, you will
+          have to take a different course to learn about that.
+        </h3>
+        <h2>The function</h2>
+        <h3>Let's declare a function called 'Message'</h3>
+        <h3>
+          It's important to note that we are using pascal casing, where the
+          first letter of each word is capitalized.
+        </h3>
+        <h3>
+          This is the convention that React <em class="red">ALWAYS</em> follows.
+        </h3>
+        <div class="code code--ts">
+          <p>
+            <em class="blu">function</em> Message<em class="orng">()</em> {
+            <br />
+            <br />
+            <br />
+            }
+          </p>
+        </div>
+        <h2>Describing the Component</h2>
+        <h3>
+          Inside this function is where we describe what the component looks
+          like.
+        </h3>
+        <h3>Its comparable to creating our own custom html element.</h3>
+        <h4>Let's say we want an h1 saying something...</h4>
+        <div class="code code--ts">
+          <p>
+            <em class="blu">function</em> Message<em class="orng">()</em> {
+            <br />
+            <br />
+            <em class="red">&nbsp;&nbsp;return</em>
+            <em class="grn">&lt;h1&gt;</em>Something is what i said hoe
+            <em class="grn">&lt;h1&gt;</em>;
+            <br />
+            <br />
+            }
+          </p>
+        </div>
+        <h2>JSX syntax</h2>
+        <h3>The code above utilizes JSX(JavascriptXML)</h3>
+        <h3>Under the hood this code gets compiled down to javascript.</h3>
+        <h3>
+          <a
+            target="_blank"
+            href="https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=DwCwjAfAZgrgxgawPZSsA9OCQ&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2&prettier=false&targets=&version=7.23.2&externalPlugins=&assumptions=%7B%7D"
+            >This site</a
+          >
+          shows you exactly how this happens.
+        </h3>
+        <h2>Using our new component</h2>
+        <h4>Export the function like this...</h4>
+        <div class="code code--ts">
+          <p>
+            <em class="blu">function</em> Message<em class="orng">()</em> {
+            <br />
+            <br />
+            <em class="red">&nbsp;&nbsp;return</em>
+            <em class="grn">&lt;h1&gt;</em>Something is what i said hoe
+            <em class="grn">&lt;h1&gt;</em>;
+            <br />
+            <br />
+            }
+          </p>
+          <br />
+          <p><em class="blu">export default</em> Message;</p>
+        </div>
+        <h4>Then head to the App component...</h4>
+        <img
+          src="../imgs/project-structure-screenshots/open-app-component.PNG"
+          alt=""
+        />
+        <h4>And clear everything in the file...</h4>
+        <img
+          src="../imgs/project-structure-screenshots/clear-app-file.PNG"
+          alt=""
+        />
+        <h2>Writing 'App.tsx' code</h2>
+        <h4>First, create the app component...</h4>
+        <div class="code code--ts">
+          <p><em class="blu">function</em> App <em class="orng">()</em> {</p>
+          <p>
+            &nbsp;&nbsp;<em class="red">return</em>
+            <em class="grn">&lt;div&gt;&lt;/div&gt;</em>;
+          </p>
+          <p>}</p>
+        </div>
+        <h4>Then import the Message component...</h4>
+        <div class="code code--ts">
+          <p>
+            <em class="blu">import</em> Message <em class="blu">from</em> '<em
+              class="grn"
+              >./Message</em
+            >'
+            <br />
+            <br />
+          </p>
+          <p><em class="blu">function</em> App <em class="orng">()</em> {</p>
+          <p>
+            &nbsp;&nbsp;<em class="red">return</em>
+            <em class="grn">&lt;div&gt;&lt;/div&gt;</em>;
+          </p>
+          <p>}</p>
+        </div>
+        <h3>After that, we can use the component just like an html element.</h3>
+        <h3>You can also use self closing tags.</h3>
+        <div class="code code--ts">
+          <p>
+            <em class="blu">import</em> Message <em class="blu">from</em> '<em
+              class="grn"
+              >./Message</em
+            >'
+            <br />
+            <br />
+          </p>
+          <p><em class="blu">function</em> App <em class="orng">()</em> {</p>
+          <p>
+            &nbsp;&nbsp;<em class="red">return</em>
+            <em class="grn">&lt;div&gt;</em> &lt;Message&gt;&lt;/Message&gt;
+            <em class="grn">&lt;/div&gt;</em>;
+          </p>
+          <p>}</p>
+        </div>
+        <h3>Finally, export the 'App' so we can use it elsewhere.</h3>
+        <div class="code code--ts">
+          <p>
+            <em class="blu">import</em> Message <em class="blu">from</em> '<em
+              class="grn"
+              >./Message</em
+            >'
+            <br />
+            <br />
+          </p>
+          <p><em class="blu">function</em> App <em class="orng">()</em> {</p>
+          <p>
+            &nbsp;&nbsp;<em class="red">return</em>
+            <em class="grn">&lt;div&gt;</em> &lt;Message&gt;&lt;/Message&gt;
+            <em class="grn">&lt;/div&gt;</em>;
+          </p>
+          <p>}</p>
+          <br />
+          <p><em class="blu">export default</em> App;</p>
+        </div>
+        <h2>Dynamic elements</h2>
+        <h3>JSX allows for use of variables in the elements.</h3>
+        <h3>
+          We can also use any code that returns a value inside the braces.
+        </h3>
+        <h4>So, we could do this...</h4>
+        <img
+          src="../imgs/project-structure-screenshots/dynamic-elements.PNG"
+          alt=""
+        />
+        <h4>We can also write if statements like...</h4>
+        <img src="../imgs/project-structure-screenshots/jsx-if.PNG" alt="" />
+        <h3>So, something like the following would return 'Hello World'</h3>
+        <img
+          src="../imgs/project-structure-screenshots/result-of-if.PNG"
+          alt=""
+        />
+      </article>
+    </section>
+    <script src="../JS/main.js"></script>
+  </body>
+</html>

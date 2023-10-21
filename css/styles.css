@@ -232,6 +232,11 @@ line-height: 1.5rem;
    color: yellow;
 }
 
+.code--ts::before {
+    content: 'TypeScript';
+    color: rgb(109, 143, 255);
+}
+
 .code--json::before {
     content: 'json';
     color: rgb(93, 184, 93);
