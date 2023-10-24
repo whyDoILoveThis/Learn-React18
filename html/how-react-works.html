@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <title>How React Works</title>
+  </head>
+  <body>
+    <a href="../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>How React Works</h1>
+        <h2>Our componet tree</h2>
+        <h3>
+          Currently we have a componant tree like this, where the 'App' is the
+          root and 'Message' is the child.
+        </h3>
+        <img src="../imgs/how-react-works/currently-we-have.PNG" alt="" />
+        <h2>When we start our app...</h2>
+        <h3>
+          React takes our component tree, and builds a Javascript
+          data-structure, which is refered to as 'The Virtual DOM'
+        </h3>
+        <img src="../imgs/how-react-works/when-we-start-our-app.PNG" alt="" />
+        <h2>The Virtual DOM</h2>
+        <h3>
+          This virtual dom is different than the actual DOM in the browser.
+        </h3>
+        <h3>
+          Virtual dom is a lightweight, in memory representation of our
+          component tree, where each node represents a component and its
+          propertys.
+        </h3>
+        <h2>Updating the DOM</h2>
+        <h3>
+          When the state, or the data of a component changes, react updates the
+          corresponding node in the Virtual DOM to reflect the current state.
+        </h3>
+        <img src="../imgs/how-react-works/when-component-changes.png" alt="" />
+        <h3>
+          Then, it compares the current version of virtual dom with the previous
+          version to identify which nodes should be updated.
+        </h3>
+        <h3>It will then update those nodes in the actual DOM.</h3>
+        <img
+          src="../imgs/how-react-works/when-virtual-dom-updates.PNG"
+          alt=""
+        />
+        <h2>React DOM</h2>
+        <h3>
+          Technically, updating the DOM isn't done by react itself, but instead
+          by a companion library called 'react-dom'.
+        </h3>
+        <h3>
+          Earlier we saw in the 'package.json' file that we are dependant on 2
+          libraries, 'react' and 'react-dom'.
+        </h3>
+        <h2>How <b>'react'</b> & <b>'react-dom'</b> work together</h2>
+        <h3>
+          In 'index.html' we've got the 'root div' and the script that runs
+          'main.tsx'
+        </h3>
+        <img src="../imgs/how-react-works/root-div.PNG" alt="" />
+        <img src="../imgs/how-react-works/main-script.PNG" alt="" />
+        <h3>
+          In 'main.tsx' you can see that react dom is taking our root div and
+          rendering there inside, our App component.
+        </h3>
+        <img src="../imgs/how-react-works/main-tsx.png" alt="" />
+        <h3>
+          The React.StrictMode component is just a built in react error catching
+          feature. It doesn't have a visual representation.
+        </h3>
+        <h3>
+          We used ReactDOM to do this, but there is another library called
+          ReactNative that will allow our app to render in a mobile app.
+        </h3>
+        <h3>
+          So, React itself isn't tied to a particular platform, and we can you
+          it to build apps for web, mobile, and desktop devices.
+        </h3>
+      </article>
+    </section>
+    <script src="../JS/main.js"></script>
+  </body>
+</html>
