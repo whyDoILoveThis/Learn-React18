@@ -67,11 +67,26 @@ ol {
     padding: 0;
 }
 
+ul {
+    list-style-type: disc;
+    line-height: 40px;
+    color: #fff200;   
+}
+
+ul > li {
+    font-size: 40px;
+}
+
+.ul-li {
+    font-size: 22px;
+    color: rgb(255, 231, 223);
+}
+
 li {
     padding: 0 10px 0 10px;
 }
 
-li:nth-child(odd){
+ol > li:nth-child(odd){
     background-color: rgba(187, 187, 187, 0.09);
     border-radius: 8px;
    
