@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Handling Events</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Handling Events</h1>
+        <h2>Click Event on a Component</h2>
+        <h3>First, let's get the bootstrap classes back.</h3>
+        <img src="../../imgs/handling-events/bootstrap-fix.PNG" alt="" />
+        <h2>The Goal Here..</h2>
+        <h3>We want to click each item, and have it printed to the console.</h3>
+        <h3>Each element in react has a prop called onClick.</h3>
+        <h4>This will do for now..</h4>
+        <img src="../../imgs/handling-events/onClick.PNG" alt="" />
+        <h3>If you get err just refresh.</h3>
+        <h3>
+          So we get the clicked message, but what if we want the name of the
+          item?
+        </h3>
+        <h4>Just log the item.</h4>
+        <div class="code code--ts">
+          <p>
+            <em class="blu">onClick</em><em class="red">=</em
+            ><em class="orng">{</em>() <em class="red">=></em> console.<em
+              class="grn"
+              >log</em
+            >(<em class="red">item</em>)<em class="orng">}</em>
+          </p>
+        </div>
+        <h2>Index</h2>
+        <h3>We can also add a second parameter to access the index.</h3>
+        <img src="../../imgs/handling-events/index.PNG" alt="" />
+        <h2>Event Parameter</h2>
+        <h3>Lets add an event parameter and log it to the console.</h3>
+        <div class="code code--ts">
+          <p>
+            <em class="blu">onClick</em><em class="red">=</em
+            ><em class="orng">{</em>( <em class="red">event</em> )
+            <em class="red">=></em> console.<em class="grn">log</em>(<em
+              class="red"
+              >event</em
+            >)<em class="orng">}</em>
+          </p>
+        </div>
+        <h3>What you get is a built in component of react.</h3>
+        <h3>
+          Not all browsers handle events the same way, so react created this to
+          solve that problem.
+        </h3>
+        <h2>Separate functions</h2>
+        <h3>
+          If your event handles get complex you should move them to a separate
+          function.
+        </h3>
+        <h4>Why do we have this warning??</h4>
+        <img src="../../imgs/handling-events/any-type-err.PNG" alt="" />
+        <h2>implicitly has 'any' type.</h2>
+        <h3>It means Typescript doesn't know its type.</h3>
+        <h3>Is it a number? A bool? A string? What is it?</h3>
+        <h3>
+          So if we use a dot on the event object we dont see any propertys.
+        </h3>
+        <h3>We need to specify the type of the parameter.</h3>
+        <h2>Parameter Type</h2>
+        <h3>This is what we need to do.</h3>
+        <img src="../../imgs/handling-events/type-annotatin.PNG" alt="" />
+        <h3>This is called type annotation in Typescript.</h3>
+        <h2>Using the function</h2>
+        <h3>Take note that we are not CALLING the function with ();</h3>
+        <h3>
+          We are just passing it as a reference. We are telling react to call it
+          when an item is clicked.
+        </h3>
+        <h4>so calling the function gets done later, at runtime.</h4>
+        <img src="../../imgs/handling-events/using-the-function.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
