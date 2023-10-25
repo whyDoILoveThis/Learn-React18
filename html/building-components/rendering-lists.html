@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Rendering Lists</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Rendering Lists</h1>
+        <h2>The List we created is useless</h2>
+        <h3>
+          We have hard coded the list items. What if we want them dynamically
+          generated?
+        </h3>
+        <h4>Create an array of strings.</h4>
+        <img src="../../imgs/rendering-lists/arr-of-strings.PNG" alt="" />
+        <h3>We can't use for loops in JSX so we say...</h3>
+        <img src="../../imgs/rendering-lists/arr-map.PNG" alt="" />
+        <h3>Dont forget the braces around your variable. {}</h3>
+        <h2>Replace the list items</h2>
+        <h3>The entire expression needs to be wrapped in braces here.</h3>
+        <img src="../../imgs/rendering-lists/replace-items.PNG" alt="" />
+        <h3>We haven't added our css classes yet, but we'll get to it.</h3>
+        <h2>key={}</h2>
+        <h3>You should notice a warning about key something something</h3>
+        <h3>This is because we have not added the key prop(property)</h3>
+        <h3 class="undrln">React needs this to keep track of our items.</h3>
+        <h3>
+          So when we update the page react knows what part of the page to
+          update.
+        </h3>
+        <img src="../../imgs/rendering-lists/add-key.PNG" alt="" />
+        <h2>Finally</h2>
+        <h3>
+          Head back to the browser and refresh to get rid of console errs,
+          everything should be fix.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 // TAB ICON
 const head = document.getElementsByTagName('head')[0];
 const tabIcon = document.createElement("link");
-tabIcon.href = "../imgs/react-icon.png";
+tabIcon.href = "../../imgs/react-icon.png";
 tabIcon.rel = "icon";
 head.appendChild(tabIcon);
 
