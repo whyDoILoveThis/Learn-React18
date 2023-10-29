@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Managing State</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Managing State</h1>
+        <h2>Highlight Clicked Item</h2>
+        <h3><b>Add a second bootstrap class called 'active'</b></h3>
+        <h3>You should see all the items are now highlighted blue.</h3>
+        <h3>But, we only want the one we clicked on.</h3>
+        <h3>
+          For that we need a var to keep track of the index of the selected
+          item.
+        </h3>
+        <h2>The Index Var</h2>
+        <h4>Create a var like this</h4>
+        <img src="../../imgs/managing-state/index-var.PNG" alt="" />
+        <h3>-1 makes it so that no item selected.</h3>
+        <h2>Conditional Class</h2>
+        <h3>Now, we need to write a condition for the active class.</h3>
+        <h4>Start with this...</h4>
+        <img
+          src="../../imgs/managing-state/class-select-condition.PNG"
+          alt=""
+        />
+        <h4>Then add these...</h4>
+        <img
+          src="../../imgs/managing-state/class-select-condition-classes.PNG"
+          alt=""
+        />
+        <h3>
+          This is a very simple way to add dynamic classes. There are more
+          advanced techniques, but dont worry about them for now.
+        </h3>
+        <h2>onClick</h2>
+        <h3>
+          Delete the handleClick function, and remove the MouseEvent import.
+        </h3>
+        <h3>Then you can write an arrow function inside the onCLick like...</h3>
+        <img src="../../imgs/managing-state/onclick-fail.PNG" alt="" />
+        <h3>It doesn't work. Why?</h3>
+        <h2>Why It Doesn't Work</h2>
+        <h4>This variable...</h4>
+        <img src="../../imgs/managing-state/index-var.PNG" alt="" />
+        <h3>Is local to the function component.</h3>
+        <h3>
+          So, any part of react(like onClick) is unaware of it. It's like a
+          little secret inside the component.
+        </h3>
+        <h3>
+          To address this we need to tell react that this component has
+          data(state) that may change overtime.
+        </h3>
+        <h3>For this we need a built in function in react called 'useState'</h3>
+        <h2>useState</h2>
+        <h4>This is considered a 'hook'</h4>
+        <img src="../../imgs/managing-state/useState.PNG" alt="" />
+        <h3>
+          A hook is a function that lets us use built in features of react. We
+          will learn about more hooks throughout this course.
+        </h3>
+        <h3>
+          With the useState hook we can tell react that we have data that is
+          going to change state.
+        </h3>
+        <h3>
+          The state hook returns an array with the first index being a var, and
+          the second being an updater function.
+        </h3>
+        <h2>Using 'useState'</h2>
+        <h3>
+          The parameter of useState initializes the var, and the param of the
+          updater function updates the var.
+        </h3>
+        <h4>So, with this...</h4>
+        <img src="../../imgs/managing-state/the-hook.PNG" alt="" />
+        <h3>We can update our component dynamically.</h3>
+        <h3>Be sure to delete the selectedIndex var from earlier.</h3>
+        <h2>Finally</h2>
+        <h4>Use the hook in onClick...</h4>
+        <img src="../../imgs/managing-state/final-onClick.PNG" alt="" />
+        <h3>
+          It's important to remeber that each component holds it's own state.
+        </h3>
+        <h3>
+          So, if we added another ListGroup to our app they would work
+          independently.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
