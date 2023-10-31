@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Passing Data Via Props</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Passing Data Via Props</h1>
+        <h2>Why we need props</h2>
+        <h4>So, we've got a list of cities.</h4>
+        <img src="../../imgs/passing-data-via-props/city-list.PNG" alt="" />
+        <h3>But, what if we had names or colors?</h3>
+        <h3>
+          We don't want to completely remake this component for each kind of
+          list.
+        </h3>
+        <h3>
+          We want to make this component reuseable. This is where we use
+          propertys(props).
+        </h3>
+        <h2>What are props</h2>
+        <h3>Props are the inputs to our components.</h3>
+        <h3>
+          It's like we are creating our own custom html attributes for our
+          custom components.
+        </h3>
+        <h3>
+          We kind of make a spot ready for a variable to be inserted, and the
+          value of that variable is used as the data of the component to be
+          displayed.
+        </h3>
+        <h2>What we want</h2>
+        <h3>Instead of defining our items here like this...</h3>
+        <img
+          src="../../imgs/passing-data-via-props/instead-of-this.PNG"
+          alt=""
+        />
+        <h3>We should be able to pass it as an input to our component.</h3>
+        <h3>Kind of like passing a parameter to a function.</h3>
+        <h3>We want to do the same for our heading.</h3>
+        <h2>Typescript Interface</h2>
+        <h3>
+          We need to decide the shape of the inputs to our ListGroup component.
+        </h3>
+        <h3>
+          We are going to want to be able to pass an object with 2 propertys.
+        </h3>
+        <h3>'items', which is an array, and 'heading', which is a string.</h3>
+        <h3>
+          To do that we use a Typescript feature called an 'interface'. With
+          this we can define the 'shape' or the 'interface' of an object.
+        </h3>
+        <img src="../../imgs/passing-data-via-props/the-interface.PNG" alt="" />
+        <h4>Then we need this parameter</h4>
+        <img
+          src="../../imgs/passing-data-via-props/component-params.PNG"
+          alt=""
+        />
+        <h2>Typescript err</h2>
+        <h3>Now, in the App component, we have an err.</h3>
+        <h4>Letting us know we haven't added the props...</h4>
+        <img
+          src="../../imgs/passing-data-via-props/typescript-err.PNG"
+          alt=""
+        />
+        <h3>This is another benefit of Typescript.</h3>
+        <h2>App props</h2>
+        <h3>
+          Now we want to move the items array to App, and add our props just
+          like html attributes.
+        </h3>
+        <img src="../../imgs/passing-data-via-props/app.PNG" alt="" />
+        <h3>We just wrote in the heading, but you could use a var too.</h3>
+        <h2>ListGroup err</h2>
+        <h3>
+          Now, we have problem here because we no longer have the items array in
+          here.
+        </h3>
+        <img
+          src="../../imgs/passing-data-via-props/ListGroup-problem.PNG"
+          alt=""
+        />
+        <h4>We could prefix it like this...</h4>
+        <img src="../../imgs/passing-data-via-props/prefix.PNG" alt="" />
+        <h3>But, this is duplicated and ugly.</h3>
+        <h3>
+          The better solution is to destructure our parameter, and add them like
+          this...
+        </h3>
+        <img src="../../imgs/passing-data-via-props/destructure.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
