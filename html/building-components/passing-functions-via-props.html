@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Passing Functions Via Props</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Passing Functions Via Props</h1>
+        <h2>Our List</h2>
+        <h3>
+          It looks pretty good, when we click an item it gets selected, but in a
+          reeal app something should happen after an item is selected.
+        </h3>
+        <h3>
+          Maybe we want to filter a list of objects, or take the user to another
+          page, but something should happen.
+        </h3>
+        <h3>
+          Every app is different so we dont want to implement that logic in the
+          ListGroup. We want it to remain re-useable.
+        </h3>
+        <h3>
+          So, we need a mechanisim to notify the consumer(parent) of this
+          component that an item is selected.
+        </h3>
+        <h3>
+          The parent is the App, so when an item is selected we should notify
+          the App component.
+        </h3>
+        <h2>Noting the selection</h2>
+        <h3>
+          Currently we have 2 propertys, and we are using these to pass data to
+          our ListGroup.
+        </h3>
+        <img
+          src="../../imgs/passing-functions-via-props/current-interface.PNG"
+          alt=""
+        />
+        <h3>
+          We are going to add a 3rd property as a function, and call it down
+          here...
+        </h3>
+        <img
+          src="../../imgs/passing-functions-via-props/call-func-down-here.PNG"
+          alt=""
+        />
+        <h3>With that our App will be notified. Let's make it work.</h3>
+        <h2>The function signature</h2>
+        <h3>
+          Imagine that we want a function that takes a parameter called 'item'
+          of type string, and returns void.
+        </h3>
+        <h4>So lets add the prop.</h4>
+        <h3>
+          By convention we start the word 'on'. So, 'onSelectItem'. The type of
+          the prop is a function that has a parameter of type string, and
+          returns void.
+        </h3>
+        <img
+          src="../../imgs/passing-functions-via-props/select-item-prop.PNG"
+          alt=""
+        />
+        <h2>Problems</h2>
+        <h4>Use this to see all errs...</h4>
+        <img
+          src="../../imgs/passing-functions-via-props/problems-tab.PNG"
+          alt=""
+        />
+        <img
+          src="../../imgs/passing-functions-via-props/problems-terminal.PNG"
+          alt=""
+        />
+        <h3>
+          It's an err we should be familiar with. It's telling us we have not
+          yet added a prop that it's expecting.
+        </h3>
+        <h3>Thanks Typescript!!</h3>
+        <h2>Adding the function</h2>
+        <h3>
+          Now, we can write a function directly in the prop just like onClick..
+        </h3>
+        <h3>OR, we could write a separate handler, which is preferred.</h3>
+        <img src="../../imgs/passing-functions-via-props/handler.PNG" alt="" />
+        <h4>Then add the prop...</h4>
+        <img
+          src="../../imgs/passing-functions-via-props/add-prop-to-component.PNG"
+          alt=""
+        />
+        <h2>Finally</h2>
+        <h3>When destructuring the props we have to add our new one.</h3>
+        <img
+          src="../../imgs/passing-functions-via-props/desrtucture.PNG"
+          alt=""
+        />
+        <h4>Then add the function to onClick</h4>
+        <img src="../../imgs/passing-functions-via-props/final.PNG" alt="" />
+        <h3>
+          You should now see the name of the selected city printed to the
+          console by the App component.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
