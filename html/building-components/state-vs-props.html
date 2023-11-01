@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>State vs Props</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>State vs Props</h1>
+        <h2>Compare and Contrast</h2>
+        <img src="../../imgs/state-vs-props/compare-and-contrast.PNG" alt="" />
+        <h2>Important note about Props</h2>
+        <h3>Props should be treated as immutable.</h3>
+        <h4>In English, this means...</h4>
+        <img src="../../imgs/state-vs-props/immutable.PNG" alt="" />
+        <h3>
+          So when we say something is immutable it cannot be changed. It's
+          read-only.
+        </h3>
+        <h2>For Example</h2>
+        <h4>We have the props to our ListGroup...</h4>
+        <img src="../../imgs/state-vs-props/List-group.PNG" alt="" />
+        <h4 class="red">We should not do this...</h4>
+        <img src="../../imgs/state-vs-props/should-not-do.PNG" alt="" />
+        <h3>
+          We wont get errs, and it will work, but never do this. It goes against
+          the fundamental principals of React. Props should be treated as
+          constants. NEVER CHANGING!
+        </h3>
+        <h3>
+          You will understand the principals behind this as we go through the
+          course.
+        </h3>
+        <h3>It is based on functional programming principals.</h3>
+        <h2>State on the other hand</h2>
+        <h3>
+          State is mutable, and thats the whole purpose of using state
+          variables.
+        </h3>
+        <h3>
+          We want to tell React that a component will have data that is going to
+          change.
+        </h3>
+        <h2>One thing they both have in common</h2>
+        <h3>
+          Any time that either of them change, React will re-render the
+          component, and update the DOM.
+        </h3>
+        <h2>This has been the compare and constrast</h2>
+        <img src="../../imgs/state-vs-props/final.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
