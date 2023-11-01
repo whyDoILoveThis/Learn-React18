@@ -6,15 +6,14 @@ tabIcon.rel = "icon";
 head.appendChild(tabIcon);
 
 
-const mainWrap = document.querySelector(".main-wrap");
+const body = document.body;
 const toTopIcon = document.createElement("img");
 const toTopLink = document.createElement("a");
 toTopLink.href = "#";
-toTopIcon.src = "../../imgs/R.png"
+toTopIcon.src = "../../imgs/R.png";
 toTopIcon.classList.add("to-top");
-mainWrap.appendChild(toTopLink);
+body.appendChild(toTopLink);
 toTopLink.appendChild(toTopIcon);
-
 
 
 
