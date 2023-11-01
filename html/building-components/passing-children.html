@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Passing Children</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Passing Children</h1>
+        <h2>What we're doing</h2>
+        <h3>Sometimes we want our componets to hold children.</h3>
+        <h3>
+          Just like how we can put things inside divs, we may want to put
+          another component in our component.
+        </h3>
+        <h3>
+          Here we learn how to build a component that can accept children.
+        </h3>
+        <h2>New File</h2>
+        <h4>Create this file</h4>
+        <img src="../../imgs/passing-children/new-file.PNG" alt="" />
+        <h2>A shortcut</h2>
+        <h4>Instead of typing this out...</h4>
+        <img src="../../imgs/passing-children/instead-of-this.PNG" alt="" />
+        <h4>Download this extension...</h4>
+        <img src="../../imgs/passing-children/the-extension.PNG" alt="" />
+        <h4>Then we can use this...</h4>
+        <img src="../../imgs/passing-children/rafce.PNG" alt="" />
+        <h3>If it doesn't come up close the file and open it again.</h3>
+        <h4>And we get this...</h4>
+        <img
+          src="../../imgs/passing-children/the-result-of-extension.PNG"
+          alt=""
+        />
+        <h4 class="red">WE DON'T NEED THE REACT IMPORT</h4>
+        <h2>App</h2>
+        <h3>
+          Next, clean out the App component, and insert the Alert component.
+        </h3>
+        <img src="../../imgs/passing-children/app-like-this.PNG" alt="" />
+        <h3>To display an alert we are going to use Bootstrap.</h3>
+        <h2>Bootstrap Alert</h2>
+        <h3>
+          Head to the
+          <a
+            target="_blank"
+            href="https://getbootstrap.com/docs/5.3/getting-started/introduction/"
+            >Bootstrap Docs</a
+          >, and go to the
+          <a
+            target="_blank"
+            href="https://getbootstrap.com/docs/5.3/components/alerts/"
+            >Alert Page.</a
+          >
+        </h3>
+        <h3>You'll find that you only need to add these classes...</h3>
+        <img src="../../imgs/passing-children/bootstrap-classes.PNG" alt="" />
+        <h2>Adding a prop</h2>
+        <h3>
+          Now we want it to be dynamic, so we will pass the text as a prop.
+        </h3>
+        <h4>First, we need an interface...</h4>
+        <img src="../../imgs/passing-children/the-interface.PNG" alt="" />
+        <h4>Add the parameters with a destructure...</h4>
+        <img src="../../imgs/passing-children/add-the-params.PNG" alt="" />
+        <h4>Finally, render our property...</h4>
+        <img src="../../imgs/passing-children/pass-to-alert.PNG" alt="" />
+        <h2>Using the prop</h2>
+        <h4>Now, we can add the prop here...</h4>
+        <img src="../../imgs/passing-children/use-the-prop.PNG" alt="" />
+        <h3>
+          This works, but we wanted to give our component to take the text as a
+          child like this...
+        </h3>
+        <img src="../../imgs/passing-children/child.PNG" alt="" />
+        <h3>
+          There is a special property that is built into React that all
+          components have, called, 'children'
+        </h3>
+        <h2>The children prop</h2>
+        <h4>We need to change text to children...</h4>
+        <img src="../../imgs/passing-children/children-prop.PNG" alt="" />
+        <h4>Also replace text here...</h4>
+        <img src="../../imgs/passing-children/replacing-text.PNG" alt="" />
+        <h2>HTML content</h2>
+        <h3>If we wanted to use an html element like this...</h3>
+        <img src="../../imgs/passing-children/html-element.PNG" alt="" />
+        <h3>
+          We get err because we told the Typescript compiler that the child
+          would be a string.
+        </h3>
+        <h3>To have this work we need to use this...</h3>
+        <h3 class="red">Make sure to import ReactNode</h3>
+        <img src="../../imgs/passing-children/react-node.PNG" alt="" />
+        <h2>Recap</h2>
+        <h3>Using the children prop we can pass children to a component.</h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
