@@ -24,6 +24,7 @@ html a {
 }
 
 body {
+    visibility: none;
     box-sizing: border-box;
     background: url(../imgs/site-background.jpg) no-repeat center center fixed;
   background-size: cover;
@@ -46,11 +47,11 @@ body {
     max-width: 600px;
     padding: 3rem;
     padding-top: 0.5rem;
-    background: rgba(255, 255, 255, 0.068);
+    background: rgba(150, 150, 150, 0.068);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
 }
 
 b{
@@ -119,11 +120,12 @@ ul > li {
 li {
     padding: 0 10px 0 10px;
     margin: 5px;
+    background-color: rgba(186, 186, 186, 0.055);
+    border-radius: 8px;
 }
 
 ol > li:nth-child(odd){
     background-color: rgba(186, 186, 186, 0.133);
-    border-radius: 8px;
    
 }
 
@@ -132,15 +134,14 @@ a {
     color: rgb(123, 191, 255);
     text-decoration: none;
     font-size: 22px;
-    transition: all 0.2s ease;
     font-weight: 300;
-    letter-spacing: 2px;
+    letter-spacing: 1.7px;
+    word-spacing: 1px;
 }
 
 a:hover {
     text-decoration: underline;
     color: rgb(67, 164, 255);
-    font-weight: 500;
 }
 
 
@@ -153,11 +154,16 @@ a:hover {
     line-height: 50px;
     color: #a686ff;
     border: 1px solid rgba(255, 255, 255, 0.311);
+    transition: font-size 0.2s ease;
 }
 
 .home:hover {
+    background-color: #dadada1e;
     color: #a686ff;
+    font-weight: 400;
+    text-decoration: none;
 }
+
 
 .to-top {
     width: 24px;
@@ -206,6 +212,19 @@ a:hover {
     margin-left: 20px;
 }
 
+.collapsible.exercise-collapsible {
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+   margin-top: 2.5rem;
+}
+
+.exercise-collapsible > .collapsible__heading {
+    color: rgb(189, 245, 104);
+    border-bottom: 4px solid rgba(166, 255, 0, 0.26);
+    padding-bottom: 10px;
+}
+
 .undrln {
     text-decoration: underline;
 }
@@ -233,13 +252,11 @@ img {
     width: 100%;
     padding: 0 1rem 1rem 1rem;
     line-height: 1.47rem;
-    background-color: #ffffff12;
+    background-color: #73737315;
    
 }
 
-.collapsible > * {
-    transition: all 1s;
-}
+
 
 .collapsible__header {
     display: flex;
@@ -254,27 +271,43 @@ line-height: 1.5rem;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+   
+    transition: max-height 0.3s, opacity 0.2s;
+    
     
 }
 
 
 .collapsible--expanded .collapsible__content{
-    max-height: 500vh;
     opacity: 1;
-    transition: max-height 5s 
-    opacity 1.5s; 
+    max-height: 100%;
+    transition: max-height 1s, opacity 0.6s;
     
 }
 
 .collapsible__button {
     transform: rotatex(-180deg);
-    transition: transform 0.5s;
+    transition: transform 0.5s, background-color 0.3s;
     align-self: center;
     width: 30px;
     background-color:var(--color--btn);
     padding: 0.5rem 1rem;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.302);
+    cursor: pointer;
+
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none !important;
+}
+
+.collapsible__button:hover {
+    background-color: rgba(255, 255, 255, 0.080);
 }
 
 .collapsible--expanded .collapsible__button {

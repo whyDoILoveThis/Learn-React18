@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>EXERCISE: Building a Button Component</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>EXERCISE: Building a Button Component</h1>
+        <h2>It's your turn now</h2>
+        <h3>Create a bootstrap button component.</h3>
+        <h3>
+          On the
+          <a
+            target="_blank"
+            href="https://getbootstrap.com/docs/5.3/components/buttons/"
+            >Bootstrap Buttons Page</a
+          >
+          you will find a few different types of buttons.
+        </h3>
+        <h3>For this exercise lets stick with the basic ones.</h3>
+        <h3>You will find html markup on the page.</h3>
+        <h3>
+          The goal is to encapsulate this markup into a reusable react
+          component.
+        </h3>
+        <h3 class="red">
+          Please keep the solution hidden until you have tried yourself.
+        </h3>
+        <h3>In the solution you learn a neat Typescript technique.</h3>
+        <div class="centerer">
+          <div class="collapsible exercise-collapsible">
+            <h2 class="sections-heading collapsible__heading">
+              SOLUTION<img
+                src="../../imgs/R.png"
+                alt=""
+                class="icon sections-icon collapsible__button"
+              />
+            </h2>
+            <div class="collapsible__content">
+              <h2>Create the file</h2>
+              <h3>In the components folder, create this file.</h3>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/new-file.PNG"
+                alt=""
+              />
+              <h2>Use our shortcut</h2>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/shortcut.PNG"
+                alt=""
+              />
+              <h4>We get this...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/shortcut-result.PNG"
+                alt=""
+              />
+              <h2>The Button</h2>
+              <h4>We put this...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/the-btn.PNG"
+                alt=""
+              />
+              <h4>Then in the App, add the Button...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/app-btn.PNG"
+                alt=""
+              />
+              <h2>Dynamic Button Text</h2>
+              <h4>Then back in the Button we define our props...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/button-props.PNG"
+                alt=""
+              />
+              <h3>
+                We could have used ReactNode here, but I prefer to use a string
+                in this particular case.
+              </h3>
+              <h4>
+                Next, we add the prop in the parameter using destructuring, and
+                also insert the prop...
+              </h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/parameter-and-insert.PNG"
+                alt=""
+              />
+              <h4>Finally add some text...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/finally.PNG"
+                alt=""
+              />
+              <h2>onClick</h2>
+              <h3>
+                So, good we have a reusable button. Now we just need to do
+                something with onClick.
+              </h3>
+              <h3>
+                But, it shouldn't be implememtnted in our button component,
+                thats not re-usable.
+              </h3>
+              <h4>To implement re-usable onClick, do this...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/onClick-prop.PNG"
+                alt=""
+              />
+              <h4>
+                Then the parent component can pass your onClick function...
+              </h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/onClick-parent.PNG"
+                alt=""
+              />
+              <h3>
+                Great! Now we need to implement a way to set the color of the
+                button.
+              </h3>
+              <h2>Button Color</h2>
+              <h4>We want this to work...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/set-the-color.PNG"
+                alt=""
+              />
+              <h4>So we add a color prop...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/color-prop.PNG"
+                alt=""
+              />
+              <h4>
+                Add the param, then insert the prop as the second part of the
+                color class...
+              </h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/dynamic-class-insertion.PNG"
+                alt=""
+              />
+              <h2>Default color value</h2>
+              <h3>
+                Maybe we want our button to have a default value so we dont have
+                to define it each time.
+              </h3>
+              <h4>We give a default value to the color prop...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/default-prop-value.PNG"
+                alt=""
+              />
+              <h2>Optional Prop</h2>
+              <h3>
+                We still get a Typescript err because it is still expecting the
+                color prop.
+              </h3>
+              <h3>
+                To solve this we need to tell the Typescript compiler that the
+                color prop is optional.
+              </h3>
+              <h4>
+                To do that use a '?' when defining color in the interface...
+              </h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/optional-prop.PNG"
+                alt=""
+              />
+              <h2>Invalid Color</h2>
+              <h3>So what if we pass an invalid color option?</h3>
+              <h3>
+                There is no err, or any indication of a propblem, but our button
+                is messed up.
+              </h3>
+              <h3>
+                This is where we can use Typescript to catch these kinds of
+                errs.
+              </h3>
+              <h4>Set the color prop type to a string literal...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/string-literal-prop-type.PNG"
+                alt=""
+              />
+              <h4 class="red">To add more options use the union operator...</h4>
+              <img
+                src="../../imgs/Exercise-building-a-button-component/union-oporator.PNG"
+                alt=""
+              />
+              <h3>
+                By doing this we can only set the color to the values we have
+                defined, and if we set the color to any value we haven't defined
+                here, Typescript will throw us an err.
+              </h3>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
