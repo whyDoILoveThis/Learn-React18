@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Vanilla CSS</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Vanilla CSS</h1>
+        <h3>
+          Alot of people dont like this approach these days, because with all
+          the frameworks out there, they find it time consuming and tedious.
+        </h3>
+        <h3>
+          But, if you dont want to use these frameworks, we are going to learn
+          how to style our components with plain css.
+        </h3>
+        <h2>Remove Bootstrap</h2>
+        <h3>Open the 'main.tsx' and remove the Bootstrap import.</h3>
+        <h2>Create the CSS file</h2>
+        <img src="../../imgs/vanilla-css/create-css-file.PNG" alt="" />
+        <h4>And import it to the ListGroup...</h4>
+        <img src="../../imgs/vanilla-css/import-css.PNG" alt="" />
+        <h2>Separate folder</h2>
+        <h3>
+          You can set it up however you like, but a common approach for better
+          organization is to take the related files and put them in a folder
+          together.
+        </h3>
+        <img src="../../imgs/vanilla-css/separate-folder.PNG" alt="" />
+        <h3>
+          As a result of doing this, we will need to update our import path.
+        </h3>
+        <img src="../../imgs/vanilla-css/update-import-path.PNG" alt="" />
+        <h3>But this is quite ugly, and there is a way to make it better.</h3>
+        <h2>index.ts</h2>
+        <h4>Create this file...</h4>
+        <img src="../../imgs/vanilla-css/index-ts.PNG" alt="" />
+        <h4>It should say this...</h4>
+        <img src="../../imgs/vanilla-css/imdex-file-content.PNG" alt="" />
+        <h3>
+          With that we can just reference the folder, and by default, Typescript
+          will look for an index file.
+        </h3>
+        <h2>Write Your Styles</h2>
+        <h4>Finally, write your desired styling.</h4>
+        <img src="../../imgs/vanilla-css/write-your-styles.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
