@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>EXERCISE: Showing an Alert</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>EXERCISE: Showing an Alert</h1>
+        <h2>Write code to...</h2>
+        <h4>Click this button...</h4>
+        <img
+          src="../../imgs/Exercise-showing-an-alert/click-the-butn.PNG"
+          alt=""
+        />
+        <h4>To show this alert...</h4>
+        <img src="../../imgs/Exercise-showing-an-alert/this-alert.PNG" alt="" />
+        <h4>And also have a close button for the alert...</h4>
+        <img
+          src="../../imgs/Exercise-showing-an-alert/close-buton.PNG"
+          alt=""
+        />
+        <h2>Hint</h2>
+        <h3>
+          On the
+          <a href="https://getbootstrap.com/docs/5.3/components/alerts/"
+            >Bootstrap Alert Page</a
+          >
+          they have a
+          <a
+            href="https://getbootstrap.com/docs/5.3/components/alerts/#dismissing"
+            >Dismissing Section.</a
+          >
+        </h3>
+        <h3>
+          You should be able to use this documentation to figure out this
+          exercise
+        </h3>
+        <h3 class="red">
+          Please keep the solution hidden until you have tried for yourself.
+        </h3>
+        <div class="centerer">
+          <div class="collapsible collapsible--expanded exercise-collapsible">
+            <h2 class="sections-heading collapsible__heading">
+              SOLUTION<img
+                src="../../imgs/R.png"
+                alt=""
+                class="icon sections-icon collapsible__button"
+              />
+            </h2>
+            <div class="collapsible__content">
+              <h2>Adding the alert</h2>
+              <h3>So. We already have our button, we just need an alert.</h3>
+              <h3>
+                Creating an alert component is as simple as a div with the
+                bootstrap classnames, and a children component inserted.
+              </h3>
+              <h4>
+                Next, in the app, above the button, add the alert component.
+              </h4>
+              <img
+                src="../../imgs/Exercise-showing-an-alert/app-begining.PNG"
+                alt=""
+              />
+              <h3>If we look at it now we see the button and the alert.</h3>
+              <h2>Dynamic Rendering</h2>
+              <h3>But, we only want to show it when the button is clicked.</h3>
+              <h3>
+                For that we need a state variable in the app that determines the
+                visibility of the alert.
+              </h3>
+              <h3>We only want to render the alert if the var is true.</h3>
+              <h4>So we call useState and initialize it to false...</h4>
+              <img
+                src="../../imgs/Exercise-showing-an-alert/usestate-false.PNG"
+                alt=""
+              />
+              <h4>It returns an array we can destructure...</h4>
+              <img
+                src="../../imgs/Exercise-showing-an-alert/destructure-array-returened.PNG"
+                alt=""
+              />
+              <h3>
+                Now we only want to render the alert if alertVisible is true.
+              </h3>
+              <h4>So we perform a logical and...</h4>
+              <img
+                src="../../imgs/Exercise-showing-an-alert/alert-visible-condition.PNG"
+                alt=""
+              />
+              <h4>
+                Then upon clicking the button, instead of console log, set alert
+                visibility should be true.
+              </h4>
+              <img
+                src="../../imgs/Exercise-showing-an-alert/alert-visible-true.PNG"
+                alt=""
+              />
+              <h2>The close button</h2>
+              <h3>
+                Next add the button element with all the stuff from
+                <a
+                  href="https://getbootstrap.com/docs/5.3/components/alerts/#dismissing"
+                  >Bootstrap Alert Dismissing.</a
+                >
+              </h3>
+              <h3>Now we need to make the close button work.</h3>
+              <h4>So add this prop...</h4>
+              <img
+                src="../../imgs/Exercise-showing-an-alert/onClose-prop.PNG"
+                alt=""
+              />
+              <h4>
+                Then add the param, and set the buttons onClick to onClose.
+              </h4>
+              <img
+                src="../../imgs/Exercise-showing-an-alert/param-and-closeonclick.PNG"
+                alt=""
+              />
+              <h3>Finally in the app set the onClose prop...</h3>
+              <img
+                src="../../imgs/Exercise-showing-an-alert/app-onclose-prop.PNG"
+                alt=""
+              />
+              <h3>Congrats mf you know the basics of react.</h3>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
