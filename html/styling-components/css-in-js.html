@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>CSS-in-JS</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>CSS-in-JS</h1>
+        <h2>The idea</h2>
+        <h3>
+          This is a controversial technology. Some peope love it some people
+          hate it.
+        </h3>
+        <h3>
+          But the idea is that we can write all the styles for a component next
+          to it's definition in a Typescript or JS file.
+        </h3>
+        <h2>The benefits</h2>
+        <ul>
+          <li><em class="ul-li">Scoped styles</em></li>
+          <li><em class="ul-li">All the CSS & JS/TS code in one place</em></li>
+          <li><em class="ul-li">Easier to delete a component</em></li>
+          <li><em class="ul-li">Easier to style based on props/state</em></li>
+        </ul>
+        <h2>Libraries</h2>
+        <h3>
+          There are many many libraries that implement this concept, but some of
+          the most popular ones are...
+        </h3>
+        <ul>
+          <li><em class="ul-li">Styled Components</em></li>
+          <li><em class="ul-li">Emotion</em></li>
+          <li><em class="ul-li">Polished</em></li>
+        </ul>
+        <h3>In this lesson we get a tour of Styled Components.</h3>
+        <h2>The Transition</h2>
+        <h4>We are starting with a regular css file...</h4>
+        <img src="../../imgs/css-in-js/the-transition.PNG" alt="" />
+        <h3>
+          And we are going to transition from this to the other approach called
+          css-in-js.
+        </h3>
+        <h2>Install Library</h2>
+        <h4>Open your terminal and run...</h4>
+        <div class="code">
+          <p><em class="orng">npm</em> i styled-components</p>
+        </div>
+        <h4>Import styled from styled components...</h4>
+        <img src="../../imgs/css-in-js/styled-components-import.PNG" alt="" />
+        <h3>
+          At the time of making this guide, we will get this err because the
+          type definitions are missing.
+        </h3>
+        <img src="../../imgs/css-in-js/we-get-err.PNG" alt="" />
+        <h4>For fix install this...</h4>
+        <div class="code">
+          <p><em class="orng">npm</em> @types/styled-components</p>
+        </div>
+        <h2>Creating styled components</h2>
+        <h3>Using this 'styled' object we can create styled components.</h3>
+        <h3>For example, we have 2 elements with classnames like this...</h3>
+        <img src="../../imgs/css-in-js/2-items-with-classnames.PNG" alt="" />
+        <h3 class="red">
+          So, with styled components we no longer use className
+        </h3>
+        <h3>
+          Instead, we create a react component that has all the styles we need
+          right here.
+        </h3>
+        <h4>Start with the styled object, and call an html element...</h4>
+        <img src="../../imgs/css-in-js/styled-call.PNG" alt="" />
+        <h4>Then add backticks...</h4>
+        <img src="../../imgs/css-in-js/add-backticks.PNG" alt="" />
+        <h3>
+          Inside the backticks write all the styles you want for this element.
+        </h3>
+        <h4>Maybe we have this...</h4>
+        <img src="../../imgs/css-in-js/styles.PNG" alt="" />
+        <h3>
+          It's return value is a react component with those styles applied.
+        </h3>
+        <h4>So store it like this...</h4>
+        <img src="../../imgs/css-in-js/store-component.PNG" alt="" />
+        <h2>Using the Styled Component</h2>
+        <h3>
+          Then instead of using a regular html element and className like
+          this...
+        </h3>
+        <img src="../../imgs/css-in-js/instead-of-this.PNG" alt="" />
+        <h4>Use this...</h4>
+        <img src="../../imgs/css-in-js/use-this.PNG" alt="" />
+        <h3>Then we can do the same for our list item, so make this...</h3>
+        <img src="../../imgs/css-in-js/list-item-style.PNG" alt="" />
+        <h3>Then replace the html elememt li with this component.</h3>
+        <h2>Dynamic Styling</h2>
+        <h3>So we lost the logic for our list items. Let's remake it.</h3>
+        <h4>Create this prop...</h4>
+        <img src="../../imgs/css-in-js/active-prop.PNG" alt="" />
+        <h4>Make the interface...</h4>
+        <img src="../../imgs/css-in-js/new-interface.PNG" alt="" />
+        <h3>
+          Now when creating the li component, we use angle brackets to pass an
+          interface that represents the shape of props.
+        </h3>
+        <img src="../../imgs/css-in-js/li-props-interface.PNG" alt="" />
+        <h3>
+          Finally, if the li is active we want to make the background blue.
+        </h3>
+        <h4>For that, in the styles say...</h4>
+        <img src="../../imgs/css-in-js/active-styles.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
