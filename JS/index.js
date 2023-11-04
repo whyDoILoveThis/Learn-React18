@@ -1,19 +1,19 @@
 const orderedLists = document.querySelectorAll('ol');
 
-orderedLists.forEach((orderedList) => {
+orderedLists.forEach((orderedList, index) => {
     const liElements = orderedList.querySelectorAll('li');
-
-    liElements.forEach((li, index) => {
+    
+    liElements.forEach((li, liIndex) => {
         const anchor = li.querySelector('a');
         const anchorText = anchor.textContent;
-        const checkMark = createCheckMark(index, anchorText);
+        const checkMark = createCheckMark(index, liIndex, anchorText);
         li.appendChild(checkMark);
     });
 });
 
-function createCheckMark(id, anchorText) {
+function createCheckMark(olIndex, liIndex, anchorText) {
     const checkMark = document.createElement('img');
-    checkMark.src = getCheckMarkSrc(id);
+    checkMark.src = getCheckMarkSrc(olIndex, liIndex);
     checkMark.classList.add('check-mark');
 
     checkMark.addEventListener('click', () => {
@@ -21,13 +21,8 @@ function createCheckMark(id, anchorText) {
         const actionText = isGreen ? 'uncheck' : 'check';
 
         if (window.confirm(`Do you want to ${actionText} this item: ${anchorText}?`)) {
-            if (isGreen) {
-                fadeOutAndChange(checkMark, "../../imgs/un-checked-mark.png");
-                saveCheckMarkState(id, false);
-            } else {
-                fadeOutAndChange(checkMark, "../../imgs/check-mark.png");
-                saveCheckMarkState(id, true);
-            }
+            fadeOutAndChange(checkMark, isGreen ? "../../imgs/un-checked-mark.png" : "../../imgs/check-mark.png");
+            saveCheckMarkState(olIndex, liIndex, !isGreen); // Toggle the state in localStorage
         }
     });
 
@@ -42,15 +37,17 @@ function fadeOutAndChange(element, newImageSrc) {
     }, 200); // Adjust the time to match your CSS transition duration
 }
 
-// Rest of the code (getCheckMarkSrc, saveCheckMarkState) remains the same.
-
-
-function getCheckMarkSrc(id) {
-    // Retrieve the saved state from localStorage or use the default state
-    return localStorage.getItem(`checkMarkState_${id}`) === 'true' ? "../../imgs/check-mark.png" : "../../imgs/un-checked-mark.png";
+function getCheckMarkSrc(olIndex, liIndex) {
+    const key = `checkMarkState_${olIndex}_${liIndex}`;
+    return localStorage.getItem(key) === 'true' ? "../../imgs/check-mark.png" : "../../imgs/un-checked-mark.png";
 }
 
-function saveCheckMarkState(id, isChecked) {
-    // Save the state to localStorage
-    localStorage.setItem(`checkMarkState_${id}`, isChecked);
+function saveCheckMarkState(olIndex, liIndex, isChecked) {
+    const key = `checkMarkState_${olIndex}_${liIndex}`;
+    localStorage.setItem(key, isChecked);
 }
+
+// Rest of the code remains the same.
+
+
+

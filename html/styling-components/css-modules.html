@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>CSS Modules</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>CSS Modules</h1>
+        <h2>The prblem with vanilla CSS</h2>
+        <h3>
+          The problem is that if we have another stylesheet containing a style
+          with the same name as another stylesheet we run into clashing styles.
+        </h3>
+        <h4>Let's say we have this...</h4>
+        <img src="../../imgs/css-modules/listgroup-css.PNG" alt="" />
+        <h4>And also this...</h4>
+        <img src="../../imgs/css-modules/listgroup-css.PNG" alt="" />
+        <h4>And then import in App...</h4>
+        <img src="../../imgs/css-modules/app-css-import.PNG" alt="" />
+        <h2>CSS modules to the rescue</h2>
+        <h3>
+          A CSS module is a CSS file where all classes are scoped locally.
+        </h3>
+        <h3>Just like a JS module.</h3>
+        <h3>
+          So, they allow us to use the same CSS classname in different files
+          without worrying about name clashes.
+        </h3>
+        <h2>Create a CSS Module</h2>
+        <h3>The first step is to rename our CSS file.</h3>
+        <img src="../../imgs/css-modules/css-file-module-rename.PNG" alt="" />
+        <h4>Then import it like this...</h4>
+        <img src="../../imgs/css-modules/import-stype-module.PNG" alt="" />
+        <h3>
+          With that, 'styles' is just a regular JS object that has all the
+          classes we have defined in the css file.
+        </h3>
+        <h3>
+          Every class we have defined in the imported stylesheet will be a
+          property of that object.
+        </h3>
+        <h2>Adding the Class</h2>
+        <h3>
+          To use the class, use the following. Notice that we have wrapped in
+          braces and have no quotes.
+        </h3>
+        <img src="../../imgs/css-modules/adding-the-class.PNG" alt="" />
+        <h3>
+          We get an err because we have a hyphen(-), and this is not valid for
+          property names in JS or Typescript.
+        </h3>
+        <h4>For fix we use brackets instead of dot notation.</h4>
+        <img
+          src="../../imgs/css-modules/brackets-not-dot-notation.PNG"
+          alt=""
+        />
+        <h2>Vite Magic</h2>
+        <h3>
+          If you inspect the list you will see that the classname has been
+          encoded.
+        </h3>
+        <img src="../../imgs/css-modules/vite-rename-classes.PNG" alt="" />
+        <h3>
+          Vite does this as part of bundling our app. This way we never have to
+          worry about name clashes ever again.
+        </h3>
+        <h2>Camel Classes</h2>
+        <h3>
+          Instead of using dashes, quite ofted devs will use camel case for
+          classnames to simplify the code.
+        </h3>
+        <img src="../../imgs/css-modules/camel-classes.PNG" alt="" />
+        <h2>Multiple Classes</h2>
+        <h3>
+          To add more classes we need to wrap it in an array, separate them with
+          a comma, and use the 'join' method to join them with a space.
+        </h3>
+        <img src="../../imgs/css-modules/array-multi-class.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
