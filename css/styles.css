@@ -74,6 +74,7 @@ h2 {
     border-bottom: 1px solid;
     margin-top: 4rem;
     font-weight: 400;
+    text-transform: capitalize;
 }
 
 h3 {
@@ -139,6 +140,7 @@ a {
     line-height: 28px;
     letter-spacing: 1.7px;
     word-spacing: 1px;
+    text-transform: capitalize;
 }
 
 a:hover {

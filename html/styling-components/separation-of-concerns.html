@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Separation of Concerns</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Separation of Concerns</h1>
+        <h2>Important Design Principal in Software Engineering</h2>
+        <h3>
+          The principal states that we should divide a program into distinct
+          sections where each section handles a specific functionality, rather
+          that having everything in one place.
+        </h3>
+        <h2>The Benefits</h2>
+        <ul>
+          <li><em class="ul-li"> Modular </em></li>
+          <li><em class="ul-li"> Easier to understand </em></li>
+          <li><em class="ul-li"> Easier to maintain </em></li>
+          <li><em class="ul-li"> Easier to modify </em></li>
+        </ul>
+        <h3>
+          Modularity also provides the ability to develope and test components
+          independently.
+        </h3>
+        <h3>This makes it easy to use them again in another program.</h3>
+        <h2>Modular Programs</h2>
+        <h3>
+          In modular programs each module is responsible for a separate concern.
+        </h3>
+        <img
+          src="../../imgs/separation-of-concerns/modular-programs.PNG"
+          alt=""
+        />
+        <h3>Similar to how, in a workplace, each person has their own job.</h3>
+        <h3>
+          For example, the crane operator only operates the crane, and only the
+          workers bolt in the steel.
+        </h3>
+        <h3>
+          In a module all the complexity, and implementation detailes is hidden
+          behind a well defined interface
+        </h3>
+        <img
+          src="../../imgs/separation-of-concerns/well-defined-interface.PNG"
+          alt=""
+        />
+        <h2>An analogy</h2>
+        <h3>Think of the remote to a tv.</h3>
+        <h3>
+          The remote has a fair amount of complexity to it, but all that is
+          hidden behind easy to use buttons.
+        </h3>
+        <h3>Those buttons represent the interface of the remote control.</h3>
+        <h3>
+          Building them with this approach will make our components easier to
+          use in other programs.
+        </h3>
+        <h2>The disagreement</h2>
+        <h3>
+          Some people argue that CSS-in-JS violates the separation of concerns
+          principal, because we put everything in the same file.
+        </h3>
+        <h3>But thats not the idea.</h3>
+        <h3>
+          Separation of concerns doesn't dictate whether everything should be in
+          one file or multiple files.
+        </h3>
+        <h3>
+          Instead it emphasizes that different sections or modules in a program
+          should handle specific functionalitys, and all the complexity around a
+          specific funtionality is hidden behind a well defined interface.
+        </h3>
+        <h2>A practical example</h2>
+        <h3>
+          In our ListGroup component we have hidden the complexity by creating
+          the props, like heading, items, onSelectItem.
+        </h3>
+        <img src="../../imgs/separation-of-concerns/example.PNG" alt="" />
+        <h3>The props are like the interface of a remote.</h3>
+        <h3>
+          It makes the component easy to implement, and re-use after being
+          built.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
