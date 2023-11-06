@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>EXERCISE: Building a Like Component</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>EXERCISE: Building a Like Component</h1>
+        <h2>Instructions</h2>
+        <h3>
+          Build a heart that changes color when the user clicks, and also print
+          a message to the console each time.
+        </h3>
+        <h4>Here is a hint...</h4>
+        <img
+          src="../../imgs/Exercise-building-a-like-component/hint.PNG"
+          alt=""
+        />
+        <h3 class="red">
+          Please keep the solution hidden until you have tried yourself.
+        </h3>
+        <div class="collapsible exercise-collapsible">
+          <h2 class="sections-heading collapsible__heading">
+            SOLUTION<img
+              src="../../imgs/R.png"
+              alt=""
+              class="icon sections-icon collapsible__button"
+            />
+          </h2>
+          <div class="collapsible__content">
+            <h2>Create the file</h2>
+            <h4>We wont need a folder because there are no styles...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/create-the-file.PNG"
+              alt=""
+            />
+            <h4>Use the shortcut...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/shortcut.PNG"
+              alt=""
+            />
+            <h2>Add Heart Icon</h2>
+            <h4>Search for a heart icon...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/hear-search.PNG"
+              alt=""
+            />
+            <h4>import it...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/import-heart.PNG"
+              alt=""
+            />
+            <h4>Add it in...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/add-heart.PNG"
+              alt=""
+            />
+            <h4>Add the like component to our app...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/add-like.PNG"
+              alt=""
+            />
+            <h3>And we get a heart. Yay!</h3>
+            <h2>Customize Icon</h2>
+            <h4>Change the color and size of the heart...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/change-color-and-size-of-heart.PNG"
+              alt=""
+            />
+            <h2>useState</h2>
+            <h3>Now add a useState and an if return...</h3>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/if-return.PNG"
+              alt=""
+            />
+            <h4>Then add a heart outline...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/heart-outline.PNG"
+              alt=""
+            />
+            <h2>onClick</h2>
+            <h4>
+              Now set the onClick to an arrow function that sets the status...
+            </h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/onclick.PNG"
+              alt=""
+            />
+            <h3 class="red">We also need an onClick for the outline.</h3>
+            <h2>Notifying the consumer</h2>
+            <h3>
+              We should pass an onClick prop so that the consumer of this
+              component can run a function with it.
+            </h3>
+            <h4>
+              So create an onClick prop and add it to the param with a
+              destructure...
+            </h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/create-onclick-prop.PNG"
+              alt=""
+            />
+            <h3>
+              After setting the status in the onClick we need to call our
+              onClick prop, but that starts to look repetitive.
+            </h3>
+            <h4>So instead create this toggle function...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/toggle-func.PNG"
+              alt=""
+            />
+            <h4>Then pass toggle in the onClick instead of the setStatus...</h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/pass-toggle.PNG"
+              alt=""
+            />
+            <h2>Pass Function from consumer</h2>
+            <h4>
+              Finally, pass a function from the consumer. Let's just console.log
+              somthing...
+            </h4>
+            <img
+              src="../../imgs/Exercise-building-a-like-component/pass0func-from-consumer.PNG"
+              alt=""
+            />
+            <h2 class="red">IMPORTANT TO NOTE</h2>
+            <h3>
+              In this exercise we have initialized our state to true, but in a
+              real app this has to be done dynamically based on the content we
+              are displaying to the user.
+            </h3>
+            <h3>
+              For example, if we are showing a list of tweets, maybe the user
+              has only liked some of those tweets, not all of them.
+            </h3>
+            <h3>
+              So we shouldn't hard code a value like false or true, instead we
+              should have a prop for initializing the status variable.
+            </h3>
+            <h4>
+              For this example is doesn't matter though. We'll look at a real
+              example in the project build.
+            </h4>
+          </div>
+        </div>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
