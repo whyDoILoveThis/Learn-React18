@@ -6,6 +6,8 @@ tabIcon.rel = "icon";
 head.appendChild(tabIcon);
 
 
+
+// JUMP-TO-TOP BUTTON
 const body = document.body;
 const toTopIcon = document.createElement("img");
 const toTopLink = document.createElement("a");
@@ -14,6 +16,18 @@ toTopIcon.src = "../../imgs/R.png";
 toTopIcon.classList.add("to-top");
 body.appendChild(toTopLink);
 toTopLink.appendChild(toTopIcon);
+
+// JUMP-TO-BOTTOM BUTTON
+const toBottomIcon = document.createElement("img");
+const toBottomLink = document.createElement("a");
+const theBottomOfPage = document.createElement('span');
+theBottomOfPage.id = "bottom"
+body.appendChild(theBottomOfPage);
+toBottomLink.href = "#bottom";
+toBottomIcon.src = "../../imgs/R.png";
+toBottomIcon.classList.add("to-bottom");
+body.appendChild(toBottomLink);
+toBottomLink.appendChild(toBottomIcon);
 
 
 
