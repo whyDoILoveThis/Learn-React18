@@ -116,6 +116,8 @@ ul > li {
 .ul-li {
     font-size: 22px;
     color: rgb(255, 231, 223);
+    display: block;
+    line-height: 25px;
 }
 
 li {
@@ -186,9 +188,19 @@ a:hover {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1.9px);
     -webkit-backdrop-filter: blur(1.9px);
-}
 
+    transition: background-color 0.4s ease;
+}
+.to-top:hover {
+    background-color: #d6d6d62f;
+    transition: background-color 0.4s ease;
+}
+.to-bottom:hover {
+    background-color: #d6d6d62f;
+}
 .to-bottom {
+    transition: background-color 0.4s ease;
+
     width: 24px;
     position: fixed;
     right: 10px;
