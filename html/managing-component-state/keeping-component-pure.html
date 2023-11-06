@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Keeping Components Pure</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Keeping Components Pure</h1>
+        <h2>Purity</h2>
+        <h3>This is a fundamental concept in React.</h3>
+        <h3>
+          In computer science a pure function is a function that given the same
+          input, it always returns the same result.
+        </h3>
+        <h3>
+          React was built around this concept. A component should always output
+          the same result if we give it the same props.
+        </h3>
+        <h4>
+          So if the props of a component haven't changed, React can skip
+          re-rendering that component.
+        </h4>
+        <img
+          src="../../imgs/keeping-component-pure/component-result.PNG"
+          alt=""
+        />
+        <h2>Example of Pure Component</h2>
+        <h3>
+          To keep components pure we should keep thier changes out of the render
+          phase.
+        </h3>
+        <h4>Let's say we have this component...</h4>
+        <img src="../../imgs/keeping-component-pure/we-have-this.PNG" alt="" />
+        <h4>Then we render it a few times...</h4>
+        <img
+          src="../../imgs/keeping-component-pure/render-it-a-few-times.PNG"
+          alt=""
+        />
+        <h4>We get this...</h4>
+        <img src="../../imgs/keeping-component-pure/its-rendered.PNG" alt="" />
+        <h2>Example of Impure Component</h2>
+        <h4>
+          However, if we go and change the value inside the function
+          component...
+        </h4>
+        <img
+          src="../../imgs/keeping-component-pure/impure-component-example.PNG"
+          alt=""
+        />
+        <h4>We get this now...</h4>
+        <img src="../../imgs/keeping-component-pure/impure-result.PNG" alt="" />
+        <h3 class="red">
+          To avoid this we should not change any variable inside the component
+          that exist outside of it.
+        </h3>
+        <h2 class="red">IMPORTANT NOTE</h2>
+        <h3 class="red">
+          It's completly fine and normal to change a var declared inside a
+          component
+        </h3>
+        <h4>Like if we move the count var into the component like this...</h4>
+        <img
+          src="../../imgs/keeping-component-pure/var-inside-component.PNG"
+          alt=""
+        />
+        <h4>The component is pure again...</h4>
+        <img src="../../imgs/keeping-component-pure/pure-result.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
