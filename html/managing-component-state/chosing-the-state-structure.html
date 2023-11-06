@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Chosing The State Structure</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Chosing The State Structure</h1>
+        <h2>Rendering state var values</h2>
+        <h4>Let's say we have this...</h4>
+        <img src="../../imgs/chosing-the-state-structure/example.PNG" alt="" />
+        <h4>Maybe we want to display the full name...</h4>
+        <img
+          src="../../imgs/chosing-the-state-structure/first-and-last-name.PNG"
+          alt=""
+        />
+        <h4>If you don't like this you could declare a local const var...</h4>
+        <img
+          src="../../imgs/chosing-the-state-structure/local-const-var.PNG"
+          alt=""
+        />
+        <h3 class="red">
+          But there is no need to create a state var to declare the full name.
+        </h3>
+        <h2>Grouping Related state vars</h2>
+        <h4>Picture this...</h4>
+        <h3>
+          Maybe we are going to call to the server to fetch data, and that might
+          take time. While the user is waiting we want to display a loading
+          animation, so we need to track the loading state.
+        </h3>
+        <h4>Let's say we have an isLoading state here...</h4>
+        <img
+          src="../../imgs/chosing-the-state-structure/is-loading.PNG"
+          alt=""
+        />
+        <h3>
+          It's unrelated to the names, and theres a way to make this make more
+          sense.
+        </h3>
+        <h4>
+          We initialize the state variable to an object called person, with two
+          propertys for the first and last name...
+        </h4>
+        <img
+          src="../../imgs/chosing-the-state-structure/person-object.PNG"
+          alt=""
+        />
+        <h2 class="red">IMPORTANT NOTE</h2>
+        <h4 class="red">Avoid deeply nested structures.</h4>
+        <img
+          src="../../imgs/chosing-the-state-structure/avoid-nested-structures.PNG"
+          alt=""
+        />
+        <h3 class="red">
+          Updating structures like this is difficult and we should prefer a flat
+          structure.
+        </h3>
+        <h3>
+          We want to group related vars inside an object, but avoid a deeply
+          nested structure.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
