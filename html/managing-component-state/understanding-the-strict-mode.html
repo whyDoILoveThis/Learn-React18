@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Understanding the Strict Mode</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Understanding the Strict Mode</h1>
+        <h2>Impure Example</h2>
+        <h4>Previously we had this...</h4>
+        <img
+          src="../../imgs/understanding-the-strict-mode/impure-example.PNG"
+          alt=""
+        />
+        <h4>And it gives us this...</h4>
+        <img
+          src="../../imgs/understanding-the-strict-mode/impure-result.PNG"
+          alt=""
+        />
+        <h3>But, why did we get 2 4 6 instead of 1 2 3??</h3>
+        <h3>Well, this has to do with the Strict Mode in React.</h3>
+        <h2>React.StrictMode</h2>
+        <h4>Open the file 'main.tsx'</h4>
+        <img
+          src="../../imgs/understanding-the-strict-mode/main-tsx.PNG"
+          alt=""
+        />
+        <h3>
+          Early in the Course<a
+            target="_blank"
+            href="../../html/getting-started/how-react-works.html#How'react'&'react-dom'worktogether"
+            >(here)</a
+          >
+          we learned that we are passing the component tree to ReactDOM for
+          rendering inside the 'root'.
+        </h3>
+        <h3>In the component tree, our App is wrapped in React.StrictMode.</h3>
+        <h3>
+          This is a built in component of React without a visual representation.
+        </h3>
+        <h3 class="blu">It's only there to catch potential problems.</h3>
+        <h2>What StrictMode does</h2>
+        <h3>
+          One of the potential problems is
+          <em class="blu">impure components.</em>
+        </h3>
+        <h3>
+          <em class="red">When StrictMode is enabled</em> each component is
+          <em class="blu">rendered twice</em>
+        </h3>
+        <h3>That is why we get 2 4 6 and not 1 2 3</h3>
+        <h4>
+          React renders each component <em class="blu">twice</em> and displays
+          the result of the <em class="blu">second</em> render result.
+        </h4>
+        <img
+          src="../../imgs/understanding-the-strict-mode/takes-the-second-render.PNG"
+          alt=""
+        />
+        <h2>Finding impure components</h2>
+        <h4>We can find impure components like this console.log...</h4>
+        <img
+          src="../../imgs/understanding-the-strict-mode/finding-impurity.PNG"
+          alt=""
+        />
+        <h4>The 'greyed out' result is coming from strict mode...</h4>
+        <img
+          src="../../imgs/understanding-the-strict-mode/console.PNG"
+          alt=""
+        />
+        <h2>Only in development mode</h2>
+        <h3 class="red">
+          React only behaves this way in development mode, and in the final
+          release our components <em class="blu">will only render once.</em>
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
