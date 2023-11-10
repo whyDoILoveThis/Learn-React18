@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Updating Objects</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Updating Objects</h1>
+        <h3>
+          We learned
+          <a
+            target="_blank"
+            href="https://learn-react18.vercel.app/html/managing-component-state/chosing-the-state-structure.html#GroupingRelatedstatevars"
+            >(here)</a
+          >
+          thats is better to group related state vars into an object.
+        </h3>
+        <h2>An example</h2>
+        <h4>Let's say we have this...</h4>
+        <img src="../../imgs/updating-objects/example.PNG" alt="" />
+        <h4>
+          And we want to update the price of the drink when we click the
+          button...
+        </h4>
+        <img src="../../imgs/updating-objects/drrink-pricebutton.PNG" alt="" />
+        <h2>Immutable</h2>
+        <h3>
+          When working with objects or arrays it's
+          <em class="red">very important</em> to treat them as
+          <em class="blu">immutable</em>, or <em class="blu">read-only</em>.
+        </h3>
+        <h3 class="red">This means do not...</h3>
+        <div class="code code--ts">
+          <p>
+            <em class="comnt">// Never do this it will not work.</em>
+            <br />
+            <br />
+            <em class="blu">const</em> handleClick
+            <em class="orng">= () => {</em>
+          </p>
+          <p>
+            <em class="red">&nbsp;&nbsp;drink.price = 6;</em> <br />
+            &nbsp;&nbsp;<em class="red">setDrink(drink);</em> <br />
+            <br />
+            <em class="orng">};</em>
+          </p>
+        </div>
+        <h3 class="red">
+          You can try, but nothing happens. React doen't detect any changes.
+        </h3>
+        <h2>New Object</h2>
+        <h3>
+          To tell React about state updates, we have to give React a brand new
+          object.
+        </h3>
+        <h4>
+          Copy the title, change the price, and pass the new obj to the setDrink
+          function.
+        </h4>
+        <img src="../../imgs/updating-objects/new-obj.PNG" alt="" />
+        <h3 class="red">
+          So, just like props, state objects should be read-only.
+        </h3>
+        <h2>Spread operator</h2>
+        <h3>
+          In this example we only had the title property that we wanted to copy.
+        </h3>
+        <h3>
+          But, what if we had lots of propertys? We dont want to manually copy
+          all of them.
+        </h3>
+        <h4>
+          Instead, we should use the spread operator(...) to spread the existing
+          drink obj.
+        </h4>
+        <img src="../../imgs/updating-objects/spread.PNG" alt="" />
+        <h3>
+          Spreading the drink copys all of the drink objects propertys into the
+          newDrink, and then we change the value of drink.
+        </h3>
+        <h2>Simplified</h2>
+        <h3>
+          Since this example is so small we dont even need a separate object
+          defined.
+        </h3>
+        <h4>
+          We can simply create an object inside the param of the setDrink
+          func...
+        </h4>
+        <img src="../../imgs/updating-objects/simplified.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
