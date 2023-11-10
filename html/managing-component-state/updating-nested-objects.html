@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Updating Nested Objects</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Updating Nested Objects</h1>
+        <h2>Example</h2>
+        <h3>Let's say we have a nested object.</h3>
+        <h4>
+          We have a customer object with a name property, and an address
+          property, and the address property is an object.
+        </h4>
+        <img src="../../imgs/updating-nested-objects/example.PNG" alt="" />
+        <h3>As part of the handleClick we want to update the zipCode.</h3>
+        <h2 class="red">IMPORTANT</h2>
+        <h4>Now, if all we do is spread the customer obj like this...</h4>
+        <img src="../../imgs/updating-nested-objects/not-enough.PNG" alt="" />
+        <h3>
+          This didn't creating a new address, and there is only going to be one
+          in memeory that we are referencing.
+        </h3>
+        <h3>
+          <em class="red">This is not good</em> because we need each and every
+          state object we create to be independent from each other.
+        </h3>
+        <h4>To be done properly, we create a new address obj too...</h4>
+        <img src="../../imgs/updating-nested-objects/proper.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
