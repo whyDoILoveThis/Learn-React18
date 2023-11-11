@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Updating Arrays</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Updating Arrays</h1>
+        <h2>Array example</h2>
+        <h4>Let's say we have an array of tags.</h4>
+        <img src="../../imgs/updating-arrays/example.PNG" alt="" />
+        <h4>When our button is clicked we want to add an item to the array.</h4>
+        <h2>Don't push to existing array</h2>
+        <h3>The same concept that applys to objects, also applys to arrays.</h3>
+        <h3>
+          So we should not mutate or change them, we should provide a brand new
+          array.
+        </h3>
+
+        <h3>
+          That means we dont want to call
+          <em class="blu">tags.push()</em> because this modifies the array.
+        </h3>
+        <h4>
+          Instead, we should
+          <br />
+          1. Call setTags
+          <br />
+          2. Pass it a new array using the spread operator on tags(...tags)
+          <br />
+          3. Then add any new tags.......
+        </h4>
+        <h2>Instead, add to a new array</h2>
+        <img src="../../imgs/updating-arrays/new-arr.PNG" alt="" />
+        <h2>Removing an object</h2>
+        <h3>Maybe we want to remove one of the items from an array</h3>
+        <h3>In JS all arrays have a filter method.</h3>
+        <h4>
+          Use the filter method to pass an arrow function saying that we want
+          all the tags except the happy tag...
+        </h4>
+        <img src="../../imgs/updating-arrays/delete-item.PNG" alt="" />
+        <h2>Updating existing array items</h2>
+        <h3>
+          One of the ways to do this is to create a new array, copy all the
+          items, then modify the new array.
+        </h3>
+        <h3>Another option is using the map function.</h3>
+        <h4>
+          So we call the map func and then pass an arrow funct to say something
+          like...
+        </h4>
+        <h4>
+          If tag = happy, change it to happines, otherwise keep the tag...
+        </h4>
+        <img src="../../imgs/updating-arrays/update-arr.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
