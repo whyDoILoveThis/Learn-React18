@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Updating Array of Objects</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Updating Array of Objects</h1>
+        <h2>Example</h2>
+        <h3>Let's look at a more complex example.</h3>
+        <img src="../../imgs/updating-array-of-objects/example.PNG" alt="" />
+        <h3>Each object has 3 propertys. 'id' 'title', and 'fixed'</h3>
+        <h3>
+          Let's say when the button is clicked we are going to mark the first
+          one as fixed.
+        </h3>
+        <h4>
+          Earlier we learned that when updating objects in an array we should
+          use the map method...
+        </h4>
+        <h4>So, we just...</h4>
+        <img
+          src="../../imgs/updating-array-of-objects/map.PNG"
+          alt=""
+          class=""
+        />
+        <h4>Otherwise return the same bug...</h4>
+        <img src="../../imgs/updating-array-of-objects/else.PNG" alt="" />
+        <h2>Explanation</h2>
+        <h3>So we started with 2 bug objects</h3>
+        <img src="../../imgs/updating-array-of-objects/two-objs.PNG" alt="" />
+        <h3>As part of handling the click we created a new object.</h3>
+        <img src="../../imgs/updating-array-of-objects/ckick-obj.PNG" alt="" />
+        <h4>We have a brand new b1* and the same b2 as before...</h4>
+        <img src="../../imgs/updating-array-of-objects/bstar.PNG" alt="" />
+        <h3>
+          With this we are telling react that the first obj in the array is
+          updated, and react will do the neccessary work to update the DOM and
+          match the component state
+        </h3>
+        <h2>The main takeaway</h2>
+        <h3>
+          We dont need to make a brand new copy of every obj in this array, only
+          the ones we want to change.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
