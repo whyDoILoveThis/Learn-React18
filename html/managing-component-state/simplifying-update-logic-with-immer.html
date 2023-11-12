@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Simplifying Update Logic with Immer</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Simplifying Update Logic with Immer</h1>
+        <h3>
+          You have seen that without mutation, logic can get messy, and complex.
+        </h3>
+        <h3>
+          In this lesson we are going to use the
+          <a href="https://immerjs.github.io/immer/">Immer</a>
+          library to make our logic simpler.
+        </h3>
+        <h2>Install immer</h2>
+        <div class="code">
+          <p><em class="orng">npm</em> i immer@9.0.19</p>
+        </div>
+        <h3>
+          If you get an <em class="red">err</em> talking about
+          <em class="red">'Outdated Optimize Dep'</em>, go ahead and install
+          @latest.
+        </h3>
+        <h3>But the version I used is 9.0.19</h3>
+        <h2>Example</h2>
+        <h3>
+          We are using the same example from
+          <a target="_blank" href="updating-array-of-objects.html#Example"
+            >the last lesson</a
+          >.
+        </h3>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/example.PNG"
+          alt=""
+        />
+        <h2>Import produce from immer</h2>
+        <h4>Next, we need to immort the produce func from immer...</h4>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/import-immer.PNG"
+          alt=""
+        />
+        <h2>using produce</h2>
+        <h3>We want to achieve the same result as last time.</h3>
+        <h3>When we click the button we want fixed to be true.</h3>
+        <h4>So we still use setBugs...</h4>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/call-setBugs.PNG"
+          alt=""
+        />
+        <h4>
+          But instead of mapping the array, we call the produce function...
+        </h4>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/produce.PNG"
+          alt=""
+        />
+        <h4>
+          The param of produce needs to be an arrow func, and by convention it
+          should be named 'draft'...
+        </h4>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/draft.PNG"
+          alt=""
+        />
+        <h2>What is draft</h2>
+        <h3>
+          Draft is a proxy object that records changes we are going to apply to
+          the bugs array.
+        </h3>
+        <h3>
+          So imagine draft is a copy of the bugs array, so we are free to mutate
+          or modify it just like a regular JS obj.
+        </h3>
+        <h3>So we dont need to map anything, we dont need to make copys...</h3>
+        <h3>You can go into the body of the draft and make any changes.</h3>
+        <h3>
+          Behind the scenes immer keeps track of the changes, then it will
+          create a copy of the bugs array with our changes applied to the copy.
+        </h3>
+        <h2>How draft works</h2>
+        <h3>
+          So we wanted to get the bug with id of 1 and change fixed to true...
+        </h3>
+        <h4>Imagine draft is the array of bugs...</h4>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/find.PNG"
+          alt=""
+        />
+        <h4>We need to store the result...</h4>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/find-result.PNG"
+          alt=""
+        />
+        <h4>If the bug gets found, set bug.fixed to true...</h4>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/fixed-true.PNG"
+          alt=""
+        />
+        <h2>return</h2>
+        <h3>Finally lets see the result by making this markup...</h3>
+        <h4>
+          We map the array of bugs, then take each bug and render a p element...
+        </h4>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/return.PNG"
+          alt=""
+        />
+        <h2>entire app code</h2>
+        <img
+          src="../../imgs/simplifying-update-logic-with-immer/complete-mark.PNG"
+          alt=""
+        />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>

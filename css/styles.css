@@ -84,6 +84,7 @@ h3 {
 
 h3 > a {
     text-decoration: underline;
+    display: inline;
 }
 
 h4 {
