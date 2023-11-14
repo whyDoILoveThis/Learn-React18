@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Sharing State Between Components</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Sharing State Between Components</h1>
+        <h2>example</h2>
+        <h3>Imagine we have an ECommerce website.</h3>
+        <h4>
+          We will probably have a nav bar with a cart icon showing the number of
+          items in the cart...
+        </h4>
+        <img
+          src="../../imgs/sharing-state-between-components/example-nav.PNG"
+          alt=""
+        />
+        <h4>
+          If the user adds or removes items from the cart, we should see the
+          change in the nav icon at the same time...
+        </h4>
+        <img
+          src="../../imgs/sharing-state-between-components/update-cart.PNG"
+          alt=""
+        />
+        <h3>
+          So these two components need to share state and be in sync. <br />
+          How can we do that?
+        </h3>
+        <h2>How to share state</h2>
+        <h4>Here is our component tree...</h4>
+        <h4>
+          Imagine we have used the state hook in the cart component to store the
+          list of items...
+        </h4>
+        <img
+          src="../../imgs/sharing-state-between-components/component-tree.PNG"
+          alt=""
+        />
+        <h4>
+          Instead, we should move the state up to the parent of these
+          components, and pass the state as props to the children...
+        </h4>
+        <img
+          src="../../imgs/sharing-state-between-components/lift-the-state.PNG"
+          alt=""
+        />
+        <h2>Coding an example</h2>
+        <h4>Let's start with this here...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/code-example.PNG"
+          alt=""
+        />
+        <h3>
+          Now that we have these shopping cart items we can pass it to
+          components as props.
+        </h3>
+        <h4>but first, we need some components...</h4>
+        <h2>NavBar component</h2>
+        <h4>Create a NavBar...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/create-new-file.PNG"
+          alt=""
+        />
+        <h4>Define the shape of props...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/define-props-nav.PNG"
+          alt=""
+        />
+        <h3>Now we have two options.</h3>
+        <h3>If we need the entire shopping cart item we can use an array...</h3>
+        <img
+          src="../../imgs/sharing-state-between-components/array-prop.PNG"
+          alt=""
+        />
+        <h3>
+          Or if we just need a count of how many items we can just use number...
+        </h3>
+        <img
+          src="../../imgs/sharing-state-between-components/number-prop.PNG"
+          alt=""
+        />
+        <h4>Next, add the props...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/add-nav-props.PNG"
+          alt=""
+        />
+        <h2>Cart component</h2>
+        <h4>Create a Cart...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/cart-tsx.PNG"
+          alt=""
+        />
+        <h4>We need the same prop, but this time we need a string...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/cart-props.PNG"
+          alt=""
+        />
+        <h4>Destructure the prop...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/destuct.PNG"
+          alt=""
+        />
+        <h3>
+          Now, we want to map the cartItems, and each item goes to an li with
+          the key of item, and it renders the item inside...
+        </h3>
+        <img src="../../imgs/sharing-state-between-components/li.PNG" alt="" />
+        <h2>Add the children to app</h2>
+        <h4>Add the children with their props...</h4>
+        <img src="../../imgs/sharing-state-between-components/app.PNG" alt="" />
+        <h3>With that you should see the items and a cart count.</h3>
+        <h3>Now let's add a button to clear the cart.</h3>
+        <h2>Clear cart button</h2>
+        <h4>
+          In the Cart component, right after the ul, create a clear button...
+        </h4>
+        <img
+          src="../../imgs/sharing-state-between-components/ckear-btn.PNG"
+          alt=""
+        />
+        <h4>Add an onClick...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/button-click.PNG"
+          alt=""
+        />
+        <h3>
+          You should remember that we are to treat props as immutable, or read
+          only. so we are not going to modify it here.
+        </h3>
+        <h3>
+          Instead, we need to notify the app component that the user clicked the
+          clear button, so that all the changes can be done inside the parent
+          component.
+        </h3>
+        <h3>
+          As a rule of thumb, the component that holds the state should be the
+          one updating it.
+        </h3>
+        <h4>So add an onClear prop so we can pass a function...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/onClear.PNG"
+          alt=""
+        />
+        <h2>Set onClear in the app</h2>
+        <h4>Now just use onClear to setCartItems to an empty arr...</h4>
+        <img
+          src="../../imgs/sharing-state-between-components/app-return.PNG"
+          alt=""
+        />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
