@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>EXERCISE: Updating State</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>EXERCISE: Updating State</h1>
+        <h3>Here you will get 3 small exercises.</h3>
+        <h2>Exercise 1</h2>
+        <h3>Let's start with a game object that has some propertys...</h3>
+        <img src="../../imgs/Exercise-updating-state/game-obj.PNG" alt="" />
+        <h3>When we click a button it should change the name</h3>
+        <h3 class="red">
+          Please keep the solution hidden until you have tried yourself.
+        </h3>
+        <h3>
+          HINT: We did the same thing
+          <a href="updating-nested-objects.html">(here)</a>
+        </h3>
+        <div class="collapsible exercise-collapsible">
+          <h2 class="sections-heading collapsible__heading">
+            SOLUTION 1<img
+              src="../../imgs/R.png"
+              alt=""
+              class="icon sections-icon collapsible__button"
+            />
+          </h2>
+          <div class="collapsible__content">
+            <h3>The solution is super simple</h3>
+            <h3>We use setGame to set the game to a new obj.</h3>
+            <h3>
+              For the new obj, we spread the existing game obj, create a new
+              player property, spread the existing player inside there, then
+              change the name.
+            </h3>
+            <img
+              src="../../imgs/Exercise-updating-state/handle-game-click.PNG"
+              alt=""
+            />
+            <h4>Finally, return some markup...</h4>
+            <img
+              src="../../imgs/Exercise-updating-state/gmae-return.PNG"
+              alt=""
+            />
+            <h4>If you wanna be extra add this...</h4>
+            <img
+              src="../../imgs/Exercise-updating-state/game-extra.PNG"
+              alt=""
+            />
+            <h3>
+              For a full explanation of this process, see
+
+              <a href="updating-nested-objects.html">this part</a> of the
+              course.
+            </h3>
+          </div>
+        </div>
+        <h2>Exercise 2</h2>
+        <h3>
+          We have a website that sells pizza, and when the user clicks a button
+          we want to add toppings to the pizza.
+        </h3>
+        <img src="../../imgs/Exercise-updating-state/the-pizza.PNG" alt="" />
+        <h3>
+          But rememeber that we <em class="red"> CAN NOT</em> use
+          <em class="blu">.push</em> on the array.
+        </h3>
+        <h3 class="red">
+          Please keep the solution hidden until you have tried yourself.
+        </h3>
+        <div class="collapsible exercise-collapsible">
+          <h2 class="sections-heading collapsible__heading">
+            SOLUTION 2<img
+              src="../../imgs/R.png"
+              alt=""
+              class="icon sections-icon collapsible__button"
+            />
+          </h2>
+          <div class="collapsible__content">
+            <h4>What we do is...</h4>
+            <h4>
+              Call set pizza, spread pizza, add a toppings property which is an
+              array, then spread the existing pizza toppings, and add the new
+              topping.
+            </h4>
+            <img
+              src="../../imgs/Exercise-updating-state/add-toppings.PNG"
+              alt=""
+            />
+            <h4>Let's add more toppings...</h4>
+            <img
+              src="../../imgs/Exercise-updating-state/add-more-toppings.PNG"
+              alt=""
+            />
+            <h4>Here is our return...</h4>
+            <img
+              src="../../imgs/Exercise-updating-state/the-return-pizza.PNG"
+              alt=""
+            />
+          </div>
+        </div>
+        <h2>Exercise 3</h2>
+        <h3>This time we have a site with a shopping cart.</h3>
+        <h3>The cart has 2 items...</h3>
+        <img src="../../imgs/Exercise-updating-state/cart-items.PNG" alt="" />
+        <h3>
+          The goal is to increase the quantity of the first item when a button
+          is clicked.
+        </h3>
+        <h3 class="red">
+          Please keep the solution hidden until you have tried yourself.
+        </h3>
+        <div class="collapsible exercise-collapsible">
+          <h2 class="sections-heading collapsible__heading">
+            SOLUTION<img
+              src="../../imgs/R.png"
+              alt=""
+              class="icon sections-icon collapsible__button"
+            />
+          </h2>
+          <div class="collapsible__content">
+            <h4>Here's what we do...</h4>
+            <h4>Call setCart and spread the cart...</h4>
+            <img
+              src="../../imgs/Exercise-updating-state/spread-cart.PNG"
+              alt=""
+            />
+            <h4>Then set the items to map the cart items...</h4>
+            <img
+              src="../../imgs/Exercise-updating-state/set-items.PNG"
+              alt=""
+            />
+            <h4>
+              Finally, write a statement for each item to see if the item.id ===
+              1, if it does, spread the item and set the quantity to the item
+              quantity + 1. Else return the item...
+            </h4>
+            <img
+              src="../../imgs/Exercise-updating-state/complete-cart-func.PNG"
+              alt=""
+            />
+            <h4>The return...</h4>
+            <img
+              src="../../imgs/Exercise-updating-state/shopping-cart-return.PNG"
+              alt=""
+            />
+          </div>
+        </div>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
