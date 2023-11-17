@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Handling Form Submission</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Handling Form Submission</h1>
+        <h2>onSubmit</h2>
+        <h3>Let's take the form we just built, and add submission to it.</h3>
+        <h4>
+          With forms, the onSubmit attribute is like the onCLick attribute for
+          buttons...
+        </h4>
+        <img src="../../imgs/handling-form-submission/onSubmit.PNG" alt="" />
+        <h3>
+          If you submit the form now, and watch the console, you will see a log
+          appear and go away quickly.
+        </h3>
+        <h3>
+          The log dissapears because when we submit an html form, that form is
+          posted to the server, so we get a full page reload.
+        </h3>
+        <h2>Prevent default behavior</h2>
+        <h3>To solve this issue we need to prevent the default behavior.</h3>
+        <h4>
+          Add an event parameter, and use braces for multiple lines in the
+          function...
+        </h4>
+        <img src="../../imgs/handling-form-submission/event-param.PNG" alt="" />
+        <h4>preventDefault, and console.log...</h4>
+        <img
+          src="../../imgs/handling-form-submission/event-prevent.PNG"
+          alt=""
+        />
+        <h3>Now the message should log just fine.</h3>
+        <h2>Separate complex logic</h2>
+        <h3>
+          Just like handling the event of a button, we should create a separate
+          function for the submit if the logic gets complex.
+        </h3>
+        <h4>For example, we could move it to a handleSubmit...</h4>
+        <img src="../../imgs/handling-form-submission/for-example.PNG" alt="" />
+        <h4 class="red">But, now we get this err...</h4>
+        <img src="../../imgs/handling-form-submission/err.PNG" alt="" />
+        <h3>
+          It's because the Typescript compiler doesn't know the type of the
+          event.
+        </h3>
+        <h4>But, if you hover your mouse here...</h4>
+        <img src="../../imgs/handling-form-submission/event-type.png" alt="" />
+        <h3>You can see the event type is a 'FormEvent'</h3>
+        <h4>So, import it, and annotate the event with it...</h4>
+        <img
+          src="../../imgs/handling-form-submission/event-annotation.PNG"
+          alt=""
+        />
+        <h4>Finally, reference handleSubmit in the onSubmit...</h4>
+        <img
+          src="../../imgs/handling-form-submission/handle-submit-final.PNG"
+          alt=""
+        />
+        <h3>
+          In the next lesson we will access the values of our input fields.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
