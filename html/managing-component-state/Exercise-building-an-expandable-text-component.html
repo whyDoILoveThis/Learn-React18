@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>EXERCISE: Building an ExpandableText Component</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>EXERCISE: Building an ExpandableText Component</h1>
+        <h2>Exercise</h2>
+        <h3>This time you need to build an ExpandableText component.</h3>
+        <img
+          src="../../imgs/Exercise-building-an-expandable-text-component/instruct.PNG"
+          alt=""
+        />
+        <h4>
+          The way it needs to work is, by default, we will see the first 100
+          chars...
+        </h4>
+        <img
+          src="../../imgs/Exercise-building-an-expandable-text-component/instr1.PNG"
+          alt=""
+        />
+        <h4>
+          Then when we click 'More' it should show the rest of the text, and
+          also the button text should change to 'Less'.
+        </h4>
+        <img
+          src="../../imgs/Exercise-building-an-expandable-text-component/show-less.PNG"
+          alt=""
+        />
+        <h3 class="red">
+          Please keep the solution hidden until you have tried yourself.
+        </h3>
+        <div class="collapsible exercise-collapsible collapsible--expanded">
+          <h2 class="sections-heading collapsible__heading">
+            SOLUTION<img
+              src="../../imgs/R.png"
+              alt=""
+              class="icon sections-icon collapsible__button"
+            />
+          </h2>
+          <div class="collapsible__content">
+            <h2>Create New File</h2>
+            <h4>Let's start with a new file...</h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/new-file.PNG"
+              alt=""
+            />
+            <h2>Add lots of text</h2>
+            <h4>Go to the App and add a lorem100...</h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/lorem-100.PNG"
+              alt=""
+            />
+            <h2>Create props</h2>
+            <h4>Create props for children, also one for maxChars.</h4>
+            <h4>Make maxChars optional...</h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/props.PNG"
+              alt=""
+            />
+            <h4>
+              Add the props to the param with destructuring, and render
+              children.
+            </h4>
+            <h4>Also give a default value to maxChars...</h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/add-props-in.PNG"
+              alt=""
+            />
+            <h2>Accounting for very short strings</h2>
+            <h4>
+              Create an if statement so that if the string is smaller than
+              maxChars, it wont render the buttons...
+            </h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/default-value-if.PNG"
+              alt=""
+            />
+            <h2>store the Substring as text</h2>
+            <h4>
+              Next we need to hold the text we want to show when minimized...
+            </h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/text-to-hold-for-minimized.PNG"
+              alt=""
+            />
+            <h3>
+              <a
+                target="_blank"
+                href="https://www.w3schools.com/jsref/jsref_substring.asp"
+                >Here</a
+              >
+              is an explanation of substring incase you are not familiar.
+            </h3>
+            <h2>Render text</h2>
+            <h4>Next, render text and 3 dots instead of children...</h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/render-text.PNG"
+              alt=""
+            />
+            <h2>The Button</h2>
+            <h4>
+              Then we want a button, and we need state to keep track of a
+              boolean expanded state...
+            </h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/state.PNG"
+              alt=""
+            />
+            <h4>
+              If isExpanded is true then render 'Less' for the button text, else
+              render 'More'...
+            </h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/button-text-logic.PNG"
+              alt=""
+            />
+            <h4>
+              After that, apply an onClick to set isExpanded to the oposite
+              value of whatever it is...
+            </h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/on-click.PNG"
+              alt=""
+            />
+            <h2>Add text logic</h2>
+            <h4>
+              We need to say if isExpanded render the whole children, else
+              render the substring version...
+            </h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/add-text-logic.PNG"
+              alt=""
+            />
+            <h2>Remove the dots for expanded version</h2>
+            <h4>Simply add this logic...</h4>
+            <img
+              src="../../imgs/Exercise-building-an-expandable-text-component/remove-dots.PNG"
+              alt=""
+            />
+          </div>
+        </div>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
