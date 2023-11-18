@@ -30,6 +30,15 @@ body.appendChild(toBottomLink);
 toBottomLink.appendChild(toBottomIcon);
 
 
+// BACK-BUTTON
+
+const backBtnIcon = document.createElement("img");
+backBtnIcon.addEventListener("click", function() {
+  window.history.go(-1);
+}); 
+backBtnIcon.src = "../../imgs/R.png";
+backBtnIcon.classList.add("back-btn");
+body.appendChild(backBtnIcon);
 
 
 
@@ -96,6 +105,7 @@ function createCollapsibleStructure() {
     h2.id = h2.textContent.replace(/\s+/g, '');
       const listItem = document.createElement('li');
       listItem.classList.add('section-item');
+      listItem.classList.add('section-item--main');
 
       const anchor = document.createElement('a');
       anchor.textContent = h2.textContent;

@@ -107,11 +107,12 @@ ol {
 ul {
     list-style-type: disc;
     line-height: 40px;
-    color: #fff200;   
+    color: #fff200;  
 }
 
 ul > li {
     font-size: 40px;
+    
 }
 
 .ul-li {
@@ -122,11 +123,20 @@ ul > li {
 }
 
 li {
-    padding: 0 10px 0 10px;
+    padding: 10px 10px 10px 15px;
     margin: 5px;
     background-color: rgba(186, 186, 186, 0.055);
-    border-radius: 8px;
+    border-radius: 25px;
+   
+    
 }
+
+
+ ol > li {
+    display: flex;
+    justify-content: space-between;
+ }
+
 
 ol > li:nth-child(odd){
     background-color: rgba(186, 186, 186, 0.133);
@@ -138,11 +148,11 @@ a {
     color: rgb(123, 191, 255);
     text-decoration: none;
     font-size: 22px;
-    font-weight: 300;
-    display: block;
+    font-weight: 400;
+    display: inline-block;
     line-height: 28px;
-    letter-spacing: 1.7px;
-    word-spacing: 1px;
+    letter-spacing: 0px;
+    word-spacing: 1.5px;
     text-transform: capitalize;
 }
 
@@ -157,7 +167,7 @@ a:hover {
     display: inline;
     background-color:var(--color--btn);
     padding: 0.5rem 0.8rem;
-    border-radius: 10px;
+    border-radius: 100px;
     font-size: 20px;
     line-height: 50px;
     color: #a686ff;
@@ -182,10 +192,9 @@ a:hover {
     
     border: 1px solid rgba(255, 255, 255, 0.311);
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 100px;
 
-    background: rgba(255, 255, 255, 0.068);
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.031);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1.9px);
     -webkit-backdrop-filter: blur(1.9px);
@@ -193,12 +202,11 @@ a:hover {
     transition: background-color 0.4s ease;
 }
 .to-top:hover {
-    background-color: #d6d6d62f;
+    background-color: #d6d6d629;
     transition: background-color 0.4s ease;
 }
 .to-bottom:hover {
-    background-color: #d6d6d62f;
-}
+    background-color: #d6d6d629;}
 .to-bottom {
     transition: background-color 0.4s ease;
 
@@ -211,28 +219,70 @@ a:hover {
 
     border: 1px solid rgba(255, 255, 255, 0.311);
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 100px;
 
-    background: rgba(255, 255, 255, 0.068);
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.031);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1.9px);
-    -webkit-backdrop-filter: blur(1.9px);}
+    -webkit-backdrop-filter: blur(1.9px);
+}
+
+.back-btn {
+    transition: background-color 0.4s ease;
+
+    width: 24px;
+    position: fixed;
+    left: 10px;
+    bottom: 27px;
+    z-index: 999;
+    transform:rotateZ(-90deg);
+
+    border: 1px solid rgba(255, 255, 255, 0.311);
+    padding: 10px;
+    border-radius: 100px;
+
+    background: rgba(255, 255, 255, 0.031);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.9px);
+    -webkit-backdrop-filter: blur(1.9px);
+}
+
 
 .check-mark {
-    width: 20px;
+    width: 14px;
+    height: 14px;
     cursor: pointer;
     transition: opacity 0.2s; /* 0.5 seconds for the opacity transition */
-
+    padding: 3px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 3px;
+    
 }
 
 .sections-collapsible {
     max-width: 400px;
 }
 
+.section-item {
+    padding: 5px;
+}
+
+.section-item .check-mark {
+    margin-top: 8px;
+    margin-right: 3px;
+}
+
 .section-item > a {
     margin: 5px;
     color: rgb(138, 255, 140);
+}
+
+.section-item--main {
+    display: block;
+    text-align: center;
+    padding: 5px;
 }
 
 .sections-heading {
@@ -287,12 +337,17 @@ img {
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(255, 255, 255, 0.302);
-    border-radius: 10px;
+    border-radius: 40px;
     width: 100%;
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 1rem 0rem 1rem;
     line-height: 1.47rem;
     background-color: #73737315;
-   
+    transition: border-radius 1s ease;
+    
+}
+
+.collapsible--expanded {
+    border-radius: 30px;
 }
 
 
@@ -331,7 +386,7 @@ line-height: 1.5rem;
     width: 30px;
     background-color:var(--color--btn);
     padding: 0.5rem 1rem;
-    border-radius: 10px;
+    border-radius: 100px;
     border: 1px solid rgba(255, 255, 255, 0.302);
     cursor: pointer;
 
@@ -457,4 +512,11 @@ line-height: 1.5rem;
 
 .red {
     color: rgb(246, 46, 83);
+}
+
+h3.red {
+    background-color: rgba(255, 0, 0, 0.17);
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid rgba(246, 46, 83, 0.256);
 }

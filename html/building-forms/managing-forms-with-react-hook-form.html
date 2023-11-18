@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Managing Forms with React Hook Form</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Managing Forms with React Hook Form</h1>
+        <h2>Issue with using the state hook</h2>
+        <h3>
+          As our forms get more complex, managing our forms with the state hook
+          can become time consuming and error prone.
+        </h3>
+        <h3>
+          With the state hook we have to set both the onChange and value
+          attributes for each and every input field. Boo.
+        </h3>
+        <h3>
+          This is where we an use a popular library called 'react hook form'.
+        </h3>
+        <h2>React hook form</h2>
+        <h3>With this library we can quickly build forms with less code.</h3>
+        <h3>
+          Find the documentation
+          <a target="_blank" href="https://react-hook-form.com/get-started"
+            >here</a
+          >.
+        </h3>
+        <h4>Run this in the project terminal...</h4>
+        <div class="code">
+          <p><em class="orng">npm</em> i react-hook@7.43</p>
+        </div>
+        <h4>Then import this custom hook...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/import-useform.PNG"
+          alt=""
+        />
+        <h4>
+          Next call useForm, it returns an object, store the obj to a const var
+          called form...
+        </h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/const-useform.PNG"
+          alt=""
+        />
+        <h2>console.log the obj</h2>
+        <h3>
+          Before we go further, we should log the form obj to the console to
+          make sure everything is working.
+        </h3>
+        <h4>
+          You will see a list of all the propertys, and methods this obj has...
+        </h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/console.PNG"
+          alt=""
+        />
+        <h3>
+          So we have a bunch of functions for programatically changing our form.
+        </h3>
+        <h2>register function</h2>
+        <h4>
+          Let's change the useForm const to a destructure, and add the register
+          function...
+        </h4>
+        <h4>
+          Also log the register function and we need the name of an input field
+          to reference...
+        </h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/log-register.PNG"
+          alt=""
+        />
+        <h4>You get an object with 4 propertys...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/register-return.PNG"
+          alt=""
+        />
+        <h3 class="red">
+          React hook forms use reference objects to get values from input
+          fields, so there is no re-rendering involved.
+        </h3>
+        <h2>Call register() on the input element</h2>
+        <h3>
+          Instead of setting the onChange and value attributes, we call the
+          register function, and initialize the name of the input field in the
+          parameter.
+        </h3>
+        <h4 class="red">So remove this...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/remove-name-atri.PNG"
+          alt=""
+        />
+        <h4>And replace it with this...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/register-input.PNG"
+          alt=""
+        />
+        <h4>You saw that this function returns an obj with propertys...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/all-those-propertys.PNG"
+          alt=""
+        />
+        <h4>
+          If we spread this obj we will add all those propertys to our input
+          field...
+        </h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/spread-register-obj.PNG"
+          alt=""
+        />
+        <h4>Also do the same for the age input...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/spread-register-age.PNG"
+          alt=""
+        />
+        <h3 class="red">Remove the entire state hook. We don't need it.</h3>
+        <h3 class="red">Also remove the entire handleSubmit function.</h3>
+        <h2>handleSubmit</h2>
+        <h4>So we called useForm, grabbed an obj and destructured it...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/what-we-did.PNG"
+          alt=""
+        />
+        <h4>In this object we also have a function called handleSubmit...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/handle-submit-obj-funct.PNG"
+          alt=""
+        />
+        <h4>To use handle form submission we call the function...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/call-handle-submit.PNG"
+          alt=""
+        />
+        <h3>You can see that it needs a submit handler as an argument.</h3>
+        <h3>
+          A submit handler is just a function that recieves the data in this
+          form.
+        </h3>
+        <h4>
+          For the arg, use an arrow function that takes data and logs it...
+        </h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/the-submit-handler.PNG"
+          alt=""
+        />
+        <h2>Separate function for logic</h2>
+        <h3>
+          Now, in a real application, you will likely have complex data and want
+          to separate into its own function.
+        </h3>
+        <h3>
+          But when you do, you get an err on the data. This is because the
+          compiler doesn't know the type of data.
+        </h3>
+        <h4>To find the proper type, hover your mouse here...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/separate-fucnt.PNG"
+          alt=""
+        />
+        <h3>
+          You can see that the type is FieldValues, which is defined in the
+          react hook library.
+        </h3>
+        <h4>So we annotate it like this...</h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/annotate.PNG"
+          alt=""
+        />
+        <h4>
+          Finally, instead of passing an arrow function to handle submit, pass
+          onSubmit...
+        </h4>
+        <img
+          src="../../imgs/managing-forms-with-react-hook-form/finally.PNG"
+          alt=""
+        />
+        <h3>
+          We can also use react hook form to for data validation, and thats what
+          we will learn next.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
