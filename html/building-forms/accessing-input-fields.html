@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Accessing Input Fields</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Accessing Input Fields</h1>
+        <h2>useRef</h2>
+        <h3>So, we have learned how to use the state hook in react.</h3>
+        <h3>In react, we have another built in hook called, 'useRef'.</h3>
+        <h3>'useRef' can be used to reference a DOM element.</h3>
+        <h3>
+          In this lesson we learn how to use this hook to reference an input
+          field, and read its value when the form is submitted.
+        </h3>
+        <h2>import useRef</h2>
+        <h4>First, import useRef, and call it with the param as null...</h4>
+        <img src="../../imgs/accessing-input-fields/init-to-null.PNG" alt="" />
+        <h3>
+          It has to be initialized to something. If you dont need a value here,
+          use null.
+        </h3>
+        <h4>It returns a reference object, so store that like this...</h4>
+        <img
+          src="../../imgs/accessing-input-fields/store-to-const.PNG"
+          alt=""
+        />
+        <h2>Associate the obj with the intput field</h2>
+        <h4>
+          Now, we need to associate the reference object with this input
+          field...
+        </h4>
+        <img src="../../imgs/accessing-input-fields/this-input.PNG" alt="" />
+        <h4>So, set its ref attribute to nameRef...</h4>
+        <img src="../../imgs/accessing-input-fields/ref-attri.PNG" alt="" />
+        <h2>Change console.log</h2>
+        <h3>
+          Now, instead of logging submitted to the console log nameRef.current.
+          <em class="red"
+            >Current is the only property a reference object has.</em
+          >
+        </h3>
+        <img
+          src="../../imgs/accessing-input-fields/log-the-current-code.PNG"
+          alt=""
+        />
+        <h4>This is what will get logged...</h4>
+        <img
+          src="../../imgs/accessing-input-fields/console-current.PNG"
+          alt=""
+        />
+        <h3>You can see that we are referencing an html intupt element.</h3>
+        <h3>And we know that all html input elements have a value property.</h3>
+        <h4>So add .value to the console log...</h4>
+        <img src="../../imgs/accessing-input-fields/value.PNG" alt="" />
+        <h2>nameRef.current.value</h2>
+        <h3>
+          You can see we get a compilation err saying that nameRef.current is
+          possibly null...
+        </h3>
+        <img
+          src="../../imgs/accessing-input-fields/possibly-null-err.PNG"
+          alt=""
+        />
+        <h4>So simply do a null check...</h4>
+        <img src="../../imgs/accessing-input-fields/null-check.PNG" alt="" />
+        <h4>Now we have ANOTHER compilation err on the value property...</h4>
+        <img src="../../imgs/accessing-input-fields/value-err.PNG" alt="" />
+        <h3>
+          The reason for this err is that Typescript doesn't know we are
+          referencing an html input element.
+        </h3>
+        <h3>Because with useRef we can reference any kind of element.</h3>
+        <h4>To tell Typescript we need to put this here...</h4>
+        <img
+          src="../../imgs/accessing-input-fields/htmlinputelement.PNG"
+          alt=""
+        />
+        <h3>
+          Now if you type a name and submit the form, you will see the text
+          logged to the console.
+        </h3>
+        <h2>The age field</h2>
+        <h3>Now, we need to repeat the same steps for the age field.</h3>
+        <h4>
+          So, call useRef, specify HTMLInputElement, init to null, and store it
+          in a const obj...
+        </h4>
+        <img src="../../imgs/accessing-input-fields/age-ref.PNG" alt="" />
+        <h4>Associate the ref obj with the age input field...</h4>
+        <img
+          src="../../imgs/accessing-input-fields/associte-ageref.PNG"
+          alt=""
+        />
+        <h4>
+          Finally, perform a null check, and log the age to the console...
+        </h4>
+        <img
+          src="../../imgs/accessing-input-fields/age-null-check-and-console-log.PNG"
+          alt=""
+        />
+        <h3 class="red">
+          Great! Now typically, when submitting a form, you need to send an
+          object to the server to be saved.
+        </h3>
+        <h2>Saving to an object</h2>
+        <h3>
+          So, instead of saving the name and age a separate values, make an
+          object called person with two propertys for name and age.
+        </h3>
+        <img
+          src="../../imgs/accessing-input-fields/save-to-object.PNG"
+          alt=""
+        />
+        <h4>
+          Next, remove both console.logs and replace them by setting the person
+          propertys to the current value of their input fields...
+        </h4>
+        <img
+          src="../../imgs/accessing-input-fields/replace-console-log.PNG"
+          alt=""
+        />
+        <h4 class="red">But, we have err with person.age...</h4>
+        <img
+          src="../../imgs/accessing-input-fields/person-age-err.PNG"
+          alt=""
+        />
+        <h3>
+          This err is because the age property is a number, but the value
+          property returns a string.
+        </h3>
+        <h4>To fix this call parseInt and pass the age input value...</h4>
+        <img src="../../imgs/accessing-input-fields/parseInt.PNG" alt="" />
+        <h4>Finally, log the person obj...</h4>
+        <img
+          src="../../imgs/accessing-input-fields/log-the-person-obj.PNG"
+          alt=""
+        />
+        <h2>Why do we have to init every ref obj with null?</h2>
+        <h3>
+          Well, the 'current' property of a ref obj references a DOM node.
+        </h3>
+        <h3>
+          The initial value we pass to the useRef hook will be used to set the
+          'current' property.
+        </h3>
+        <h3>
+          Here's the thing... Initially when we create a ref obj, we don't have
+          access to a DOM node, because the DOM is created AFTER React renders
+          our component.
+        </h3>
+        <h3>So we really have no value to provide here.</h3>
+        <h2>How react handles the 'current' property</h2>
+        <h3>
+          When react renders our component and creates the DOM, it will set the
+          'current' property to a DOM node, and it will set it back to null when
+          the node is removed from the screen.
+        </h3>
+        <h3>
+          So the 'current' property should either be null, or it should
+          reference an existing DOM node.
+        </h3>
+        <h2>What if we don't initialize useRef?</h2>
+        <h3 class="red">
+          If we do not supply an initial value, the 'current' property will be
+          'undefined'.
+        </h3>
+        <h3>This can cause unexpected isuues down the road.</h3>
+        <h3>
+          To me this seems like a design flaw to react. If no value is supplied,
+          react should initialize current to null, but it is what is it and we
+          have to deal with it.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
