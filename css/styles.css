@@ -267,7 +267,10 @@ a:hover {
 
 img {
     width: 100%;
-    
+    border-radius: 7px;
+    border: 0.5px solid rgba(154, 154, 154, 0.273);
+    box-shadow: 0px 0px 15px 0px rgba(107, 107, 107, 0.15);
+
 }
 
 

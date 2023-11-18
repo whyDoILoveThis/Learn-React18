@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Controlled Components</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Controlled Components</h1>
+        <h2>Another way to get input values</h2>
+        <h3>Instead of the ref hook we can use the state hook.</h3>
+        <h4>
+          So call useState and inititalize it to an object with 2 propertys...
+        </h4>
+        <img
+          src="../../imgs/controlled-components/state-hook-init.PNG"
+          alt=""
+        />
+        <h4>Then store it to a const person obj and the update func...</h4>
+        <img src="../../imgs/controlled-components/save-to.PNG" alt="" />
+        <h2>onChange</h2>
+        <p style="text-align: center">(read this carefully)</p>
+        <h3>
+          All input fields have a change event that is triggered each time the
+          user types a keystroke.
+        </h3>
+        <h3>
+          So we can handle this event, and update our state var everytime the
+          user types something into the input field.
+        </h3>
+        <h4>
+          For this, set the onChange attribute of the name input to an arrow
+          function...
+        </h4>
+        <img src="../../imgs/controlled-components/onchange.PNG" alt="" />
+        <h3>In this function we update the name property of the person obj.</h3>
+        <h4>
+          Now, to get the current value of the input field, give our function an
+          event param...
+        </h4>
+        <img
+          src="../../imgs/controlled-components/event-param-name.PNG"
+          alt=""
+        />
+        <h3>
+          From event.target we can access the input field, and then read the
+          value property.
+        </h3>
+        <h4>
+          So, call setPerson, and make a new obj, spread the existing person,
+          then set the name to the value of the input field...
+        </h4>
+        <img src="../../imgs/controlled-components/call-setperson.PNG" alt="" />
+        <h3>You could have also used immer for this if you desire.</h3>
+        <h2>Age field</h2>
+        <h3>
+          When applying this to the age field you will get an err because the
+          age value is an int but the value property returns a string.
+        </h3>
+        <h4>So use parseInt to convert the age to a string...</h4>
+        <img src="../../imgs/controlled-components/age.PNG" alt="" />
+        <h4>Finally, log the person when the form is submitted...</h4>
+        <img src="../../imgs/controlled-components/log-the-person.PNG" alt="" />
+        <h2 class="red">IMPORTANT NOTE</h2>
+        <h3>
+          With this approach, each time the user types, or removes a character
+          from the input field, our component is re-rendered, because we are
+          updating the state.
+        </h3>
+        <h3>For most cases this is not an issue.</h3>
+        <h4>
+          However, some people like this guy, make a big deal out of it...
+        </h4>
+        <img src="../../imgs/controlled-components/always-use-ref.PNG" alt="" />
+        <h4>But remember the old saying...</h4>
+        <img src="../../imgs/controlled-components/quote.PNG" alt="" />
+        <h3>
+          So don't always believe such hardcore recomendations you see on the
+          internet, always use your own judgement.
+        </h3>
+        <h3>
+          If you have a really complex form with a ton of elements, and you
+          observe performance issues with this approach, then go ahead and use
+          the ref hook.
+        </h3>
+        <h3>But for most cases you are not going to experience that.</h3>
+        <h2>But, there is still a tiny problem.</h2>
+        <h3>
+          You know that all input fields in html have a value property for
+          maintaining their own state.
+        </h3>
+        <h3>
+          But in our implementation we also have a state var called person.
+        </h3>
+        <h3>So it is possible these sources get out of sync.</h3>
+        <h3>
+          To solve this problem we should make react the single source of truth.
+        </h3>
+        <h4>
+          Very simple, just set the value attribute of input to its property...
+        </h4>
+        <img src="../../imgs/controlled-components/input-value.PNG" alt="" />
+        <h3>
+          So now this input field always relys on the value in our state var.
+        </h3>
+        <h3>
+          This gives us a single source for storing the name of the person.
+        </h3>
+        <h4>Do the same for the age input...</h4>
+        <img src="../../imgs/controlled-components/age-value.PNG" alt="" />
+        <h2>What this all means</h2>
+        <h3>
+          This now means that we are refering to these input fields as
+          'controlled components', because its state is entirely controlled by
+          React.
+        </h3>
+        <h3>
+          AND THAT MEANS that the value of the input field is not managed by the
+          DOM, but is stored and updated in the component state.
+        </h3>
+        <h4>
+          Lastly, age shows 0 by default. To fix this initialize it to an empty
+          string...
+        </h4>
+        <img src="../../imgs/controlled-components/age-string.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
