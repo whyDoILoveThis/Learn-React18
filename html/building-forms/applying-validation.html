@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Applying Validation</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Applying Validation</h1>
+        <h2>Preventing too short, or empty form</h2>
+        <h3>
+          Let's say that as part of submitting the form, we want to ensure the
+          user has entered a value into the name field, and that the value is at
+          least 3 chars long.
+        </h3>
+        <h4>This is where we are registering the name field...</h4>
+        <img src="../../imgs/applying-validation/registering.PNG" alt="" />
+        <h4>
+          As the second argument we can pass an object, and in this object we
+          can add all the standard html attributes for data validation...
+        </h4>
+        <img src="../../imgs/applying-validation/obj-arg.PNG" alt="" />
+        <h3>
+          Now if we try to submit an empty form we don't see anything in the
+          console.
+        </h3>
+        <h3>
+          This is because the react hook form only calls the handler function if
+          the form is valid.
+        </h3>
+        <h3>So at this point we want to show an err message to the user.</h3>
+        <h2>The 'errors' object</h2>
+        <h4>Go here and grab a property called formState...</h4>
+        <img src="../../imgs/applying-validation/form-state.PNG" alt="" />
+        <h4>
+          If you log formState to the console you will see these propertys...
+        </h4>
+        <img src="../../imgs/applying-validation/formstate-log.PNG" alt="" />
+        <h3>
+          If you log formState.errors you will get more info about this object.
+        </h3>
+        <h4>
+          Now if you submit an empty form, or only type one char, you will get
+          different types of errs...
+        </h4>
+        <img src="../../imgs/applying-validation/err-types.PNG" alt="" />
+        <h3>
+          We can access this object, and use the err type to display different
+          err messages to the user.
+        </h3>
+        <h2>Custom err messages</h2>
+        <h4>So, write an err message just after the input field...</h4>
+        <img src="../../imgs/applying-validation/name-err.PNG" alt="" />
+        <h4>For the expression we need to access the errors object...</h4>
+        <img src="../../imgs/applying-validation/errs-obj.PNG" alt="" />
+        <h3>
+          But because we are going to need to repeatedly access the errors
+          object, we should destructure it so that we can call errors without
+          prefixing it.
+        </h3>
+        <h4>We can destructure a destructured object...</h4>
+
+        <img src="../../imgs/applying-validation/destruct-errs.PNG" alt="" />
+        <h3 class="grn">This is called nested destructuring in Javascript.</h3>
+        <h4>
+          Now we want to say if errors has a property called name, and the error
+          is of type required, then render our element...
+        </h4>
+        <img src="../../imgs/applying-validation/name-expression.PNG" alt="" />
+        <h3 class="grn">
+          The question mark and period after name is called optional chaining in
+          Javascript.
+        </h3>
+        <h3>
+          The reason we need the question mark is because our errors object
+          could be empty.
+        </h3>
+        <h3>
+          If we do not have a name property and we try to access the type
+          property we will get a runtime err.
+        </h3>
+        <h3>
+          So our expression is only evaluated if we have a property called name
+          in the errors obj.
+        </h3>
+        <h4>We also want a message if the name is too short...</h4>
+        <img src="../../imgs/applying-validation/too-short-msg.PNG" alt="" />
+        <h4>And if the error type is minLength...</h4>
+        <img src="../../imgs/applying-validation/min-length.PNG" alt="" />
+        <h3>
+          One last problem is that if we type errors. we don't get type safety,
+          because Typescript is not aware of our input fields.
+        </h3>
+        <h2>implement type safety</h2>
+        <h3>
+          To implement type safety we need to define the an inteface for the
+          shape of this form.
+        </h3>
+        <h4>So, on the top, outside the component, define an interface...</h4>
+        <img src="../../imgs/applying-validation/interface.PNG" alt="" />
+        <h4>
+          Now when calling the form hook, pass the interface in angle
+          brackets...
+        </h4>
+        <img src="../../imgs/applying-validation/pass-interface.PNG" alt="" />
+        <h3>
+          So we called the form hook, and passed the interface that represents
+          the shape of this form.
+        </h3>
+        <h4>
+          With that we can see our input fields in the auto complete box when we
+          type 'errors.'
+        </h4>
+        <img src="../../imgs/applying-validation/type-saftey.PNG" alt="" />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>

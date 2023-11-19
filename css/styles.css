@@ -343,7 +343,7 @@ img {
     line-height: 1.47rem;
     background-color: #73737315;
     transition: border-radius 1s ease;
-    
+    margin-top: 1rem;
 }
 
 .collapsible--expanded {
@@ -508,6 +508,22 @@ line-height: 1.5rem;
 
 .blu {
     color: rgb(74, 189, 255);
+}
+
+h3 {
+    color: #6eb4da;
+    background-color: rgba(0, 123, 255, 0.186);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 140, 255, 0.543);
+}
+
+h3.grn {
+    color: #6eda80;
+    background-color: rgba(0, 255, 17, 0.186);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 68, 0.543);
 }
 
 .red {
