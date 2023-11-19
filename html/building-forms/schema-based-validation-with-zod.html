@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Schema Based Validation with Zod</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Schema Based Validation with Zod</h1>
+        <h2>Problem with our current validation implementation</h2>
+        <h3>
+          Currently we have validation rules right in the middle of our markup.
+        </h3>
+        <h3>
+          As our form gets more complex we will end up with validation rules all
+          over the place.
+        </h3>
+        <h3>
+          In that case its better to use something called schema based
+          validation.
+        </h3>
+        <h2>Validation Libraries</h2>
+        <h3>
+          There are various validation libraries that allow us to define all of
+          our validation rules in a single place.
+        </h3>
+        <h3 class="grn">This single place is called a schema.</h3>
+        <h4>Some popular schema libs...</h4>
+        <ul>
+          <li>
+            <a target="_blank" href="https://joi.dev/api/?v=17.9.1"
+              ><em class="ul-li">Joi</em></a
+            >
+          </li>
+          <li>
+            <a target="_blank" href="https://yup-docs.vercel.app/docs/intro"
+              ><em class="ul-li">Yup</em></a
+            >
+          </li>
+          <li>
+            <a target="_blank" href="https://zod.dev/"
+              ><em class="ul-li">Zod</em></a
+            >
+          </li>
+        </ul>
+        <h3>
+          Zod is what we will use in this course, but you must understand that
+          Zod is quite vast, so we will only learn the basics of how to
+          integrate it with ract hook forms.
+        </h3>
+        <h3>
+          If you want to go more in depth with the features of Zod, their
+          documentation is well written.
+        </h3>
+        <h2>Install Zod</h2>
+        <h4>The version I'm using now is...</h4>
+        <div class="code">
+          <p><em class="orng">npm</em> i zod@3.20.6</p>
+        </div>
+        <h4>Then import it to our form...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/import-zod.PNG"
+          alt=""
+        />
+        <h3>
+          Using 'z' we can define the shape, or scheme of our form, and all its
+          validation rules.
+        </h3>
+        <h4>So call z.object, and pass an object...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/z-object.PNG"
+          alt=""
+        />
+        <h3>The object will hold propertys that represent our form fields.</h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>

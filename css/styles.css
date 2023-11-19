@@ -122,6 +122,10 @@ ul > li {
     line-height: 25px;
 }
 
+a .ul-li {
+    transform: translateY(-6px);
+}
+
 li {
     padding: 10px 10px 10px 15px;
     margin: 5px;
