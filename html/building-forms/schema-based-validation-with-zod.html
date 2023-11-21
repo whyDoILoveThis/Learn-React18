@@ -72,12 +72,206 @@
           Using 'z' we can define the shape, or scheme of our form, and all its
           validation rules.
         </h3>
+        <h2>Defining the Forms Scheme</h2>
+        <h3 class="grn">Next, we use z to define the shape.</h3>
         <h4>So call z.object, and pass an object...</h4>
         <img
           src="../../imgs/schema-based-validation-with-zod/z-object.PNG"
           alt=""
         />
         <h3>The object will hold propertys that represent our form fields.</h3>
+        <h4>Our name field is a string with a min of 3 chars...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/sting-method-clls.PNG"
+          alt=""
+        />
+        <h3>
+          By chaining method calls like this, we can define all of our
+          validation rules in a single place.
+        </h3>
+        <h4>Add a property for the age field as well...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/age-definition.PNG"
+          alt=""
+        />
+        <h2>Store the z object to a const</h2>
+        <h3 class="grn">
+          So we have called the object method, and passed a configuration object
+          that represents the shape of our form.
+        </h3>
+        <h3>This returns an object that we store in a const schema.</h3>
+        <h3 class="orng">
+          We could call it anything, but schema is a popular name.
+        </h3>
+        <h4>So, store it like this...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/const-schema.PNG"
+          alt=""
+        />
+        <h2>Address duplication</h2>
+        <h3>
+          Currently we have duplication, because we have defined the shape of
+          the form twice...
+        </h3>
+        <h4>See, name and age are duplicated...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/dupication.PNG"
+          alt=""
+        />
+        <h3>
+          Now, the great thing about Zod is that is has a method that allows us
+          to extract a type from a schema object.
+        </h3>
+        <h3 class="orng">
+          That means that we don't have to write out the FormData interface by
+          hand.
+        </h3>
+        <h3>
+          Instead, we remove the interface, and use z.infer to store the form
+          data as a typescript type that defines the shape of our object.
+        </h3>
+        <h4>Like this...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/form-data-type.PNG"
+          alt=""
+        />
+        <h4>
+          If you hover form data, you will see that it represents an object with
+          2 propertys...
+        </h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/form-data-hove.PNG"
+          alt=""
+        />
+        <h3>A typescript type is very similar to a typescript interface.</h3>
+        <h3 class="grn">
+          So that was the first step. Using Zod we defined a schema for our
+          form.
+        </h3>
+        <h3>Now we need to integrate react-hook-forms with Zod.</h3>
+        <h2>Integrate react hook form with Zod</h2>
+        <h3 class="orng">
+          First, we need to install a library that includes resolvers for
+          various schema-based validation libraries.
+        </h3>
+        <h3>It supports Zod, Joi, Yup, and many others.</h3>
+        <h4>This is the command for the library we are using...</h4>
+        <div class="code">
+          <p><em class="orng">npm</em> i @hookform/resolvers@2.9.11</p>
+        </div>
+        <h4>Then importzodResolver...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/import-formhookzodthingabob.PNG"
+          alt=""
+        />
+        <h2>Using zodResolver</h2>
+        <h3>
+          Now when calling the form hook, we pass a configuration obj to its
+          parameter.
+        </h3>
+        <h3>
+          Then we set resolver to the zodResolver function we imported, and set
+          the param of zodResolver to our schema obj.
+        </h3>
+        <h4>Like this...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/useform-resolver.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          We're almost there. The next step is to consolodate our error
+          messages.
+        </h3>
+        <h2>Consolodate the error messages</h2>
+        <h3 class="orng">
+          First of all, you can remove the validation rules from the middle of
+          our markup. We took care of that in the schema.
+        </h3>
+        <h3 class="red">
+          Just make sure to still spread register and pass name.
+        </h3>
+        <h3>
+          Also we don't need separate messages in our markup for the errors.
+        </h3>
+        <h3>
+          Instead, what we do is just check for errors.name and if it exist we
+          render a p with the bootstrap class 'text-danger', and inside the p we
+          render errors.name.message
+        </h3>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/errors-name.PNG"
+          alt=""
+        />
+        <h3>In a moment, we will write our err msgs in our schema.</h3>
+        <h4>Do the same for age...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/errors-age.PNG"
+          alt=""
+        />
+        <h4>
+          We haven't defined any err mesages, so we will get default ones from
+          Zod.
+        </h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/default-err.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          If you don't like these messages, you can always customize them. So
+          let's do that.
+        </h3>
+        <h2>Custom Err Msgs</h2>
+        <h3 class="grn">
+          When specifying our validation rules, we can pass an obj with a
+          message property.
+        </h3>
+        <h4>Like this...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/custom.PNG"
+          alt=""
+        />
+        <h3>
+          But what about the age? Why does the err msg say that it recieved a
+          string?
+        </h3>
+        <h3 class="orng">
+          The reason this is happening is that the value of input fields always
+          return a string.
+        </h3>
+        <h3 class="orng">
+          To fix this we need to tell react hook form to interpret the value of
+          the age input field as a number.
+        </h3>
+        <h4>
+          So go to where we registered the age input, and pass this object
+          property...
+        </h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/valueasnumber-true.PNG"
+          alt=""
+        />
+        <h3>Now refresh the page and submit the form again.</h3>
+        <h3>We get a different err saying it recieved 'nan'.</h3>
+        <h3>We got that because the field was empty when we submitted it.</h3>
+        <h4>To get a better msg back, we can define one here...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/age-err-msg.PNG"
+          alt=""
+        />
+        <h3>
+          Now if we type a number smaller than 18 we get another ugly err msg.
+          Boo.
+        </h3>
+        <h4>This is much better...</h4>
+        <img
+          src="../../imgs/schema-based-validation-with-zod/min-age-err.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          Great! Like I said before, there is much, much more to Zod. If you
+          want to learn more head to the official documentation.
+        </h3>
+        <h3 class="orng">Link to the docs is close to the top of this page.</h3>
       </article>
     </section>
     <script src="../../JS/main.js"></script>

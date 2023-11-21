@@ -530,6 +530,13 @@ h3.grn {
     border: 1px solid rgba(0, 255, 68, 0.543);
 }
 
+h3.orng {
+    background-color: rgba(255, 136, 0, 0.277);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 157, 0, 0.543);
+}
+
 .red {
     color: rgb(246, 46, 83);
 }
