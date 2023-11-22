@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Building ExpenseFilter</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Building ExpenseFilter</h1>
+        <h2>Create New File</h2>
+        <h3>Now we want to have a filter for showing our items.</h3>
+        <h3>
+          For this mini app we only want to filter by category, but in the
+          future we might want to filter by different parameters.
+        </h3>
+        <h4>
+          In the components folder of the expenseTracker component create this
+          file...
+        </h4>
+        <img
+          src="../../imgs/project-building-expense-filter/new-file.PNG"
+          alt=""
+        />
+        <h2>Select Element</h2>
+        <h3>In this component all we want to return is a select element.</h3>
+        <h4>So add it here...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/select-element.PNG"
+          alt=""
+        />
+        <h2>Adding options</h2>
+        <h4>Remove the name and id, then add the first option...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/first-option.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          We also need an option for each category. For now, we are hard coding
+          the categories, but in the future we'll come back and make ths part
+          dynamic.
+        </h3>
+        <h4>So add some more options...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/more-options.PNG"
+          alt=""
+        />
+        <h2>App component does the work</h2>
+        <h3 class="orng">
+          This component is purely responsible for showing filters. The actual
+          act of filtering though, will be done in the App component.
+        </h3>
+        <h3 class="orng">
+          That's because the App is where we maintain the state.
+        </h3>
+        <h3>
+          So when the user selects a filter, we should notify the app component,
+          and the app component will take care of filtering the data.
+        </h3>
+        <h2>ExpenseFilter Props</h2>
+        <h3>
+          Next we want an onSelect prop, so we can pass a funtion from the app
+          component when a category is selected.
+        </h3>
+        <h3>
+          Our prop will be a funtion that takes the given category as a string,
+          and returns void.
+        </h3>
+        <h4>So create that prop, and add it to the param...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/create-props.PNG"
+          alt=""
+        />
+        <h2>onchange event of select element</h2>
+        <h3 class="grn">
+          Now we handle the onChange event of the select element, and pass an
+          arrow function that calls onSelectCategory.
+        </h3>
+        <h3 class="orng">
+          We need an event parameter in our arrow function, and we need to pass
+          the value of the event target to onSelectCategory.
+        </h3>
+        <h4>It should look like this...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/select-onchange.PNG"
+          alt=""
+        />
+        <h2>Test what we have</h2>
+        <h3>So let's see what we have so far.</h3>
+        <h3 class="grn">Open the App component.</h3>
+        <h4>And add our ExpenseFilter...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/add-to-app-test.PNG"
+          alt=""
+        />
+        <h4>
+          For now, just use an arrow func to log something with the prop...
+        </h4>
+        <img
+          src="../../imgs/project-building-expense-filter/test-prop.PNG"
+          alt=""
+        />
+        <h4>We shoud get this...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/test-result.PNG"
+          alt=""
+        />
+        <h4>
+          The filter is to close, so use bootstrap to add some bottom margin...
+        </h4>
+        <img
+          src="../../imgs/project-building-expense-filter/bootstrap-margin.PNG"
+          alt=""
+        />
+        <h4>Much better...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/marin-fix.PNG"
+          alt=""
+        />
+        <h3>Now if you select a category you can see it on the console.</h3>
+        <h2>Filtering Logic</h2>
+        <h3>The final part is the actual filtering.</h3>
+        <h3>
+          For that, we need another state var in the app for representing the
+          selected filter.
+        </h3>
+        <h3>
+          When that filter changes, the app component will re-render, and the
+          list of expenses will be updated.
+        </h3>
+        <h4>
+          So, create a state var called 'selectedCategory' and initialize it to
+          an empty string...
+        </h4>
+        <img
+          src="../../imgs/project-building-expense-filter/new-app-state.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          Now instead of loging the selected category to the console, we call
+          setSelectedCategory, and pass the category object from the arrow
+          function param.
+        </h3>
+        <h4>Like this...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/like-this.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          At this point the state is updated, so the app component will
+          re-render.
+        </h3>
+        <h2>Displaying Logic</h2>
+        <h3 class="orng">
+          Next, instead of passing all the expenses to the ExpenseList
+          component, we want to pass the filtered list.
+        </h3>
+        <h3 class="grn">
+          For that we need to create a local const to check if selectedCategory
+          is truthy, if it is, then call expenses.filter, and return all
+          expenses in the given category.
+        </h3>
+        <h3>OTHERWISE, set the visibleExpenses to expenses</h3>
+        <h4>Like this...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/display.PNG"
+          alt=""
+        />
+        <h4>Now just pass the visibleExpenses, instead of expenses...</h4>
+        <img
+          src="../../imgs/project-building-expense-filter/pass-visible.PNG"
+          alt=""
+        />
+        <h2>IMPORTANT NOTE</h2>
+        <h3>What's happening is, the expenses var holds all the expenses.</h3>
+        <h3>
+          But visibleExpenses holds only the ones the user is going to see based
+          on the selected filter
+        </h3>
+        <h3>
+          If the user has selected a category, we filter the expenses by the
+          category, otherwise we return alllll the expenses.
+        </h3>
+        <h3>
+          The reason we aren't using a state var for the visible expenses is
+          because thats redundant. This is something we can calculate from the
+          existing state vars.
+        </h3>
+        <h3 class="red">
+          So don't create state vars for things that can be calulated using
+          existing state vars.
+        </h3>
+        <h3 class="grn">
+          That's it for filtering! Next we create the expense form.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
