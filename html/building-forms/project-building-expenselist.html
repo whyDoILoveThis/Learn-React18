@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Building ExpenseList</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <p style="text-align: center">(this one long af dawg.)</p>
+        <h1>Building ExpenseList</h1>
+        <h2>The ExpenseList Component</h2>
+        <h3>This component is the easiest to build.</h3>
+        <h3>
+          Thats why we are doing it first so we can get it out of the way, and
+          build momentum.
+        </h3>
+        <h2>Properly nest our folder Structure</h2>
+        <h3 class="grn">
+          We don't want to create all the components that make up the expense
+          tracker in the components folder.
+        </h3>
+        <h3>
+          Imagine if a complex site like amazon had all of its components in one
+          folder. That would be unmanageable.
+        </h3>
+        <h4>Instead, create this folder...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/create-expense-tracker-folder.PNG"
+          alt=""
+        />
+        <h4>Then inside it create this folder...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/expense-tracker-cmponents-folder.PNG"
+          alt=""
+        />
+        <h4>
+          Finally, create this file inside the nested components folder...
+        </h4>
+        <img
+          src="../../imgs/project-building-expenselist/component-in-folder.PNG"
+          alt=""
+        />
+        <h2>Create a table</h2>
+        <h4>Add a table element, and give it these bootstrap classes...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/bootstrap-table.PNG"
+          alt=""
+        />
+        <h2>Create the thead</h2>
+        <h4>
+          Then we need a thead, containing a tr, which contains 4 th elements...
+        </h4>
+        <img
+          src="../../imgs/project-building-expenselist/the-table.PNG"
+          alt=""
+        />
+        <h3>
+          We leave out the last th because thats where we will have the delete
+          button.
+        </h3>
+        <h2>Create the tbody</h2>
+        <h4>After the thead, we need a tbody...</h4>
+        <img src="../../imgs/project-building-expenselist/tbody.PNG" alt="" />
+        <h3 class="grn">The tbody is where we will render the expenses.</h3>
+        <h3 class="orng">
+          But, we dont want to store the expenses in this component, because we
+          want to pass them as props so that this component is reusable.
+        </h3>
+        <h2>Define props</h2>
+        <h4>We define props with a property called expenses...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/expenses-prop.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          But the type is not going to be a string array or number or anything
+          like that.
+        </h3>
+        <h3>Each expense is going to be an object.</h3>
+        <h4>So we use an interface to define the shape of each expense...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/expense-interface.PNG"
+          alt=""
+        />
+        <h3>
+          In a real app, the category would be an obj with 2 propertys for name
+          and id, but lets not worry about those complexitys for now.
+        </h3>
+        <h4>
+          Now that we have that we say the expenses prop is an array of Expense
+          objects...
+        </h4>
+        <img
+          src="../../imgs/project-building-expenselist/expense-prop-type.PNG"
+          alt=""
+        />
+        <h2>Use the prop</h2>
+        <h4>As always we destructure the prop...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/add-the-props-param.PNG"
+          alt=""
+        />
+        <h4>
+          Now in the tbody map each expense to tr elements, and each one needs a
+          key, so we use the id...
+        </h4>
+        <img
+          src="../../imgs/project-building-expenselist/map-expenses.PNG"
+          alt=""
+        />
+        <h4>
+          Next, we need 4 td elements to render the propertys of the expense
+          object...
+        </h4>
+        <img
+          src="../../imgs/project-building-expenselist/tbody-td-elements.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          As you can see we added a delete button as the last td.
+        </h3>
+        <h3>
+          Now, since the list of expenses is passed here via props, it's
+          maintained somewhere else, inside the parent component.
+        </h3>
+        <h3>
+          So, as I told you before, the component that holds a state should be
+          the one updating it.
+        </h3>
+        <h3 class="orng">
+          That means when the user clicks the delete button, we dont want to
+          delete an expense here, instead, we should notify the parent that an
+          expense should be deleted.
+        </h3>
+        <h3 class="grn">To do that we need a callback function.</h3>
+        <h2>onDelete</h2>
+        <h3>
+          Go to the props and add an onDelete function property that takes the
+          id of the expense as a number and returns void...
+        </h3>
+        <h4>So add that and then add it to the parameter...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/onDelete-prop.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          Then for onClick of the button, we need an arrow function that calls
+          the onDelete function and pass the current expense.id as the param.
+        </h3>
+        <h4>onClick should look like this...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/ondelete-onclick.PNG"
+          alt=""
+        />
+        <h2>Create the tfoot</h2>
+        <h4>Start with this structure...</h4>
+        <img src="../../imgs/project-building-expenselist/tfoot.PNG" alt="" />
+        <h3 class="grn">
+          For the second td we need to dynamically calulate the total.
+        </h3>
+        <h3>To do that we are going to use the reduce method of arrays.</h3>
+        <h3 class="orng">
+          In Javascript, all arrays have a reduce method we can use to combine
+          all elements in the array into something else.
+        </h3>
+        <h3 class="orng">
+          For example, here we can combine all the expense objects into a number
+          that represents the total.
+        </h3>
+        <h4>
+          What we do is, we pass to reduce, an arrow function with 2
+          parameters...
+        </h4>
+        <img
+          src="../../imgs/project-building-expenselist/reduce-func.PNG"
+          alt=""
+        />
+        <h3>
+          The first parameter of the arrow funct, 'acc', is short for
+          'accumulator'. This is like a var that holds the total amount.
+        </h3>
+        <h3>The second parameter is an expense object.</h3>
+        <h3 class="grn">
+          In the body of this arrow function, we need to get the amount of the
+          current expense, and add it to the accumulator.
+        </h3>
+        <h4>Add the current expense to acc like this...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/reduce-arrow-body.PNG"
+          alt=""
+        />
+        <h3>So the accumulator is just a number that holds the total value.</h3>
+        <h3 class="orng">
+          So, the reduce method iterates over our array of expenses, and in each
+          iteration, it runs the arrow function.
+        </h3>
+        <h3>
+          As the second parameter of the reduce method, we need to pass an
+          initial value for the accumulator.
+        </h3>
+        <h4>We want it to be 0...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/reduce-init-value.PNG"
+          alt=""
+        />
+        <h3>
+          The reduce method returns a number, so we call the toFix method on it.
+        </h3>
+        <h4>Call toFix on the reduce method with dot notation like this...</h4>
+        <img src="../../imgs/project-building-expenselist/toFixed.PNG" alt="" />
+        <h3>
+          As the param we pass 2 to specify the number of digits after the
+          decimal point.
+        </h3>
+        <h3 class="red">
+          You can see exactly how toFixed works
+          <em class="blu"
+            ><a
+              target="_blank"
+              href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_tofixed"
+              >here</a
+            ></em
+          >
+        </h3>
+        <h4>
+          Finally, add a dollar sign before the amount so it shows dollars...
+        </h4>
+        <img
+          src="../../imgs/project-building-expenselist/show-dollars.PNG"
+          alt=""
+        />
+        <h3 class="orng">Leave the other two td empty.</h3>
+        <h2>Test what we have</h2>
+        <h3>Let's test what we have so far, so go to the app component.</h3>
+        <h4>And add an ExpenseList to the App...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/add-expenselist-to-app.PNG"
+          alt=""
+        />
+        <h3>
+          For the expenses prop we need an array of expenses, so just create
+          some dummy data real quick.
+        </h3>
+        <h4>Add this array of objects...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/array-of-obj.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          We don't have the functionality for the delete button yet, so just
+          console.log or alert something to make sure it's working for now.
+        </h3>
+        <h4>Actually, add the id too, like this...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/id-to-delete.PNG"
+          alt=""
+        />
+        <h4>You should get this...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/test-result.PNG"
+          alt=""
+        />
+        <h3>Now let's make the delete button work.</h3>
+        <h2>Delete functionality</h2>
+        <h3>
+          For this functionality we are going to use the state hook to store the
+          list of expenses.
+        </h3>
+        <h4>
+          So call useState, and as the arg pass the array of mock data we just
+          made.
+        </h4>
+        <img
+          src="../../imgs/project-building-expenselist/usestate.PNG"
+          alt=""
+        />
+        <h4>Save it to const expenses and setExpenses...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/save-usestate.PNG"
+          alt=""
+        />
+        <h3>
+          With that, that last step is to remove the given expense from the
+          array.
+        </h3>
+        <h3>
+          We want to return all the expenses except the one with the given id.
+        </h3>
+        <h4>
+          So call set expenses, and pass expenses.filter with e going to e.id
+          and it should not be equal to the id
+        </h4>
+        <img
+          src="../../imgs/project-building-expenselist/ondelete-final.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          What this does is filters through and returns the expenses if the
+          expenses id is not the one we selected.
+        </h3>
+        <h3>With that our table is finished! Congrats!</h3>
+        <h2>Dynamically render the entire table</h2>
+        <h3 class="grn">
+          For one last touch, if there are no expenses, we don't want to render
+          the table at all.
+        </h3>
+        <h4>Simply add this condidtion...</h4>
+        <img
+          src="../../imgs/project-building-expenselist/dynamic-render.PNG"
+          alt=""
+        />
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>

@@ -90,6 +90,7 @@ h3 > a {
 h4 {
     text-align: center;
     margin: 1rem;
+    margin-bottom: 0.1rem;
 }
 
 h5 {
