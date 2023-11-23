@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Adding an Expense</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Adding an Expense</h1>
+        <h2>Define the interface</h2>
+        <h3>
+          You should have already added the onSubmit attribute to the form.
+        </h3>
+        <h3>
+          Now we need to define the interface for what we pass to that
+          attribute.
+        </h3>
+        <h4>
+          onSubmit is a function that takes data as type ExpenseFormData and
+          returns void...
+        </h4>
+        <img src="../../imgs/project-adding-an-expense/interface.PNG" alt="" />
+        <h4>Then add the props to the param...</h4>
+        <img src="../../imgs/project-adding-an-expense/props-add.PNG" alt="" />
+        <h4>
+          Finally, where we submit the form, instead of console.log, we delegate
+          to onSubmit..
+        </h4>
+        <img src="../../imgs/project-adding-an-expense/handle.PNG" alt="" />
+        <h2>ExpenseForm onSubmit</h2>
+        <h3 class="grn">
+          Now head back to the App component, and handle the onSubmit of the
+          ExpenseForm.
+        </h3>
+        <h4>Just log the data for this moment...</h4>
+        <img src="../../imgs/project-adding-an-expense/app-submit.PNG" alt="" />
+        <h3>
+          This console log is just to make sure that everything works. Then, we
+          will come back and add the data to the expenses array.
+        </h3>
+        <h3 class="orng">
+          Now if you fill out the form with valid data and submit it, you will
+          see the data logged to the console.
+        </h3>
+        <h3>The final part is updating the state.</h3>
+        <h2>Updating the state</h2>
+        <h4>First, rename data to expense...</h4>
+        <img
+          src="../../imgs/project-adding-an-expense/rename-data.PNG"
+          alt=""
+        />
+        <h4>
+          Then, instead of a console.log, call setExpenses and pass a new
+          array...
+        </h4>
+        <img src="../../imgs/project-adding-an-expense/new-arr.PNG" alt="" />
+        <h3>
+          The new array needs to have all the items in the existing array, and
+          then add a new object to the array.
+          <img src="../../imgs/project-adding-an-expense/new-obj.PNG" alt="" />
+
+          In the new object we need to spread all the propertys of the existing
+          expense, and then add the id property.
+          <img
+            src="../../imgs/project-adding-an-expense/new-item-obj.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          In a real app the id is generated on the server, but we shouldn't
+          worry about those complexitys for now
+        </h3>
+        <h3 class="grn">Great! We can add an expense!</h3>
+        <h3 class="grn">
+          As one last step, we should clear the form when it's submitted.
+        </h3>
+        <h2>Clear the form on submition</h2>
+        <h3>
+          Back to where we declared the form hook, we want to grab the reset
+          function.
+          <img src="../../imgs/project-adding-an-expense/reset.PNG" alt="" />
+          Now, instead of just calling for onSubmit, we pass an arrow function
+          with the data...
+          <img
+            src="../../imgs/project-adding-an-expense/arrow-data.PNG"
+            alt=""
+          />
+          In that arrow function, we call onSubmit with the data, then reset the
+          form.
+          <img
+            src="../../imgs/project-adding-an-expense/reset-form.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">Great! Congratulations for making it this far!</h3>
+        <h3>
+          This was alot and probably confusing af but you still had to have
+          learned quite a bit.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
