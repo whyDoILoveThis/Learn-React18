@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Integrating with React Hook Form and Zod</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <p style="text-align: center">(This another long one)</p>
+        <h1>Integrating with React Hook Form and Zod</h1>
+        <h2>Import z from Zod</h2>
+        <h3>
+          The first thing we need to do is import z from zod, and call z.object
+          to create the schema.
+        </h3>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/import-z.PNG"
+          alt=""
+        />
+        <h2>Apply some rules</h2>
+        <h3>We have 3 inputs that we need to write rules for.</h3>
+        <h3 class="grn">
+          Name and age are easy enough, but what about category?
+        </h3>
+        <h3 class="orng">
+          The type for the category field isn't going to be a string or a
+          number, it's going to be one of a set of values.
+        </h3>
+        <h3>
+          So it could be groceries, utilities, or entertainment, but nothing
+          else.
+        </h3>
+        <h3 class="orng">
+          To achieve that, we use a different type in zod called 'enum'. An enum
+          can be one of many values.
+        </h3>
+        <h4>Now, enum expects an array of objects...</h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/array-of-obj.PNG"
+          alt=""
+        />
+        <h3>
+          But we don't want to hard code them here, because we already created
+          our categories.
+        </h3>
+        <h4>So we just pass our categories...</h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/dont-hard-code.PNG"
+          alt=""
+        />
+        <h3 class="red">
+          We have an err on categories because zod expects the array we pass to
+          enum to be constant, or read-only.
+        </h3>
+        <h3 class="grn">
+          But, why is this happening? We declared it as a const in the App! Boo!
+        </h3>
+        <h3 class="red">
+          You must understand, that declaring as a const will prevent us from
+          setting it to a new array...
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/cont-no-change.PNG"
+            alt=""
+          />
+          BUT DOESN'T PREVENT THE USE OF ARRAY METHODS!
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/DOESNT-PREVENT-ARR-METH.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">That means this isn't actually a read-only array.</h3>
+        <h3 class="grn">
+          To make this a read-only array, we have to append 'as const' to the
+          end of it.
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/as-const.PNG"
+            alt=""
+          />
+          This is just some Typescript magic. Dont worry if you are unfamiliar.
+          You will pick up these techniques as you build more react and
+          typescript projects.
+        </h3>
+        <h4>
+          Now back in the ExpenseForm the err is gone, store the result in a
+          const schema...
+        </h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/const-schema.PNG"
+          alt=""
+        />
+        <h4>Next, use z.infer to create a Typescript type...</h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/typescript-type.PNG"
+          alt=""
+        />
+        <h3 class="grn">With that, we are ready to plug in react-hook-form.</h3>
+        <h2>plug-in react hook form</h2>
+        <h4>First we need to import useForm, and ZodResolver...</h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/import-useform.PNG"
+          alt=""
+        />
+        <h3>
+          Now, in our component, we call the form hook, and in angle brackets we
+          specify the type of the form data.
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/useform-type.PNG"
+            alt=""
+          />
+          When we call this we pass a config obj, and set the resolver to
+          zodResolver, and pass zodResolver the schema obj we just created.
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/pass-schema.PNG"
+            alt=""
+          />
+          This returns an obj that we destructure to grab register,
+          handleSubmit, and formstate. Then we destructure formState to grab the
+          errors obj.
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/destruct.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">
+          You can find where we introduced the register function in this course
+          <a
+            target="_blank"
+            href="/html/building-forms/managing-forms-with-react-hook-form.html#registerfunction"
+            >here.</a
+          >
+        </h3>
+        <h2>Register the inputs</h2>
+        <h3>The next step is to register each input.</h3>
+        <h4>
+          So we call register, pass the input name, and spread the result...
+        </h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/register-input.PNG"
+          alt=""
+        />
+        <h4>Do the same for the ammount and the select category...</h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/registr-again.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          Great! We have registered our fields. The next step is to add
+          validation messages.
+        </h3>
+        <h2>Add validation messages</h2>
+        <h3>For this we need to dynamically render a 'p' after each input.</h3>
+        <h3>
+          So if we have a property called 'description' in the errors object,
+          then we want to render a 'p' with the class of text danger.
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/text-danger.PNG"
+            alt=""
+          />
+          In the p we want to render the error.description.message
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/p-render-msg.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          Copy and paste this line after the other 2 inputs, and dont forget to
+          change the name.
+        </h3>
+        <h2 class="red">The ERROR</h2>
+        <h4 class="red">At this point, we get this err in the browser...</h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/err-in-browser.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          This err is coming from where we created the schema, and set the enum
+          to categories.
+        </h3>
+        <h3 class="red">
+          The reason this is happening, is because in the App component we have
+          imported the ExpenseForm before we created the categories array.
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/the-reseon.PNG"
+            alt=""
+          />
+          This means, while we are trying to create the schema, categories is
+          uninitialized.
+        </h3>
+        <h3 class="grn">
+          To fix this issue, we need to go to the App component, and move the
+          categories to it's own importable module.
+        </h3>
+        <h3 class="orng">
+          Then we make sure our modules are imported in the right order.
+        </h3>
+        <h2>Fix the error</h2>
+        <h3>
+          The first thing we do is create a file inside the expense-tracker
+          folder, but outside of the components folder.
+        </h3>
+        <h4>We don't use tsx because this is just a data file...</h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/categories-ts.PNG"
+          alt=""
+        />
+        <h4>
+          Next we remove the categories from the app, and place them here...
+        </h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/move-the-categories.PNG"
+          alt=""
+        />
+        <h4>
+          We don't want to use a named export either, so just export categories
+          as default...
+        </h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/export-default.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          Now we import categories to the App
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/import-to-app.PNG"
+            alt=""
+          />
+          And the ExpenseForm...
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/import-to-tracker.PNG"
+            alt=""
+          />
+          And the ExpenseFilter...
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/import-to-filter.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          So now we are not dependent on the order of components being created.
+        </h3>
+        <h2>Form submition</h2>
+        <h3>Now we need to handle form submission.</h3>
+        <h3 class="grn">
+          So back to the ExpenseForm component, go to the form element.
+        </h3>
+        <h3>
+          In the form element, we need to set the onSubmit to the handleSubmit
+          function that we got from the form hook.
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/handle-submit.PNG"
+            alt=""
+          />
+          Then we pass handleSubmit an arrow function. That function will get
+          executed if the form is valid.
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/log-data.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">Now, go ahead and test our validation.</h3>
+        <h3>
+          If everything is working, then we just need to customize the messages.
+        </h3>
+        <h2>Customize err msgs</h2>
+
+        <h4>
+          Back to the schema, add an object to where we defined the min length,
+          and set the message...
+        </h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/descr-msg.PNG"
+          alt=""
+        />
+        <h3>
+          The err for the ammount has that issue where it recieved a string.
+        </h3>
+        <h4>
+          To fix this, go to where we registered the amount field, and set
+          'valueAsNumber' to true...
+        </h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/amount-fix.PNG"
+          alt=""
+        />
+        <h4>Now we can set the err msg for an empty amount field...</h4>
+        <img
+          src="../../imgs/project-integrating-with-react-hook-form-and-zod/amount-msg-err-set.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          The err msg for the category is also ugly, and customizing it is
+          tricky. Let me show you.
+          <br />
+          <br />
+          First we pass an object...
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/pass-obj.PNG"
+            alt=""
+          />
+          In this object we set 'errorMap' to a function...
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/err-map.PNG"
+            alt=""
+          />
+          And have the function return an object holding the message...
+          <img
+            src="../../imgs/project-integrating-with-react-hook-form-and-zod/fial.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="red">
+          I know this is a little bit tricky, don't bother trying to memorize
+          this, it varies from one application to the next.
+          <br />
+          <br />
+          The thing to take away from this is understanding the big picture.
+        </h3>
+        <h3>The final part is handling the form submission.</h3>
+        <h3>
+          So if the form is submitted properly, then we need to notify the app
+          component, so that the app component adds the new expense to the list.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
