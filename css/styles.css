@@ -217,7 +217,6 @@ a:hover {
 }
 .to-top:hover {
     background-color: #d6d6d629;
-    transition: background-color 0.4s ease;
 }
 .to-bottom:hover {
     background-color: #d6d6d629;}
@@ -243,6 +242,7 @@ a:hover {
 
 .back-btn {
     transition: background-color 0.4s ease;
+    cursor: pointer;
 
     width: 24px;
     position: fixed;
@@ -260,7 +260,9 @@ a:hover {
     backdrop-filter: blur(1.9px);
     -webkit-backdrop-filter: blur(1.9px);
 }
-
+.back-btn:hover {
+    background-color: #d6d6d629;
+}
 
 .check-mark {
     width: 14px;
