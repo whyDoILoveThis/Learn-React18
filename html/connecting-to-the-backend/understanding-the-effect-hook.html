@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Understanding the Effect Hook</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Understanding the Effect Hook</h1>
+        <h3>
+          Before we talk about connecting our react apps to a backend, you need
+          to understand how to use the effect hook in react.
+        </h3>
+        <h3>
+          Earlier we learned that we should make our react components pure
+          functions.
+        </h3>
+        <h3 class="grn">
+          We learned about pure components
+          <a href="../managing-component-state/keeping-component-pure.html"
+            >here.</a
+          >
+        </h3>
+        <h3 class="orng">
+          A pure function should not have any side effects, and should return
+          the same result everytime we give it the same input.
+        </h3>
+        <h3 class="orng">
+          To keep components pure we should keep any changes out of the render
+          phase.
+        </h3>
+        <h2>Examples of side Effects</h2>
+        <h3>
+          But there are situations where we might want to store data in local
+          storage, or call to the server to fetch/save data, or maybe we want to
+          manually modify a DOM element
+        </h3>
+        <h3 class="grn">
+          None of those situation are about rendering a component.
+        </h3>
+        <h3 class="grn">They have nothing to do with returning jsx markup.</h3>
+        <h3 class="orng">So where can we implement them?</h3>
+        <h3 class="red">This is where the effect hook comes in!</h3>
+        <h3>
+          <em style="color: rgba(255, 255, 255, 0.79)">
+            With the effect hook, we can tell react to execute a piece of code
+            AFTER a component is rendered.
+          </em>
+        </h3>
+        <h2>Example with text input</h2>
+        <h4>Start with a text input in the App...</h4>
+        <img src="../../imgs/understanding-the-effect-hook/input.PNG" alt="" />
+        <h3 class="grn">
+          Let's say that when the App starts, we want to put focus on this input
+          field.
+        </h3>
+        <h3>
+          To do this, first we need to use the ref hook to get a reference to
+          the input field.
+        </h3>
+        <h2>Reference the input field</h2>
+        <h4>
+          So call useRef, initialize it to null, and set the target element...
+        </h4>
+        <img src="../../imgs/understanding-the-effect-hook/useref.PNG" alt="" />
+        <h4>It returns a reference object that we store like this...</h4>
+        <img
+          src="../../imgs/understanding-the-effect-hook/const-ref.PNG"
+          alt=""
+        />
+        <h4>Then we associate the ref obj with the input field...</h4>
+        <img
+          src="../../imgs/understanding-the-effect-hook/input-ref.PNG"
+          alt=""
+        />
+        <h4>
+          Finally, check if ref.current is defined, if it is call ref.focus()...
+        </h4>
+        <img src="../../imgs/understanding-the-effect-hook/if-ref.PNG" alt="" />
+        <h3 class="orng">
+          Here's the thing, this if statement has nothing to do with returning
+          jsx markup.
+        </h3>
+        <h3 class="grn">
+          With this piece of code we are changing the state of the DOM.
+        </h3>
+        <h3 class="red">
+          That is to say, this piece of code has a 'side effect'.
+        </h3>
+        <h3>It's changing something outside of its component.</h3>
+        <h3>
+          <em class="red"
+            ><em class="orng">⚠</em> That means our component is no longer
+            pure!!</em
+          >
+        </h3>
+        <h3 class="grn">
+          <p style="margin: 0; text-align: center">💡</p>
+          To make our component pure again, we can use the effect hook.
+        </h3>
+        <h2>Using the effect hook</h2>
+        <h4>So call useEffect and pass it an arrow function...</h4>
+        <img
+          src="../../imgs/understanding-the-effect-hook/use-effect.PNG"
+          alt=""
+        />
+        <h4>Next, move our if statement inside the function...</h4>
+        <img
+          src="../../imgs/understanding-the-effect-hook/move-the-if.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          The name of useEffect is a little misleading, and alot of people hate
+          it. It would be better if it was called 'afterRender'. But, that's
+          just react.
+        </h3>
+        <h3 class="red">
+          What you need to understand is that, the function we pass here will be
+          called AFTER each render.
+        </h3>
+        <h3 class="grn">
+          This is an oportunity for us to write any code that causes side
+          effects.
+        </h3>
+        <h2 class="red">Important notes</h2>
+        <h3>There are a few things you need to know about the effect hook.</h3>
+        <h3 class="orng">
+          Just like the state and ref hook, we can only call the effect hook at
+          the top level of our component. So we can't call it in loops or if
+          statements.
+        </h3>
+        <h3 class="grn">
+          Similar to the ref and state hook, we can call the effect hook
+          multiple times for different purposes.
+        </h3>
+        <h3 class="grn">
+          For example we might have another effect hook like this...
+          <img
+            src="../../imgs/understanding-the-effect-hook/separate.PNG"
+            alt=""
+          />
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
