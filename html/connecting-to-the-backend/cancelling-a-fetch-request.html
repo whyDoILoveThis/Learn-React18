@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Cancelling a Fetch Request</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Cancelling a Fetch Request</h1>
+        <h2>Topic im talking about</h2>
+        <h3>Earlier we learned about effect clean up.</h3>
+        <h3>
+          We learned that sometimes we need to return a cleanup func from our
+          effect.
+        </h3>
+        <h3 class="grn">
+          In this example we are sending an HTTP request to the server to fetch
+          the users.
+        </h3>
+        <h3 class="orng">What if the user navigates away from this page?</h3>
+        <h3 class="orng">
+          We don't want to wait for the server to return the data, and then
+          render it here.
+        </h3>
+        <h3>
+          So as a best practice, when we fetch data in an effect, we should also
+          provide a cleanup func for cancelling the fetch request incase the
+          data is no longer needed.
+        </h3>
+        <h3>To do that we create an object called controller.</h3>
+        <h2>cancelling a req with the Controller object</h2>
+        <h4>Create the controller obj...</h4>
+        <img src="../../imgs/cancelling-a-fetch-request/abortion.PNG" alt="" />
+        <h3>
+          This is a built in class in modern browsers that allows us to abort
+          async operations like, fetch req, dom manipulation, or any operation
+          that might take time to complete.
+        </h3>
+        <h4>
+          Now, when we call the get method, as a second arg we pass a config
+          obj...
+        </h4>
+        <img
+          src="../../imgs/cancelling-a-fetch-request/second-get-arg.PNG"
+          alt=""
+        />
+        <h4>In this object we set the signal property to controller.signal</h4>
+        <img src="../../imgs/cancelling-a-fetch-request/signal.PNG" alt="" />
+        <h4>
+          Finally, at the end, return our cleanup fuction, which is
+          controller.abort()
+        </h4>
+        <img
+          src="../../imgs/cancelling-a-fetch-request/return-abort.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          Remove the x we added to the fetch url when simulating the err, so
+          that we are not simulating an err anymore.
+        </h3>
+        <h2>Cancelled err</h2>
+        <h4>We get this ugly cancelled err...</h4>
+        <img
+          src="../../imgs/cancelling-a-fetch-request/cancelled-err.PNG"
+          alt=""
+        />
+        <h4>To remove this add a condition to the catch block...</h4>
+        <img
+          src="../../imgs/cancelling-a-fetch-request/condition-catch-block.PNG"
+          alt=""
+        />
+        <h3 class="orng">CanceledError is part of the axios module.</h3>
+        <h3 class="grn">Good so the err is gone.</h3>
+        <h2>How strict mode affects this process</h2>
+        <h3>Now go to the network tab of the dev tool.</h3>
+        <h3>
+          You can see that we have 2 req sent to the users endpoint.
+          <br />
+          <br />
+          The first request is canceled because as part of mounting this
+          component for the second time, first removes the previous component,
+          and that is like the user navigating away from the page.
+          <br />
+          <br />
+          At that moment our cleanup function is called and our req is canceled.
+          <br />
+          <br />
+          This is another benefit of strict mode in react. With strict mode
+          enabled, we don't have to worry about a req being sent to the server
+          twice.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
