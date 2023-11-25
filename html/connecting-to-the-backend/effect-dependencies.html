@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Effect Dependencies</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Effect Dependencies</h1>
+        <h3>
+          So it has already been stressed that the useEffect runs a function
+          AFTER the component is rendered.
+        </h3>
+        <h3>
+          There are situations where we don't want this default behavior, and
+          want more control over WHEN this function gets executed.
+        </h3>
+        <h3 class="grn">Let's look at an example.</h3>
+        <h2>Example</h2>
+        <h4>Add a new component to the project...</h4>
+        <img src="../../imgs/effect-dependencies/new-file.PNG" alt="" />
+        <h4>
+          In this component we define a state var for the products, and init it
+          to an empty arr...
+        </h4>
+        <img src="../../imgs/effect-dependencies/state.PNG" alt="" />
+        <h3>
+          Here we use the effect hook to call the server and fetch the products.
+          <br />
+          <br />
+          So we pass a function to the effect hook...
+          <img src="../../imgs/effect-dependencies/use-eff.PNG" alt="" />
+          <em class="red"
+            >We refer to this as a callback function, because react is going to
+            call this function back.</em
+          >
+          <br />
+          In this function is where we would fetch to the server, but we don't
+          want to worry with that complexity for now.
+          <br />
+          <br />
+          Instead, just console.log something...
+          <img src="../../imgs/effect-dependencies/console-log.PNG" alt="" />
+          So, we fetch the products then update the products...
+          <img src="../../imgs/effect-dependencies/setproduct.PNG" alt="" />
+        </h3>
+        <h3 class="red">
+          Now we have this err...
+          <img src="../../imgs/effect-dependencies/err.PNG" alt="" />
+        </h3>
+        <h3 class="orng">
+          The reason we see this err is because we initialized our state const
+          to an empty array, so the Typescript compiler doesn't know what kind
+          of objects we want to store in this array.
+        </h3>
+        <h3 class="grn">
+          Is it going to be strings, numbers, objects or what.
+          <br />
+          <br />
+          That's when we specify the type of this constant in angle brackets
+          here...
+          <img src="../../imgs/effect-dependencies/specify-type.PNG" alt="" />
+        </h3>
+        <h2>Test the example</h2>
+        <h4>Now go to the app component and add the ProductList...</h4>
+        <img src="../../imgs/effect-dependencies/product-to-app.PNG" alt="" />
+        <h3 class="red">
+          If you go look at the console, you will see it having a fricken
+          seizure!!
+        </h3>
+        <h3 class="orng">It's stuck in an infinite loop!</h3>
+        <h3>So remove the list from the app for now.</h3>
+        <h2>The problem</h2>
+        <h3 class="grn">
+          So why is this happening?
+          <br />
+          <br />
+          Well, we know that the effect hook is triggered AFTER each render.
+          <br />
+          <br />
+          But we are updating the state in the effect hook, so that triggers a
+          re-render.
+          <img
+            src="../../imgs/effect-dependencies/why-this-happens.PNG"
+            alt=""
+          />
+          So we get this infinite chain of update state, re-render, update
+          state, re-render, update state, re-render.......
+        </h3>
+        <h2>The solution to the problem</h2>
+        <h3>
+          To solve this problem we should tell react to run this hook, only
+          once, the first time this component is rendered.
+        </h3>
+        <h3 class="orng">The effect hook has a second argument we can pass.</h3>
+        <h3 class="orng">The second argument is optional.</h3>
+        <h3>We can pass the effect hook an array of dependencies</h3>
+        <h3 class="grn">
+          In this array we can pass one or more vars, that can be props or
+          state, and our effect will be dependant on these values.
+        </h3>
+        <h3 class="red">
+          💡 If any of those values change, react will re-render our effect.
+          <br />
+          <br />
+          But, if we pass an empty array that means our effect is not dependant
+          on any values, so it will be executed only once.
+          <img
+            src="../../imgs/effect-dependencies/optional-secont-empty.PNG"
+            alt=""
+          />
+        </h3>
+        <h3>
+          To see this in action head back to the app component and add the
+          ProductList back.
+          <img src="../../imgs/effect-dependencies/result.PNG" alt="" />
+          We don't have the errs anymore!
+          <br />
+          <br />
+          Do you remember why this component is rendered twice?
+          <br />
+          Recap on that
+          <a
+            target="_blank"
+            href="../../html/managing-component-state/understanding-the-strict-mode.html#WhatStrictModedoes"
+            >here</a
+          >
+        </h3>
+        <h2>Back to the example</h2>
+        <h3>
+          Now let's say we want a dropdown list for the user to select a
+          category of products and then show those products.
+        </h3>
+        <h4>Add a select element with options in the App...</h4>
+        <img src="../../imgs/effect-dependencies/select.PNG" alt="" />
+        <h3 class="grn">
+          Now we need to keep track of the selected category in a state var, so
+          that when the state is changed our ProductList is re-rendered
+        </h3>
+        <h4>So create a state for the category...</h4>
+        <img src="../../imgs/effect-dependencies/state-select.PNG" alt="" />
+        <h4>Then handle the onChange of the select element...</h4>
+        <img src="../../imgs/effect-dependencies/handel-change.PNG" alt="" />
+        <h3>
+          Next we can check to see if it's working.
+          <br />
+          <br />
+          So inspect with react dev tools...
+          <img
+            src="../../imgs/effect-dependencies/inspect-components.PNG"
+            alt=""
+          />
+          Now when you select a different category, you see the change updated
+          in the state.
+          <img src="../../imgs/effect-dependencies/see-the-change.PNG" alt="" />
+        </h3>
+        <h3 class="grn">
+          Now we need to pass the selected category as a prop to the ProductList
+          component.
+        </h3>
+        <h2>Pass selected category as prop</h2>
+        <h3>
+          So back in the ProductList component we should use an interface to
+          define the shape of props.
+        </h3>
+        <h3 class="orng">But, here we learn a shortcut!</h3>
+        <h3 class="orng">
+          We don't have to explicitly define an interface everytime we need a
+          prop.
+        </h3>
+        <h4>So we're used to seeing code like this...</h4>
+        <img src="../../imgs/effect-dependencies/used-to-this.PNG" alt="" />
+        <h3 class="red">
+          🤯 If we only have a single, or a max of 2 props, we can declare them
+          inline here!
+          <img src="../../imgs/effect-dependencies/mind-blown.PNG" alt="" />
+        </h3>
+        <h3 class="grn">
+          Now we can say 'fetching products in', category
+          <img src="../../imgs/effect-dependencies/fetching-in.PNG" alt="" />
+        </h3>
+        <h3>
+          Now, back to the App we have to set the category to the selected
+          category...
+          <img
+            src="../../imgs/effect-dependencies/product-set-catedgory.PNG"
+            alt=""
+          />
+          If we test our app now, nothing happens. Why?
+        </h3>
+        <h3 class="orng">
+          The reason this is happening is because of the empty array that we
+          passed as a dependency to the effect hook.
+          <img
+            src="../../imgs/effect-dependencies/why-it-happenened.PNG"
+            alt=""
+          />
+          We told react that this effect is not dependant on any values, so
+          react executed our effect only once.
+        </h3>
+        <h3 class="grn">
+          To solve this bug in our application, we have to tell react that this
+          effect should be dependant on the category prop.
+          <img
+            src="../../imgs/effect-dependencies/dependent-on-category.PNG"
+            alt=""
+          />
+          So anytime the category changes, react should re-execute this effect.
+        </h3>
+        <h3>💡 For a more complex app, we could have multiple dependencys</h3>
+        <h3>
+          You should now see the category you select printed to the console.
+        </h3>
+        <h2>Recap</h2>
+        <h3 class="orng">
+          The second arg to the effect hook is the dependencies array.
+        </h3>
+        <h3>
+          <em class="red">NO SECOND ARG</em>
+          <br />
+          <br />
+          If you do not supply the second arg, react will run the effect after
+          every single render of the component.
+        </h3>
+        <h3>
+          <em class="red">EMPTY ARRAY AS SECOND ARG</em>
+          <br />
+          <br />
+          If we pass an empty array, react will execute our effect only once,
+          the FIRST time our component is rendered.
+        </h3>
+        <h3>
+          <em class="red">VALUES IN THE ARRAY</em>
+          <br />
+          <br />
+          If you add one or more values to the array, which can be props or
+          state vars, react will run the effect anytime any of those values
+          change.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
