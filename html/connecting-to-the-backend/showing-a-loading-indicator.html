@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Showing a Loading Indicator</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Showing a Loading Indicator</h1>
+        <h2>Topic im talking about</h2>
+        <h3>
+          Let's see how we can show a loading indicator while we are fetching
+          data.
+        </h3>
+        <h4>First, use a boolean state var to store an isLoading state.</h4>
+        <img
+          src="../../imgs/showing-a-loading-indicator/isloading.PNG"
+          alt=""
+        />
+        <h4>Then, right befor we call to the server, we say isLoading...</h4>
+        <img
+          src="../../imgs/showing-a-loading-indicator/isloading-true.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          To set isLoading to false we cannot call it after entire get method,
+          because if we did it would get immediately turned off due to the
+          nature of the async operation.
+        </h3>
+        <h4>So instead we must call it like...</h4>
+        <img
+          src="../../imgs/showing-a-loading-indicator/her-we-go.PNG"
+          alt=""
+        />
+        <h3>
+          💡 The order of these functions doesn't matter because react applys
+          all the changes, then renders the component.
+        </h3>
+        <h3 class="orng">But now we have duplicated setLoading! Boo!</h3>
+        <h2>the .finally method</h2>
+        <h3 class="grn">
+          The proper way to do this is in the .finally() method.
+        </h3>
+        <h3 class="grn">💡 All promises have a finally method.</h3>
+        <h3>
+          In the finally method we can pass a callback, and this will always get
+          executed when our promise is settled.
+          <em class="red">Whether it's resolved, or rejected!</em>
+          <br />
+          <br />
+          With that we can write the code only once...
+          <img
+            src="../../imgs/showing-a-loading-indicator/show-once.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="red">
+          ❗❗❗❗❗🤯💥💣🧨
+          <br />
+          HOWEVER
+          <br />
+          This does NOT WORK WITH STRICT MODE turned on.
+          <br />
+          🧨💣💥🤯❗❗❗❗❗
+          <br />
+          There is no explanation to be found for this anywhere.
+        </h3>
+        <h3 class="grn">
+          So unfortunaltely for the developement stage, we have to duplicate
+          isLoading.
+        </h3>
+        <h2>Rendering the loader</h2>
+        <h4>So we render a bootstrap loader if isLoading is true...</h4>
+        <img
+          src="../../imgs/showing-a-loading-indicator/render-spinner.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          We probably won't see the loader because it loads so fast on
+          localhost, but we can throttle the connection in the network tab of
+          the dev tool, and then we will see it with each refresh.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
