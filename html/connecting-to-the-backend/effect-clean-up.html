@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Effect Clean Up</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Effect Clean Up</h1>
+        <h3>
+          Sometimes our code doesn't need any clean up. Like here, we are simply
+          setting the title.
+          <img
+            src="../../imgs/effect-clean-up/no-need-for-cleaning.PNG"
+            alt=""
+          />
+          But what if this was a chat component and here we were connecting to a
+          chat server?
+        </h3>
+        <h3>
+          At some point we need to disconnect from the chat server. For example,
+          if the user navigates away from the chat page.
+        </h3>
+        <h3 class="grn">Let's see how we can do this.</h3>
+        <h2>Simulating a server connection</h2>
+        <h4>
+          Let's write a couple of functions to simulate connecting, and
+          disconnecting from a server...
+        </h4>
+        <img src="../../imgs/effect-clean-up/connect-disconnect.PNG" alt="" />
+        <h3>
+          So we connect...
+          <img src="../../imgs/effect-clean-up/connect.PNG" alt="" />
+          To provide cleanup code, we return a function, and call the disconnect
+          func...
+          <img src="../../imgs/effect-clean-up/return-disconnect.PNG" alt="" />
+        </h3>
+        <h3 class="orng">
+          So the function we pass to the effect hook can optionally return a
+          function for cleaning up.
+        </h3>
+        <h3>
+          💡 This is not always necessary, but if we need to do cleanup, this is
+          how we do it.
+        </h3>
+        <h2>IMPORTANT INFO</h2>
+        <h3 class="grn">
+          Generally speaking, the cleanup func should undo whatever the effect
+          was doing.
+        </h3>
+        <h3>
+          For example, if we are connecting, or subscribing to something, our
+          cleanup func should disconnect or unsubscribe.
+        </h3>
+        <h3>
+          As another example, if we are showing a modal here, our cleanup func
+          should hide the modal.
+        </h3>
+        <h3>
+          Or if we are fetching some data from the server in the effect, our
+          cleanup func should either abort the fetch, or ignore the result.
+          <br />
+          <br />
+          We'll look at an example of that later in this section.
+        </h3>
+        <h2>Seeing how it works</h2>
+        <h4>You can see that we get 3 messages...</h4>
+        <img src="../../imgs/effect-clean-up/the-console.PNG" alt="" />
+        <h3>You learned about the strict mode in dev mode.</h3>
+        <h3 class="grn">
+          Well, before it got rendered the second time, the disconnect function
+          was executed.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
