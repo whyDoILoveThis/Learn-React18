@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Handling Errors</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Handling Errors</h1>
+        <h2>Things can happen</h2>
+        <h3>While calling the server, many things can go wrong.</h3>
+        <h3>
+          Perhaps the network connection is gonna drop out, or the server is
+          gonna go offline, whatever it is.
+        </h3>
+        <h3>
+          As a good dev, we should anticipate such problems, and handle errs
+          properly.
+        </h3>
+        <h2>Catching errors</h2>
+        <h3>
+          In JS, all promises have a method called 'catch' that we can use to
+          catch errors.
+          <br />
+          <br />
+          So right after a .then we call a .catch
+          <img src="../../imgs/handling-errors/catch.PNG" alt="" />
+          <em class="red">We pass .catch a callback function.</em>
+          <br />
+          <br />
+          That callback function will get called if there is a problem while
+          fetching the data.
+          <br />
+          <br />
+          The callback func should also take in an err obj. Let's just log the
+          err.
+          <img src="../../imgs/handling-errors/log-err.PNG" alt="" />
+        </h3>
+        <h3 class="orng">
+          To simulate an err, just mess up the endpoint...
+          <img src="../../imgs/handling-errors/simulated-err.PNG" alt="" />
+          And we get tons of info about the err we have...
+          <img src="../../imgs/handling-errors/errssss.PNG" alt="" />
+        </h3>
+        <h2>Display err msg on screen</h2>
+        <h4>Declare a state for our err...</h4>
+        <img src="../../imgs/handling-errors/set-err.PNG" alt="" />
+        <h4>Instead of console.log, set the err to the err.message...</h4>
+        <img src="../../imgs/handling-errors/set-therrrrrrrr.PNG" alt="" />
+        <h4>Finally, render the error only if there is an error...</h4>
+        <img src="../../imgs/handling-errors/rendder.PNG" alt="" />
+        <h3 class="grn">
+          You should now see the error message displayed in the browser window.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
