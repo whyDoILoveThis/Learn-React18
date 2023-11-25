@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Deleting Data</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Deleting Data</h1>
+        <h2>Topic im talking about</h2>
+        <h3>Now let's see how we can delete data.</h3>
+        <h4>First we need to add a button infront of each user...</h4>
+        <img src="../../imgs/deleting-data/delete-btn.PNG" alt="" />
+        <h2>react Whitespace</h2>
+        <h3>
+          If you add this component and save, the Prettier extention in vs code
+          will add this blank space...
+          <img src="../../imgs/deleting-data/whitespace.PNG" alt="" />
+          It adds this because unlike html, a space in your code will not render
+          a space on the page.
+          <br />
+          <em class="red"
+            >When JSX compiles, it removes all whitespace between elements.</em
+          >
+        </h3>
+        <h3>But like this, our buttons are horribly misaligned.</h3>
+        <h3 class="grn">Let's improve the css of this page.</h3>
+        <h2>Style the page</h2>
+        <h4>First, let's add these bootstrap classes to the list...</h4>
+        <img src="../../imgs/deleting-data/bootstrap-list.PNG" alt="" />
+        <h3>
+          Next, we want to apply space-between to the usernames and buttons.
+        </h3>
+        <h4>
+          So use bootstrap to make the li a flex-container with justify content
+          space between...
+        </h4>
+        <img src="../../imgs/deleting-data/bootstrap-list-item.PNG" alt="" />
+        <h3 class="grn">It should look better now.</h3>
+        <h3 class="orng">
+          Also we don't need that whitespace in the code now.
+        </h3>
+        <h3>Next we implement the delete functionality.</h3>
+        <h2>The delete functionality</h2>
+        <h3>
+          First, we set onClick of the button to a funtion, and that function
+          will call a deleteUser function that we will make next.
+          <br />
+          <br />
+          Then we pass the deleteUser function the user obj that we are
+          currently rendering...
+          <img src="../../imgs/deleting-data/onclick-delete.PNG" alt="" />
+        </h3>
+        <h3>
+          Next, just above the return, we declare the deleteUser function...
+        </h3>
+        <h4>deleteUser should take an obj of type User...</h4>
+        <img src="../../imgs/deleting-data/delete-user-declare.PNG" alt="" />
+        <h3 class="grn">
+          This is referencing the User interface that we defined above the App.
+        </h3>
+        <h3>
+          Now, in the delete user function, we have 2 options...
+          <br />
+          <br />
+          We can either update the UI first, and then call the server, or we can
+          call the server first and then update the UI.
+          <br />
+          <br />
+          These two approaches have names...
+          <img src="../../imgs/deleting-data/pes-vs-op.PNG" alt="" />
+        </h3>
+        <h3 class="grn">
+          Whenever possible, we should prefer the optimistic update.
+        </h3>
+        <h4>
+          So first we filter set the users to filter through and get rid of the
+          one...
+        </h4>
+        <img src="../../imgs/deleting-data/get-rid.PNG" alt="" />
+        <h3 class="grn">
+          Great! if you test it now the UI is working. Now we need to apply
+          those same changes to the server.
+        </h3>
+        <h3>
+          For that we call axios.delete, pass the url of the server we are on,
+          then pass the id of the user we want to delete.
+          <br />
+          <br />
+          So first call axios delete...
+          <img src="../../imgs/deleting-data/axios-delete.PNG" alt="" />
+          Then pass the url with the id of the user...
+          <img
+            src="../../imgs/deleting-data/add-user-id-to-axios-delete.PNG"
+            alt=""
+          />
+          And just like before, this returns a promise, but we don't want to do
+          anything with it when the promise is resolved, so just call catch by
+          itself...
+          <img src="../../imgs/deleting-data/catch-err.PNG" alt="" />
+        </h3>
+        <h3 class="grn">
+          Along with setError, we want to set the UI back to the original state.
+        </h3>
+        <h4>So spread and store the users array as original users...</h4>
+        <img src="../../imgs/deleting-data/original-users.PNG" alt="" />
+        <h4>If we catch an err, simply set the users back...</h4>
+        <img src="../../imgs/deleting-data/set-users-back.PNG" alt="" />
+        <h3 class="grn">Everything should be working!</h3>
+        <h3 class="orng">To simulate an err, mess up the delete url.</h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
