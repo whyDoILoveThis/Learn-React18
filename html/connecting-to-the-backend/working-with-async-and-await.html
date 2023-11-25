@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Working with Async and Await</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Working with Async and Await</h1>
+        <h2>Topic im talking about</h2>
+        <h3>
+          Some people don't like then and catch methods like this...
+          <img
+            src="../../imgs/working-with-async-and-await/some-dont-like.PNG"
+            alt=""
+          />
+        </h3>
+        <h3>
+          So we should learn how to write this code in a more linear way, using
+          async/await.
+        </h3>
+        <h3 class="orng">
+          I wanna go ahead and say though, I do NOT favor the async/await
+          approach. You'll see why.
+        </h3>
+        <h2>Explanation</h2>
+        <h3>
+          So we should understand that the get method returns a promise...
+          <img
+            src="../../imgs/working-with-async-and-await/get-returns-promise.PNG"
+            alt=""
+          />
+          If this promise is resolved we get a response obj...
+          <img
+            src="../../imgs/working-with-async-and-await/return-response-obj.PNG"
+            alt=""
+          />
+          And if something goes wrong we get an err...
+          <img
+            src="../../imgs/working-with-async-and-await/return-err.PNG"
+            alt=""
+          />
+          <em class="orng"
+            >So let's see how we can re-write this code without
+            then/catch...</em
+          >
+          <img
+            src="../../imgs/working-with-async-and-await/without-then-catch.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">
+          In JS, if we have a promise, we can put the await keyword infront of
+          the promise to get the result. The response.
+          <img
+            src="../../imgs/working-with-async-and-await/await-axios.PNG"
+            alt=""
+          />
+          <em class="red">But we get an err...</em>
+          <img
+            src="../../imgs/working-with-async-and-await/await-err.PNG"
+            alt=""
+          />
+          So to use the await keyword, we need the async keyword here...
+          <img
+            src="../../imgs/working-with-async-and-await/async-gos-here.PNG"
+            alt=""
+          />
+          <em class="red">But we have ANOTHER err.</em>
+          <br />
+          😡💡 This is because react doesn't allow us to pass an async function
+          to the effect hook!
+          <br />
+          <br />
+          To work around this, we need to define an async function inside the
+          effect, then move our await code into that async function.
+          <img
+            src="../../imgs/working-with-async-and-await/async-inside-effect.PNG"
+            alt=""
+          />
+        </h3>
+        <h3>
+          So, we await the promise, we get a response, then we call setUsers and
+          pass the response data...
+          <img
+            src="../../imgs/working-with-async-and-await/call-setuser.PNG"
+            alt=""
+          />
+          Then right after defining the async function, we call it...
+          <img
+            src="../../imgs/working-with-async-and-await/call-the-funct.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          So thats the happy path if everything goes good, but how do we handle
+          the errors?
+        </h3>
+        <h3>
+          Well, we just use a try/catch inside the async function...
+          <img
+            src="../../imgs/working-with-async-and-await/try-catch.PNG"
+            alt=""
+          />
+          <em class="red">But yet another err...</em>
+          <img
+            src="../../imgs/working-with-async-and-await/yet-another-err.PNG"
+            alt=""
+          />
+          <em class="orng"
+            >The Typescript compiler can't tell the type of the err object.</em
+          >
+          <br />
+          <br />
+          <em class="red">The problem is that we can't annotate it here...</em>
+          <img
+            src="../../imgs/working-with-async-and-await/canot-annotate.PNG"
+            alt=""
+          />
+          <em class="orng"
+            >Type annotation is not available in a catch clause</em
+          >
+          <br />
+          <br />
+          To work around this we have to wrap the err obj in braces, then use
+          the 'as' keyword to tell Typescript the type of this object.
+          <br />
+          <br />
+          So import this...
+          <img
+            src="../../imgs/working-with-async-and-await/axioserr.PNG"
+            alt=""
+          />
+          Then use the as keyword to define the type...
+          <img
+            src="../../imgs/working-with-async-and-await/erraxiosihatethisdumbshitfuckthis.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="red">
+          Async and await with a try catch block is great!!... For alot of
+          things, but I have to admit that this way of using it with the effect
+          hook in react is absolutely horrible.
+          <br />
+          💩🐞🐞🐞😣🤬😒
+        </h3>
+        <h4><em class="red">Just look at the difference!!</em></h4>
+        <img
+          src="../../imgs/working-with-async-and-await/difference.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          I think it's needless to say that going forward I will be using the
+          then/catch approach in the rest of this course.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
