@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Fetching Data</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Fetching Data</h1>
+        <h2>fake backend</h2>
+        <h3>
+          Now that you know how the effect hook works, let's see how we can
+          fetch data from the server.
+        </h3>
+        <h3>
+          In this lesson we will use a fake backend called
+          <a href="https://jsonplaceholder.typicode.com/">JSON Placeholder</a>
+        </h3>
+        <h3>
+          On this website we have various endpoints for getting dummy data to
+          test our apps.
+        </h3>
+        <h3 class="grn">
+          Go to the list of resouces on their site to see what is available for
+          use.
+        </h3>
+        <h3>
+          If you click on the users...
+          <img src="../../imgs/fetching-data/users.PNG" alt="" />
+          If we make a request to this url we will get this list of users with
+          all these propertys...
+          <img src="../../imgs/fetching-data/all-these-propertys.PNG" alt="" />
+        </h3>
+        <h2>Sending HTTP Requests</h2>
+        <h3>
+          To send a request to the server, we can use the fetch function that is
+          implemented in all modern browsers.
+        </h3>
+        <h3>But alot of people prefer a library called 'axios'.</h3>
+        <h2>Install axios</h2>
+        <h4>In the terminal install axios...</h4>
+        <div class="code">
+          <p><em class="orng">npm</em> i axios@1.3.4</p>
+        </div>
+        <h3>We are about to fetch the users from JSONPlaceholder.</h3>
+        <h4>Import axios into the app...</h4>
+        <img src="../../imgs/fetching-data/import-axios.PNG" alt="" />
+        <h4>Next, declare a state var for storing the users...</h4>
+        <img src="../../imgs/fetching-data/use-state-users.PNG" alt="" />
+        <h3>
+          Then use the effect hook to make a call to the server...
+          <br />
+          <br />
+          Then we call axios.get() and pass the url of the endpoint...
+          <img src="../../imgs/fetching-data/server-call.PNG" alt="" />
+          So grab this url...
+          <img src="../../imgs/fetching-data/grab-this-url.PNG" alt="" />
+          And paste it here...
+          <img src="../../imgs/fetching-data/paste-the-url.PNG" alt="" />
+        </h3>
+        <h2>.then()</h2>
+        <h3 class="grn">
+          You must understand, this is not going to be instant. It might take
+          half a second or whatever.
+        </h3>
+        <h3 class="orng">
+          What you need to know is that this method returns a promise.
+        </h3>
+        <h3>
+          A promise is an object that holds the eventual result, or failure of
+          an asynchronous operation.
+        </h3>
+        <h3>
+          Asynchronous is just a fancy word for 'this is going to take a long
+          time'.
+        </h3>
+        <h3>
+          💡❓ All promises have a method called 'then'
+          <br />
+          <br />
+          So we call then on the method that returns the promise...
+          <img src="../../imgs/fetching-data/call-then.PNG" alt="" />
+          And we pass it a callback function.
+          <br />
+          That callback function will get executed when the promise is resolved
+          and the result is ready.
+          <br />
+          <br />
+          In this case we need the function param to be the response...
+          <img src="../../imgs/fetching-data/then-res.PNG" alt="" />
+        </h3>
+        <h2>Logging the response</h2>
+        <h4>So this is what we get...</h4>
+        <img src="../../imgs/fetching-data/what-we-get.PNG" alt="" />
+        <h4>Data is where we have the user objects...</h4>
+        <img src="../../imgs/fetching-data/data-users.PNG" alt="" />
+        <h4>So if we log res.data</h4>
+        <img src="../../imgs/fetching-data/log-res-data.PNG" alt="" />
+        <h4>We get just the user objects...</h4>
+        <img src="../../imgs/fetching-data/get-just-the-user-obj.PNG" alt="" />
+        <h3 class="orng">But there is a small problem.</h3>
+        <h3 class="orng">
+          What if we want to print the name of the first user?
+        </h3>
+        <h3 class="grn">
+          If we try to access the first element in the array...
+          <img src="../../imgs/fetching-data/first-element-in-arr.PNG" alt="" />
+          We don't get type safety.
+        </h3>
+        <h3>
+          This is where we can use Typescript to add auto completion to our
+          code.
+        </h3>
+        <h2>Typesafety</h2>
+        <h3>
+          So, at the top, we use an interface to define the shape of our user
+          objects.
+        </h3>
+        <h4>Let's assume we only need these two propertys...</h4>
+        <img src="../../imgs/fetching-data/user-interface.PNG" alt="" />
+        <h3>
+          Now when calling the get method, we define the type of data we want to
+          fetch.
+          <br />
+          <br />
+          In angle brackets, it's a User array...
+          <img src="../../imgs/fetching-data/user-array.PNG" alt="" />
+          Now we have type safety...
+          <img src="../../imgs/fetching-data/auto-complete.PNG" alt="" />
+        </h3>
+        <h2>setUsers</h2>
+        <h3>
+          Now instead of console.log we want to set the users to the
+          response.data...
+          <img src="../../imgs/fetching-data/set-users.PNG" alt="" />
+          <em class="red">But we have an err!</em>
+          <br />
+          <br />
+          This is because we initialized the users const to an empty array, so
+          the Typescript compiler doesn't know the type of objects we're gonna
+          store here.
+          <br />
+          <br />
+          So we must declare the type of this array...
+          <img src="../../imgs/fetching-data/define-type-of-arr.PNG" alt="" />
+        </h3>
+        <h3 class="red">
+          ❗💡💥❗ Now, since we set the state of the users in the effect, we
+          have to add an empty array as the second parameter of the effect.
+          <img src="../../imgs/fetching-data/empty-arr.PNG" alt="" />
+          As you saw earlier, if we update the state in an effect, and do not do
+          this, we will get stuck in an infinite loop, and potentially send the
+          server hundreds of thousands of requests.🤯
+        </h3>
+        <h3 class="grn">
+          Finally, let's return the list of users...
+          <img src="../../imgs/fetching-data/return-the-users.PNG" alt="" />
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
