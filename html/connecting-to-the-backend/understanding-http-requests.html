@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Understanding HTTP Requests</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Understanding HTTP Requests</h1>
+        <h2>Topic im talking about</h2>
+        <h3>So we learned how to fetch data with axios.</h3>
+        <h3 class="grn">
+          As a frontend developer it's important to understand what happens
+          under the hood when you call the get method.
+        </h3>
+        <h2>What happens</h2>
+        <h3>
+          When we call the get method, axios sends an HTTP request to the
+          server.
+        </h3>
+        <h3 class="orng">HTTP is short for Hypertext Transfer Protocol</h3>
+        <h3 class="orng">
+          This is just a protocol for transferring data over the Internet.
+        </h3>
+        <h3>It's the same protocol that powers the web.</h3>
+        <h3>
+          When we visit a website, our browser sends a request to the websites
+          server asking for some content.
+          <img
+            src="../../imgs/understanding-http-requests/request-response.gif"
+            alt=""
+          />
+          The server then responds with an HTTP response that contains some
+          html, css, and other resources needed to display the website in our
+          browser.
+        </h3>
+        <h2>HTTP request in action</h2>
+        <h3 class="grn">
+          Open your code from the last lesson and inspect the networks tab in
+          the devtool.
+        </h3>
+        <h3>
+          We don't care about all those js files and stuff, just filter by
+          Fetch/XHR...
+          <img
+            src="../../imgs/understanding-http-requests/filter-xhr.PNG"
+            alt=""
+          />
+          <em class="red"
+            >We have 2 requests to the users endpoint because of strict
+            mode.</em
+          >
+        </h3>
+        <h3>
+          The status of the endpoint is 200, which means successful.
+          <img
+            src="../../imgs/understanding-http-requests/stat-and-size-of-request.PNG"
+            alt=""
+          />
+          It also shows the size of the request, and the time it took to
+          complete it.
+        </h3>
+        <h4>If you click on a request you see more details</h4>
+        <img
+          src="../../imgs/understanding-http-requests/req-details.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          In HTTP, every request has two sections.
+          <img
+            src="../../imgs/understanding-http-requests/req-res-head-and-body.gif "
+            alt=""
+          />
+        </h3>
+        <h3>
+          In the headers tab we have some general headers.
+          <br />
+          <br />
+          You can see that the Request Method is set to GET. That is used for
+          fetching data.
+          <img
+            src="../../imgs/understanding-http-requests/req-meth.PNG"
+            alt=""
+          />
+          Later in this section we will look at other req methods for creating,
+          deleting, and updating data.
+          <br />
+          <br />
+          Then you see the status code again, and the remote address which is
+          the ip address of the target web server.
+        </h3>
+        <h3>
+          We also have response headers.
+          <img
+            src="../../imgs/understanding-http-requests/res-headers.PNG"
+            alt=""
+          />
+          These are the headers included in the response, for the most part you
+          dont have to worry about them.
+        </h3>
+        <h3>
+          And also we have request headers.
+          <img
+            src="../../imgs/understanding-http-requests/req-headers.PNG"
+            alt=""
+          />
+          You dont really have to worry about these either, when we need to
+          we'll come back and talk about specific headers.
+        </h3>
+        <h3>
+          In the preview tab we can see the data that was returned from the
+          server, properly formatted.
+          <img
+            src="../../imgs/understanding-http-requests/preview-tab.PNG"
+            alt=""
+          />
+        </h3>
+        <h3>
+          In the response tab, we see the body of the response sent from the
+          server, in plain text.
+          <img
+            src="../../imgs/understanding-http-requests/response-tab.PNG"
+            alt=""
+          />
+          So here we have an array of javascript objects.
+        </h3>
+        <h3 class="grn">This has been an HTTP request in action.</h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
