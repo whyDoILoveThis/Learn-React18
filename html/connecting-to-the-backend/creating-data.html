@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Creating Data</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Creating Data</h1>
+        <h2>Create a button</h2>
+        <h4>
+          To create data we are going to add a button right above the list.
+        </h4>
+        <img src="../../imgs/creating-data/btn.PNG" alt="" />
+        <h3>
+          In a real application we would need a form to add a user, but that
+          would be a distraction from what we are actually doing here.
+        </h3>
+        <h2>onClick</h2>
+        <h4>Next, set the onClick to a function called 'addUser'...</h4>
+        <img src="../../imgs/creating-data/onclik-add.PNG" alt="" />
+        <h4>Now we create the function...</h4>
+        <img src="../../imgs/creating-data/add-user.PNG" alt="" />
+        <h3 class="grn">
+          In this function we are going to use an optimistic update.
+        </h3>
+        <h3>We learned about optimistc updates last lesson.</h3>
+        <h3 class="orng">
+          What it means is that we update the UI first and then call the server
+          to save the changes.
+        </h3>
+        <h2>NewUser Object</h2>
+        <h3>
+          So let's create a new user object...
+          <img src="../../imgs/creating-data/new-user.PNG" alt="" />
+          We have hard coded the data here, but in a real app this information
+          would be taken from a form.
+          <br />
+          <br />
+          Next, we call setUsers to a new array, with the existing users spread,
+          and add the new user...
+          <img src="../../imgs/creating-data/setuser.PNG" alt="" />
+        </h3>
+        <h4>We could do this if we wanted...</h4>
+        <img src="../../imgs/creating-data/maybe.PNG" alt="" />
+        <h3 class="grn">
+          Now if we go to the browser and click add, we will see the user get
+          added.
+        </h3>
+        <h2>Save changes to the server</h2>
+        <h3>Now we need to call the server to save the changes.</h3>
+        <h3>
+          So we call axios.post() and pass a url.
+          <br />
+          <br />
+          Grab the users endpoint from jsonPlaceholder.
+          <br />
+          <br />
+          And paste it in...
+          <img src="../../imgs/creating-data/axos-post.PNG" alt="" />
+          <em class="red"
+            >Now we need to include the new user in the body of the request.</em
+          >
+          <br />
+          <br />
+          So as a second arg to the post method we pass our new object...
+          <img src="../../imgs/creating-data/post-new-user.PNG" alt="" />
+          If the call to the server is successful then...
+          <img src="../../imgs/creating-data/then.PNG" alt="" />
+          <br />
+          <br />
+          We should refresh our list with the saved user, because the new user
+          has an id that is going to be genrated on the server.
+          <br />
+          <br />
+          So we get a respone obj and call setUsers to an array...
+          <img src="../../imgs/creating-data/setuser-to-arr.PNG" alt="" />
+
+          <br />
+          <br />
+          In that array we pass res.data so that the new user will be included
+          in the body of the response...
+          <img
+            src="../../imgs/creating-data/res-data-to-setuser-arr.PNG"
+            alt=""
+          />
+          <br /><br />
+          Lastly, spread the users array.
+          <img src="../../imgs/creating-data/spread-users.PNG" alt="" />
+        </h3>
+        <h3 class="grn">I know that was alot. Read it again.</h3>
+        <h2 class="red">IMPORTANT NOTE</h2>
+        <h3>
+          So now if we click the add user button it adds the user and in the
+          network tab of devtool we can see that a post request happened...
+          <img src="../../imgs/creating-data/post-console.PNG" alt="" />
+          You can see that the method is POST, that is used for creating data.
+        </h3>
+        <h3>
+          In the body, or 'payload' of this request, we can see the user object
+          from our code...
+          <img src="../../imgs/creating-data/console-obj-res.PNG" alt="" />
+          Then in the body of the response we see the same user obj but the id
+          is set to 11...
+          <img src="../../imgs/creating-data/set-to-1.PNG" alt="" />
+          so this id is generated on the server.
+        </h3>
+        <h3 class="grn">
+          What you must understand about jsonPlaceholder is that this IS A FAKE
+          BACKEND.
+        </h3>
+        <h3 class="orng">
+          So if you send this req multiple times, every single time we get a
+          user with the id of 11.
+        </h3>
+        <h3 class="orng">
+          💡 THAT means, if you add a second new user we get an err in the
+          console saying the it encountered two children with the same key.
+        </h3>
+        <h3>
+          You know that when mapping items in jsx, we should give each element a
+          unique id,
+          <img src="../../imgs/creating-data/unique.PNG" alt="" />
+          but in this case we dont have a unique key because the last two user
+          objects have the same id.
+        </h3>
+        <h3 class="red">
+          Be aware of that, this is just because we have a fake backend.
+        </h3>
+        <h2>More readable post code</h2>
+        <h3>
+          So we sent a request to the server, if its succeeds, then we set the
+          users to the user that was saved.
+        </h3>
+        <h4>But here, we set setUsers to res.data...</h4>
+        <img src="../../imgs/creating-data/res-data-is-ugly.PNG" alt="" />
+        <h3 class="grn">
+          This does what we want, but the readability of the code is bad.
+        </h3>
+        <h3>
+          So, since we need to access the data property of the response,
+          <img src="../../imgs/creating-data/need-data-from-res.PNG" alt="" />
+          we can destructure the response, and grab the data property in the
+          parameter of the callback.
+          <br />
+          <br />
+          Just use braces inside parenthesis <em class="red">(</em
+          ><em class="orng">{}</em><em class="red">)</em>...
+          <img src="../../imgs/creating-data/destruct-data.PNG" alt="" />
+        </h3>
+        <h3 class="grn">
+          💡But we can make this EVEN BETTER
+          <br />
+          <br />
+          🐱‍🏍🤘
+          <br />
+          We can give an alias to data!!
+          <img src="../../imgs/creating-data/alias-for-data.PNG" alt="" />
+        </h3>
+        <h2>Handle errs</h2>
+        <h3>
+          Now, if we encounter an err, we should show the user an err msg, and
+          restore the list back to the original state before the err.
+        </h3>
+        <h4>So catch the err and setError to message...</h4>
+        <img src="../../imgs/creating-data/catch-err.PNG" alt="" />
+        <h3 class="grm">
+          Next we want to reset the list to the original state.
+        </h3>
+        <h4>So we create an array to hold the original users...</h4>
+        <img src="../../imgs/creating-data/original-users.PNG" alt="" />
+        <h4>And then set the users back if there is an err...</h4>
+        <img src="../../imgs/creating-data/setusers-origin.PNG" alt="" />
+        <h3 class="grn">
+          Now if we simulate an err we will see a message and the list will be
+          restored back to the original state.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
