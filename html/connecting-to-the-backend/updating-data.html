@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Updating Data</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Updating Data</h1>
+        <h2>Add a button</h2>
+        <h4>To update the data let's add another button.</h4>
+        <img src="../../imgs/updating-data/update-btn.PNG" alt="" />
+        <h3 class="orng">
+          It's worth noting againg that in a real application we would need a
+          form for updating data, but that takes away from the main focus of
+          this lesson.
+        </h3>
+        <h3>
+          To fix the alignment issue with the buttons wrap the buttons in a div,
+          and give the first button a bootstrap x margin of 1.
+          <img src="../../imgs/updating-data/btn-container.PNG" alt="" />
+        </h3>
+        <h2>Implimenting Update functionality</h2>
+        <h4>Then we get the onClick ready to update a user...</h4>
+        <img src="../../imgs/updating-data/update-onclick.PNG" alt="" />
+        <h3 class="grn">
+          Now let's create this function just above the return.
+        </h3>
+        <h3>
+          The function will take a user obj.
+          <img src="../../imgs/updating-data/update-funct.PNG" alt="" />
+          Inside that function we create an updatedUser object and spread the
+          current user...
+          <img src="../../imgs/updating-data/spread-user.PNG" alt="" />
+          Then we set the name to user.name with an excalamation...
+          <img src="../../imgs/updating-data/ure-name-set-exclaim.PNG" alt="" />
+        </h3>
+        <h3 class="grn">
+          After that call setUsers and because we are updating an object, we
+          need to map the users.
+          <img src="../../imgs/updating-data/user-map.PNG" alt="" />
+          In the map we pass an arrow function...
+          <img src="../../imgs/updating-data/arrow.PNG" alt="" />
+          and if the id of the current user equals the id of the user that is
+          passed to this function, we return the updated user, Otherwise return
+          the same user obj...
+          <img src="../../imgs/updating-data/same-user.PNG" alt="" />
+        </h3>
+        <h3 class="orng">
+          If we test this out it would add an exclamation to the user.
+        </h3>
+        <h3>Now we need to call the server to save the changes.</h3>
+        <h2>Save the changes to the server</h2>
+        <h3>
+          For updating data, we can either use the 'put' method...
+          <img src="../../imgs/updating-data/axios-put.PNG" alt="" />
+          Or the 'patch' method...
+          <img src="../../imgs/updating-data/patch.PNG" alt="" />
+        </h3>
+        <h3 class="grn">
+          What's the difference?
+          <br />
+          <br />
+          Well, in HTTP we use the put method for replacing an object, and the
+          patch method for updating, or 'patching' one or more of it's
+          propertys.
+        </h3>
+        <h3 class="orng">
+          The method we choose really depends on how the backend is built.
+        </h3>
+        <h3 class="red">
+          💡Some backends don't support the patch method, they only accept the
+          put method.
+        </h3>
+        <h3 class="grn">
+          ✅ In our case here, since we are only updating a single property,
+          we're gonna use the patch method.
+        </h3>
+        <h4>
+          So call the patch method, and paste in the jsonPlaceholder endpoint
+          for the users...
+        </h4>
+        <img src="../../imgs/updating-data/patch-axio.PNG" alt="" />
+        <h4>And put the id at the end...</h4>
+        <img src="../../imgs/updating-data/id-at-the-end.PNG" alt="" />
+        <h3>
+          Now, just like how we created a user, here we need to pass the
+          updatedUser in the body of the request.
+        </h3>
+        <h4>So we pass it as the second arg to the patch method...</h4>
+        <img src="../../imgs/updating-data/second-arg.PNG" alt="" />
+        <h3>
+          Now, if the call to the server succeeds, theres nothing extra we want
+          to do.
+        </h3>
+        <h3 class="orng">
+          But we should still catch any errs, and restore the list if there
+          are...
+          <img src="../../imgs/updating-data/catch.PNG" alt="" />
+        </h3>
+        <h3>
+          With that, everything should be working.
+          <br />
+          <br />
+          We've got a patch request to this url...
+          <img src="../../imgs/updating-data/console-patch.PNG" alt="" />
+          <br />
+          <br />
+          In the request payload we have our user object that is updated...
+          <img src="../../imgs/updating-data/updated-obj-payload.PNG" alt="" />
+          <br />
+          <br />
+          Then we have the object that was returned by the server...
+          <img
+            src="../../imgs/updating-data/obj-return-from-server.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">
+          That should be everything working. If you want to simulate an err,
+          just mess up the request url in you code.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>

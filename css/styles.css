@@ -80,6 +80,7 @@ h2 {
 h3 {
     color: rgb(182, 190, 205);
     font-weight: 500;
+    font-size: 16px;
 }
 
 h3 > a {
