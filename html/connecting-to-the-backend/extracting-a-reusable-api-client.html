@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Extracting a Reusable API Client</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Extracting a Reusable API Client</h1>
+        <h2>Topic im talking about</h2>
+        <h3>
+          If you have been coding along, you'll notice that our app component
+          has grown quite a bit.
+        </h3>
+        <h3>We are going to improve this over the next few lessons.</h3>
+        <h3 class="orng">
+          The first problem with our code is that we have duplicated the backend
+          url multiple times.
+        </h3>
+        <h3 class="grn">
+          To improve this we are going to create a separate module where we
+          store our default configuration settings for making http calls.
+        </h3>
+        <h2>Default http call settings</h2>
+        <h4>First, create this new folder...</h4>
+        <img
+          src="../../imgs/extracting-a-reusable-api-client/services-folder.PNG"
+          alt=""
+        />
+        <h3>
+          In this folder we are going to add basic modules that provide services
+          or functionality to our application.
+        </h3>
+        <h3 class="orng">
+          Servises are about functionality, they are not about UI.
+        </h3>
+        <h4>In the services folder create this file...</h4>
+        <img
+          src="../../imgs/extracting-a-reusable-api-client/api-client-file.PNG"
+          alt=""
+        />
+        <h3>
+          In this file we are going to create a new axios client with custom
+          configuration.
+        </h3>
+        <h2>Axios config object</h2>
+        <h3>
+          First import axios...
+          <img
+            src="../../imgs/extracting-a-reusable-api-client/import-axios.PNG"
+            alt=""
+          />
+          Then call axios.create and give it a config object...
+          <img
+            src="../../imgs/extracting-a-reusable-api-client/axios-config-obj.PNG"
+            alt=""
+          />
+          In this object we set base url to the url of our backend...
+          <img
+            src="../../imgs/extracting-a-reusable-api-client/base-url.PNG"
+            alt=""
+          />
+          <em class="red"
+            >Notice that we did not include the endpoint in the url.</em
+          >
+        </h3>
+        <h3 class="red">
+          📢The reason we have only used the base url is because we want our api
+          client to be reusable.
+        </h3>
+        <h3 class="orng">
+          Maybe we want to reuse it so that we can make request to a comments,
+          profile, or some other endpoint.
+        </h3>
+        <h3>
+          In the same place we have the option of setting the http headers.
+        </h3>
+        <h3>
+          These headers will be passed with each and every http request.
+          <br />
+          <br />
+          ⚡Sometimes this is neccessary.
+          <br />
+          <br />
+          For example, some backends require us to send an API key with every
+          http request.
+          <br />
+          <br />
+          If we needed to do that we could say something like...
+          <img
+            src="../../imgs/extracting-a-reusable-api-client/headers.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          But we don't need to do that here so leave the headers out.
+        </h3>
+        <h3>
+          So we created this axios client, now we need to set it as the default
+          export...
+          <img
+            src="../../imgs/extracting-a-reusable-api-client/export-default.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>Modify Imports</h2>
+        <h3>
+          Next, go to the app component, and remove the axios import and add
+          import apiClient.
+          <img
+            src="../../imgs/extracting-a-reusable-api-client/api-client-import.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">
+          With this service in place we don't need the reference to axios
+          anymore, so we need to get rid of the CanceledError class in this
+          file.
+        </h3>
+        <h3 class="grn">
+          So back to the api-client, add CanceledError to the import and export
+          it as a named export.
+          <img
+            src="../../imgs/extracting-a-reusable-api-client/api-client-cancelederr.PNG"
+            alt=""
+          />
+          Now we can change our import in the App...
+          <img
+            src="../../imgs/extracting-a-reusable-api-client/new-canceled-err-import.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>Update references to axios</h2>
+        <h3>
+          Now the last step is to replace everywhere that we have called a
+          reference to axios to apiClient.
+        </h3>
+        <h4>The first is here...</h4>
+        <img
+          src="../../imgs/extracting-a-reusable-api-client/first-apiclent.PNG"
+          alt=""
+        />
+        <h4>The second is here...</h4>
+        <img
+          src="../../imgs/extracting-a-reusable-api-client/secont-apiclient.PNG"
+          alt=""
+        />
+        <h4>Here's another...</h4>
+        <img
+          src="../../imgs/extracting-a-reusable-api-client/another-apiclient.PNG"
+          alt=""
+        />
+        <h4>And one more...</h4>
+        <img
+          src="../../imgs/extracting-a-reusable-api-client/one-more-api.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          This makes our code much cleaner, and we no longer have duplicated our
+          base url all over the place.
+        </h3>
+        <h3 class="grn">
+          So with this service in place, anywhere we want to talk to our
+          backend, we simply import apiClient, and send http requests.
+        </h3>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>
