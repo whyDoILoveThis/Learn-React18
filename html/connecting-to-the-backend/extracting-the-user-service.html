@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
+    <title>Extracting the User Service</title>
+  </head>
+  <body>
+    <a href="../../index.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Extracting the User Service</h1>
+        <h2>The Next problem</h2>
+        <h3>
+          The next problem with our code is that the app component is too
+          concerned with making http requests.
+        </h3>
+        <h4>For example, it knows about the abort controller...</h4>
+        <img
+          src="../../imgs/extracting-the-user-service/knos-about-abort-controller.PNG"
+          alt=""
+        />
+        <h3>
+          The abort controller is purely about http, it cancels an http request.
+        </h3>
+        <h3>
+          Our component also knows about the request methods like get, post,
+          patch, and delete.
+        </h3>
+        <h4>It also knows about our endpoint...</h4>
+        <img
+          src="../../imgs/extracting-the-user-service/endpont-it-know.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          The endpoint is also repeated many times in this component.
+        </h3>
+        <h2>Analogy</h2>
+        <h3>
+          All these issues has our component acting like a chef whos only job is
+          to cook, but we have him buying groceries and taking orders too.
+        </h3>
+        <h3>
+          The app component should only do it's job which is rendering markup
+          and handling high level user interactions.
+        </h3>
+        <h3>
+          To improve our code, we should extract all the logic concerning http
+          requests into a separate service.
+        </h3>
+        <h3 class="grn">
+          💡This allows us to separate concers and make our code more modular
+          and reusable.
+        </h3>
+        <h3>
+          Potentially we could reuse the same service in another component. If
+          somewhere else we need to fetch the list of users, we can reuse our
+          service.
+        </h3>
+        <h2>user service</h2>
+        <h4>First, create this file...</h4>
+        <img
+          src="../../imgs/extracting-the-user-service/user-service.PNG"
+          alt=""
+        />
+        <h4>In the file, import our apiClient...</h4>
+        <img
+          src="../../imgs/extracting-the-user-service/import-api-client.PNG"
+          alt=""
+        />
+        <h4>Then, create a class called UserService...</h4>
+        <img
+          src="../../imgs/extracting-the-user-service/class-user-service.PNG"
+          alt=""
+        />
+        <h3>
+          In that class we will have methods for getting the users, creating a
+          user, updating a user and deleting a user.
+        </h3>
+        <h3 class="grn">
+          Finally, we are going to export a new instance of this class as a
+          default object.
+          <img
+            src="../../imgs/extracting-the-user-service/default-export-user.PNG"
+            alt=""
+          />
+        </h3>
+        <h4>
+          Now in the UserService class we create a method called getAllUsers
+        </h4>
+        <img
+          src="../../imgs/extracting-the-user-service/getallusers.PNG"
+          alt=""
+        />
+        <h3>
+          In this method we are going to have the logic for sending an http
+          request to our backend.
+          <br />
+          <br />
+          First, we take away this line where we defined the controller in the
+          app...
+          <img
+            src="../../imgs/extracting-the-user-service/const-controller.PNG"
+            alt=""
+          />
+          and paste it here...
+          <img
+            src="../../imgs/extracting-the-user-service/pase-controller.PNG"
+            alt=""
+          />
+          We also need to grab this bit of code...
+          <img
+            src="../../imgs/extracting-the-user-service/grab-this.PNG"
+            alt=""
+          />
+          and paste that one here as well...
+          <img
+            src="../../imgs/extracting-the-user-service/paste-the-get.PNG"
+            alt=""
+          />
+          Here we have to have access to the User interface.
+          <br /><br />
+          The proper place to have this interface is in this user-services file,
+          because this is where we have all the functionality for working with
+          users.
+          <br />
+          <br />
+          So we go back to the app component and grab the user interface then
+          paste it in...
+          <img
+            src="../../imgs/extracting-the-user-service/interface-in-client-users.PNG"
+            alt=""
+          />
+          And since we are going to use this interface in our app component, we
+          need to export the interface from this module...
+          <img
+            src="../../imgs/extracting-the-user-service/export-interface.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">
+          Good the err is gone.
+          <br />
+          <br />
+          Now when we send this get request it returns a promise.
+          <br />
+          <br />
+          We can return this promis right away...
+          <img
+            src="../../imgs/extracting-the-user-service/return-the-promise.PNG"
+            alt=""
+          />
+          With that we can go back to the app component, and import the User...
+          <img
+            src="../../imgs/extracting-the-user-service/import-users.PNG"
+            alt=""
+          />
+          And from the same module import the userService...
+          <img
+            src="../../imgs/extracting-the-user-service/import-userservice.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          Next, instead of calling apiClient, call userService...
+          <img
+            src="../../imgs/extracting-the-user-service/userserviceinstead.PNG"
+            alt=""
+          />
+          Then replace the get with getAllUsers...
+          <img
+            src="../../imgs/extracting-the-user-service/gobledegoop.PNG"
+            alt=""
+          />
+          So we dont have to worry about passing a signal, we simply tell the
+          service, 'give me all the users.'
+          <br />
+          <br />
+          This returns a promise, so just like before .then we setUsers and
+          setLoading...
+          <img
+            src="../../imgs/extracting-the-user-service/getthenwhate.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="red">🗯But now we have a tiny problem. Ahhh!</h3>
+        <h2>Accessing the controller object</h2>
+        <h3>
+          In our implementation we need access to the controller object...
+          <img
+            src="../../imgs/extracting-the-user-service/the-controller-object.PNG"
+            alt=""
+          />
+          This controller is purely about making http request.
+          <br />
+          <br />
+          We don't want to export this from our user-service module because it's
+          part of the implementation detail.
+        </h3>
+        <h3>
+          🔮As a metaphor, think of a remote control, a remote has a complex
+          logic board on the inside, but as a user we don't have to be worried
+          about that complexity.
+          <br />
+          <br />
+          We simply work with the buttons on the outside. Those buttons hide the
+          implementation detail.
+        </h3>
+
+        <h3 class="red">
+          So to solve the compilation issue, instead of returning this promise
+          right away like this...
+          <img
+            src="../../imgs/extracting-the-user-service/instead-of-this.PNG"
+            alt=""
+          />
+        </h3>
+        <h3>
+          We should store it in an object called request, and at the end return
+          an object with two propertys...
+          <img
+            src="../../imgs/extracting-the-user-service/returncontrollerabort.PNG"
+            alt=""
+          />
+          So the consumer of the UserService simply uses the cancel method, or
+          the cancel button, to cancel a request. How it happens internally is
+          irrelevant.
+          <br />
+          <br />
+          Thats implementation detail.
+        </h3>
+        <h2>Another problem</h2>
+        <h3 class="grn">Back to the app component.</h3>
+        <h4>We need to make a small change here...</h4>
+        <img
+          src="../../imgs/extracting-the-user-service/smalllchange.PNG"
+          alt=""
+        />
+        <h4>
+          We destructure userService.getAllUsers() and destructure the request
+          and cancel.
+        </h4>
+        <img
+          src="../../imgs/extracting-the-user-service/req-and-cancel-destruct.PNG"
+          alt=""
+        />
+        <h4>After that we call request.then...</h4>
+        <img src="../../imgs/extracting-the-user-service/req-then.PNG" alt="" />
+        Finally at the end, instead of calling controller.abort, we call
+        cancel()...
+        <img
+          src="../../imgs/extracting-the-user-service/return-cancel.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          With this change our effect hook knows nothing about making http
+          request, so we have better sepparation of concerns.
+        </h3>
+        <h2>EXERCISE</h2>
+        <h3>
+          For an exercise, move the other logic around for making http requests
+          into our user-service.
+        </h3>
+        <h3 class="red">
+          Please keep the solution hidden until you have tried yourself.
+        </h3>
+        <div class="collapsible exercise-collapsible">
+          <h2 class="sections-heading collapsible__heading">
+            SOLUTION<img
+              src="../../imgs/R.png"
+              alt=""
+              class="icon sections-icon collapsible__button"
+            />
+          </h2>
+          <div class="collapsible__content">
+            <h3>Next we need to work on deleting a user.</h3>
+            <h3 class="orng">
+              Our service needs to expose a method for deleting a user.
+            </h3>
+            <h3 class="grn">So back to the user-service.</h3>
+            <h3>
+              We add a deleteUser function that takes an id as a number...
+              <img
+                src="../../imgs/extracting-the-user-service/dlelte-user.PNG"
+                alt=""
+              />
+              Then take this apiClient code from here...
+              <img
+                src="../../imgs/extracting-the-user-service/dpi-delete.PNG"
+                alt=""
+              />
+              And paste it in the deleteUser function...
+              <img
+                src="../../imgs/extracting-the-user-service/delete-user-paste.PNG"
+                alt=""
+              />
+              also change user.id to just id...
+              <img
+                src="../../imgs/extracting-the-user-service/just-id.PNG"
+                alt=""
+              />
+            </h3>
+            <h3>
+              Next we should return the promise from this method...
+              <img
+                src="../../imgs/extracting-the-user-service/return-api-client.PNG"
+                alt=""
+              />
+            </h3>
+            <h3>Then back to the app again...</h3>
+            <h3>
+              We call userService.delete user and pass the user.id...
+              <img
+                src="../../imgs/extracting-the-user-service/delete-user-call-last-time"
+                alt=""
+              />
+            </h3>
+            <h3>Next we need to work on adding a user.</h3>
+            <h3>
+              So create a function for creating a user that takes in a user
+              object...
+              <img
+                src="../../imgs/extracting-the-user-service/create-user.PNG"
+                alt=""
+              />
+              Then in the app cut the code where we made a post request for a
+              new user and paste it here...
+              <img src="../../imgs/extracting-the-user-service/" alt="" />
+              make sure to rename newUser to just user and return the promise...
+              <img
+                src="../../imgs/extracting-the-user-service/return-create-promise.PNG"
+                alt=""
+              />
+            </h3>
+            <h3>
+              Then we call userservice create user and pass the newUser...
+              <img
+                src="../../imgs/extracting-the-user-service/userserviceeeeeee.PNG"
+                alt=""
+              />
+            </h3>
+            <h3 class="grn">The last one is updating the user.</h3>
+            <h3>
+              Create an updateUser function that takes a user object and then
+              paste in the patch request for updating a user...
+              <img
+                src="../../imgs/extracting-the-user-service/update-service.PNG"
+                alt=""
+              />
+              As the final step call the update funciton...
+              <img
+                src="../../imgs/extracting-the-user-service/call-service-of-update-user.PNG"
+                alt=""
+              />
+            </h3>
+            <h3 class="orng">
+              💡You should notice that we don't need to import the apiClient
+              anymore...
+              <img
+                src="../../imgs/extracting-the-user-service/no-longer-need-apiclient-import.PNG"
+                alt=""
+              />
+            </h3>
+          </div>
+        </div>
+      </article>
+    </section>
+    <script src="../../JS/main.js"></script>
+  </body>
+</html>

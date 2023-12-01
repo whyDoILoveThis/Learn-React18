@@ -176,7 +176,24 @@ a:hover {
     color: rgb(67, 164, 255);
 }
 
+article  img {
+    z-index: 9;
+    cursor: zoom-in;
+}
 
+article .img-enlarged {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    cursor: zoom-out;
+}
+
+.collapsible__button.img-enlarged {
+    position: unset;
+    width: initial;
+    width: 30px;
+    cursor: pointer;
+}
 
 .home {
     display: inline;
@@ -528,6 +545,7 @@ line-height: 1.5rem;
 }
 
 h3 {
+    position: relative;
     color: #6eb4da;
     background-color: rgba(0, 123, 255, 0.186);
     padding: 10px;

@@ -165,3 +165,17 @@ cards.forEach(card => {
     card.classList.add('card--has-expandable');
   }
 });
+
+
+
+
+
+// enlarge img with click
+
+const allImgs = document.querySelectorAll('img');
+
+allImgs.forEach(img => {
+  img.addEventListener('click', () => {
+    img.classList.toggle('img-enlarged');
+  })
+})
