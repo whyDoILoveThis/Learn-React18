@@ -12,6 +12,11 @@ html {
     scroll-behavior: smooth;
 }
 
+html *::selection{
+    background-color: rgba(255, 78, 255, 0.656);
+    color: rgb(249, 223, 240);
+}
+
 html a {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -123,6 +128,8 @@ ul {
 
 ul > li {
     font-size: 40px;
+    background-color: #ffffff18;
+    padding: 0 0.7rem;
     
 }
 
@@ -138,7 +145,7 @@ ul > li {
     color: rgb(255, 231, 223);
     display: block;
     line-height: 25px;
-    transform: translateY(-8px);
+    transform: translateY(-7px);
 }
 
 a .ul-li {
