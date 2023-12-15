@@ -428,6 +428,7 @@ line-height: 1.5rem;
 }
 
 .collapsible__homepage-heading {
+    font-size: 24px;
     color: rgb(189, 245, 104);
     border-radius: 10px;
     line-height: 2rem;
