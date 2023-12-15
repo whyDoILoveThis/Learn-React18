@@ -14,462 +14,550 @@
         <h1>
           MY NOTES📓
           <br />
+          <br />
           Mosh - React18 + Typescript
+          <br />
+          <br />
+          <em class="grn">BEGINNER COURSE</em>
         </h1>
-        <p style="text-align: center">(if you dont like reading, leave lol)</p>
         <div class="centerer">
-          <div class="collapsible sections-collapsible">
-            <h2 class="sections-heading collapsible__heading">
-              Course Sections<img
-                src="../../imgs/R.png"
-                alt=""
-                class="icon sections-icon collapsible__button"
-              />
-            </h2>
-            <div class="collapsible__content">
-              <ol>
-                <li class="section-item">
-                  <a href="#gettingStarted">Getting Started</a>
-                </li>
-                <li class="section-item">
-                  <a href="#buildingComponents">Building Components</a>
-                </li>
-                <li class="section-item">
-                  <a href="#stylingComponents">Styling Components</a>
-                </li>
-                <li class="section-item">
-                  <a href="#managingComponentState">Managing Component State</a>
-                </li>
-                <li class="section-item">
-                  <a href="#buildingForms">Building Forms</a>
-                </li>
-                <li class="section-item">
-                  <a href="#expenseTracker">PROJECT: Expense Tracker</a>
-                </li>
-                <li class="section-item">
-                  <a href="#connectingToTheBackend"
-                    >Connecting to the Backend</a
-                  >
-                </li>
-              </ol>
-            </div>
-          </div>
+          <a class="course-link" href="/html/part-2/part-2.html"
+            ><img
+              class="icon"
+              src="/imgs/icon-advanced-concepts.png"
+              alt=""
+            />Advanced Concepts</a
+          >
         </div>
+        <p style="text-align: center">(if you dont like reading, leave lol)</p>
         <section class="centerer">
           <ol>
-            <h2 id="gettingStarted">Getting Started</h2>
-            <li>
-              <a href="html/getting-started/Prerequisits.html">Prerequisits</a>
-            </li>
-            <li>
-              <a href="html/getting-started/what-is-react.html"
-                >What is React?</a
+            <div class="collapsible homepage-collapsible">
+              <h2
+                id="gettingStarted"
+                class="sections-heading collapsible__homepage-heading"
               >
-            </li>
-            <li>
-              <a href="html/getting-started/setting-up-the-dev-environment.html"
-                >Setting Up the Developement Environment</a
-              >
-            </li>
-            <li>
-              <a href="html/getting-started/creating-a-react-app.html"
-                >Creating a React App</a
-              >
-            </li>
-            <li>
-              <a href="html/getting-started/project-structure.html"
-                >Project Structure</a
-              >
-            </li>
-            <li>
-              <a href="html/getting-started/creating-a-react-component.html"
-                >Creating a React Component</a
-              >
-            </li>
-            <li>
-              <a href="html/getting-started/how-react-works.html"
-                >How React Works</a
-              >
-            </li>
-            <li>
-              <a href="html/getting-started/react-ecosystem.html"
-                >React Ecosystem</a
-              >
-            </li>
+                <img
+                  class="icon"
+                  src="../../imgs/icon-getting-started.png"
+                  alt=""
+                />
+                Getting Started
+                <img
+                  src="../../imgs/R.png"
+                  alt=""
+                  class="icon sections-icon collapsible__button"
+                />
+              </h2>
+              <div class="collapsible__content">
+                <li>
+                  <a href="html/getting-started/Prerequisits.html"
+                    >Prerequisits</a
+                  >
+                </li>
+                <li>
+                  <a href="html/getting-started/what-is-react.html"
+                    >What is React?</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/getting-started/setting-up-the-dev-environment.html"
+                    >Setting Up the Developement Environment</a
+                  >
+                </li>
+                <li>
+                  <a href="html/getting-started/creating-a-react-app.html"
+                    >Creating a React App</a
+                  >
+                </li>
+                <li>
+                  <a href="html/getting-started/project-structure.html"
+                    >Project Structure</a
+                  >
+                </li>
+                <li>
+                  <a href="html/getting-started/creating-a-react-component.html"
+                    >Creating a React Component</a
+                  >
+                </li>
+                <li>
+                  <a href="html/getting-started/how-react-works.html"
+                    >How React Works</a
+                  >
+                </li>
+                <li>
+                  <a href="html/getting-started/react-ecosystem.html"
+                    >React Ecosystem</a
+                  >
+                </li>
+              </div>
+            </div>
             <!--* Building Components-->
-            <h2 id="buildingComponents">Building Components</h2>
-            <li>
-              <a href="html/building-components/building-components.html"
-                >Building Components Intro</a
+            <div class="collapsible homepage-collapsible">
+              <h2
+                id="buildingComponents"
+                class="sections-heading collapsible__homepage-heading"
               >
-            </li>
-            <li>
-              <a
-                href="html/building-components/creating-a-listgroup-component.html"
-                >Creating a ListGroup Component</a
-              >
-            </li>
-            <li>
-              <a href="html/building-components/fragments.html">Fragments</a>
-            </li>
-            <li>
-              <a href="html/building-components/rendering-lists.html"
-                >Rendering Lists</a
-              >
-            </li>
-            <li>
-              <a href="html/building-components/conditional-rendering.html"
-                >Conditional Rendering</a
-              >
-            </li>
-            <li>
-              <a href="html/building-components/handleing-events.html"
-                >Handling Events</a
-              >
-            </li>
-            <li>
-              <a href="html/building-components/managing-state.html"
-                >Managing State</a
-              >
-            </li>
-            <li>
-              <a href="html/building-components/passing-data-via-props.html"
-                >Passing Data Via Props</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/building-components/passing-functions-via-props.html"
-                >Passing Functions Via Props</a
-              >
-            </li>
-            <li>
-              <a href="html/building-components/state-vs-props.html"
-                >State vs Props</a
-              >
-            </li>
-            <li>
-              <a href="html/building-components/passing-children.html"
-                >Passing Children</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/building-components/inspecting-components-with-react-dev-tool.html"
-                >Inspecting Components With React Dev Tools</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/building-components/Exercise-building-a-button-component.html"
-                >EXERCISE: Building a Button Component</a
-              >
-            </li>
-            <li>
-              <a href="html/building-components/Exercise-showing-an-alert.html"
-                >EXERCISE: Showing an Alert</a
-              >
-            </li>
+                <img
+                  class="icon"
+                  src="../../imgs/icon-building-components.png"
+                  alt=""
+                />
+                Building Components<img
+                  src="../../imgs/R.png"
+                  alt=""
+                  class="icon sections-icon collapsible__button"
+                />
+              </h2>
+              <div class="collapsible__content">
+                <li>
+                  <a href="html/building-components/building-components.html"
+                    >Building Components Intro</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-components/creating-a-listgroup-component.html"
+                    >Creating a ListGroup Component</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-components/fragments.html"
+                    >Fragments</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-components/rendering-lists.html"
+                    >Rendering Lists</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-components/conditional-rendering.html"
+                    >Conditional Rendering</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-components/handleing-events.html"
+                    >Handling Events</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-components/managing-state.html"
+                    >Managing State</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-components/passing-data-via-props.html"
+                    >Passing Data Via Props</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-components/passing-functions-via-props.html"
+                    >Passing Functions Via Props</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-components/state-vs-props.html"
+                    >State vs Props</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-components/passing-children.html"
+                    >Passing Children</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-components/inspecting-components-with-react-dev-tool.html"
+                    >Inspecting Components With React Dev Tools</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-components/Exercise-building-a-button-component.html"
+                    >EXERCISE: Building a Button Component</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-components/Exercise-showing-an-alert.html"
+                    >EXERCISE: Showing an Alert</a
+                  >
+                </li>
+              </div>
+            </div>
             <!--* STYLING COMPONENTS -->
-            <h2 id="stylingComponents">Styling Components</h2>
-            <li>
-              <a href="html/styling-components/styling-components.html"
-                >Styling Components Intro</a
+            <div class="collapsible homepage-collapsible">
+              <h2
+                id="stylingComponents"
+                class="sections-heading collapsible__homepage-heading"
               >
-            </li>
-            <li>
-              <a href="html/styling-components/vanilla-css.html">Vanilla CSS</a>
-            </li>
-            <li>
-              <a href="html/styling-components/css-modules.html">CSS Modules</a>
-            </li>
-            <li>
-              <a href="html/styling-components/css-in-js.html">CSS-in-JS</a>
-            </li>
-            <li>
-              <a href="html/styling-components/separation-of-concerns.html"
-                >Separation of Concerns</a
-              >
-            </li>
-            <li>
-              <a href="html/styling-components/inline-styles.html"
-                >Inline Styles</a
-              >
-            </li>
-            <li>
-              <a href="html/styling-components/popular-ui-libraries.html"
-                >Popular UI Libraries</a
-              >
-            </li>
-            <li>
-              <a href="html/styling-components/adding-icons.html"
-                >Adding Icons</a
-              >
-            </li>
-            <li>
-              <a href="html/styling-components/Exercise-using-css-modules.html"
-                >EXERCISE: Using CSS Modules</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/styling-components/Exercise-building-a-like-component.html"
-                >EXERCISE: Building a Like Component</a
-              >
-            </li>
+                <img class="icon" src="../../imgs/icon-styling.png" alt="" />
+                Styling Components
+                <img
+                  src="../../imgs/R.png"
+                  alt=""
+                  class="icon sections-icon collapsible__button"
+                />
+              </h2>
+              <div class="collapsible__content">
+                <li>
+                  <a href="html/styling-components/styling-components.html"
+                    >Styling Components Intro</a
+                  >
+                </li>
+                <li>
+                  <a href="html/styling-components/vanilla-css.html"
+                    >Vanilla CSS</a
+                  >
+                </li>
+                <li>
+                  <a href="html/styling-components/css-modules.html"
+                    >CSS Modules</a
+                  >
+                </li>
+                <li>
+                  <a href="html/styling-components/css-in-js.html">CSS-in-JS</a>
+                </li>
+                <li>
+                  <a href="html/styling-components/separation-of-concerns.html"
+                    >Separation of Concerns</a
+                  >
+                </li>
+                <li>
+                  <a href="html/styling-components/inline-styles.html"
+                    >Inline Styles</a
+                  >
+                </li>
+                <li>
+                  <a href="html/styling-components/popular-ui-libraries.html"
+                    >Popular UI Libraries</a
+                  >
+                </li>
+                <li>
+                  <a href="html/styling-components/adding-icons.html"
+                    >Adding Icons</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/styling-components/Exercise-using-css-modules.html"
+                    >EXERCISE: Using CSS Modules</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/styling-components/Exercise-building-a-like-component.html"
+                    >EXERCISE: Building a Like Component</a
+                  >
+                </li>
+              </div>
+            </div>
             <!--* MANAGING COMPONENT STATE -->
-            <h2 id="managingComponentState">Managing Component State</h2>
-            <li>
-              <a
-                href="html/managing-component-state/manging-component-state.html"
-                >Managing Component State Intro</a
+            <div class="collapsible homepage-collapsible">
+              <h2
+                id="managingComponentState"
+                class="sections-heading collapsible__homepage-heading"
               >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/understanding-the-state-hook.html"
-                >Understanding The State Hook</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/chosing-the-state-structure.html"
-                >Chosing The State Structure</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/keeping-component-pure.html"
-                >Keeping Components Pure</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/understanding-the-strict-mode.html"
-                >Understanding the Strict Mode</a
-              >
-            </li>
-            <li>
-              <a href="html/managing-component-state/updating-objects.html"
-                >Updating Objects</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/updating-nested-objects.html"
-                >Updating Nested Objects</a
-              >
-            </li>
-            <li>
-              <a href="html/managing-component-state/updating-arrays.html"
-                >Updating Arrays</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/updating-array-of-objects.html"
-                >Updating Array of Objects</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/simplifying-update-logic-with-immer.html"
-                >Simplifying Update Logic with Immer</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/sharing-state-between-components.html"
-                >Sharing State Between Components</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/Exercise-updating-state.html"
-                >EXERCISE: Updating State</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/managing-component-state/Exercise-building-an-expandable-text-component.html"
-                >EXERCISE: Building an ExpandableText Component</a
-              >
-            </li>
+                <img class="icon" src="../../imgs/icon-management.png" alt="" />
+                Managing Component State<img
+                  src="../../imgs/R.png"
+                  alt=""
+                  class="icon sections-icon collapsible__button"
+                />
+              </h2>
+              <div class="collapsible__content">
+                <li>
+                  <a
+                    href="html/managing-component-state/manging-component-state.html"
+                    >Managing Component State Intro</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/understanding-the-state-hook.html"
+                    >Understanding The State Hook</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/chosing-the-state-structure.html"
+                    >Chosing The State Structure</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/keeping-component-pure.html"
+                    >Keeping Components Pure</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/understanding-the-strict-mode.html"
+                    >Understanding the Strict Mode</a
+                  >
+                </li>
+                <li>
+                  <a href="html/managing-component-state/updating-objects.html"
+                    >Updating Objects</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/updating-nested-objects.html"
+                    >Updating Nested Objects</a
+                  >
+                </li>
+                <li>
+                  <a href="html/managing-component-state/updating-arrays.html"
+                    >Updating Arrays</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/updating-array-of-objects.html"
+                    >Updating Array of Objects</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/simplifying-update-logic-with-immer.html"
+                    >Simplifying Update Logic with Immer</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/sharing-state-between-components.html"
+                    >Sharing State Between Components</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/Exercise-updating-state.html"
+                    >EXERCISE: Updating State</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/managing-component-state/Exercise-building-an-expandable-text-component.html"
+                    >EXERCISE: Building an ExpandableText Component</a
+                  >
+                </li>
+              </div>
+            </div>
             <!--* BUILDING FORMS -->
-            <h2 id="buildingForms">Building Forms</h2>
-            <li>
-              <a href="html/building-forms/building-forms.html"
-                >Building Forms Intro</a
+            <div class="collapsible homepage-collapsible">
+              <h2
+                id="buildingForms"
+                class="sections-heading collapsible__homepage-heading"
               >
-            </li>
-            <li>
-              <a href="html/building-forms/building-a-form.html"
-                >Building a Form</a
-              >
-            </li>
-            <li>
-              <a href="html/building-forms/handling-form-submission.html"
-                >Handling Form Submission</a
-              >
-            </li>
-            <li>
-              <a href="html/building-forms/accessing-input-fields.html"
-                >Accessing Input Fields</a
-              >
-            </li>
-            <li>
-              <a href="html/building-forms/controlled-components.html"
-                >Controlled Components</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/building-forms/managing-forms-with-react-hook-form.html"
-                >Managing Forms with React Hook Form</a
-              >
-            </li>
-            <li>
-              <a href="html/building-forms/applying-validation.html"
-                >Applying Validation</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/building-forms/schema-based-validation-with-zod.html"
-                >Schema Based Validation with Zod</a
-              >
-            </li>
-            <li>
-              <a href="html/building-forms/disabling-the-submit-button.html"
-                >Disabling the Submit Button</a
-              >
-            </li>
-            <!--^FORMS PROJECT: Expense Tracker-->
-            <h5 id="expenseTracker">PROJECT: Expense Tracker</h5>
-            <li>
-              <a
-                href="html/building-forms/project-expense-tracker-project-intro.html"
-                >Expense Tracker Project Intro</a
-              >
-            </li>
-            <li>
-              <a href="html/building-forms/project-building-expenselist.html"
-                >Building ExpenseList</a
-              >
-            </li>
-            <li>
-              <a href="html/building-forms/project-building-expense-filter.html"
-                >Building ExpenseFilter</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/building-forms/project-building-the-expense-form.html"
-                >Building the Expense Form</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/building-forms/project-integrating-with-react-hook-form-and-zod.html"
-                >Integrating with React Hook Form and Zod</a
-              >
-            </li>
-            <li>
-              <a href="html/building-forms/project-adding-an-expense.html"
-                >Adding an Expense</a
-              >
-            </li>
+                <img class="icon" src="../../imgs/icon-form.png" alt="" />
+                Building Forms
+                <img
+                  src="../../imgs/R.png"
+                  alt=""
+                  class="icon sections-icon collapsible__button"
+                />
+              </h2>
+              <div class="collapsible__content">
+                <li>
+                  <a href="html/building-forms/building-forms.html"
+                    >Building Forms Intro</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-forms/building-a-form.html"
+                    >Building a Form</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-forms/handling-form-submission.html"
+                    >Handling Form Submission</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-forms/accessing-input-fields.html"
+                    >Accessing Input Fields</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-forms/controlled-components.html"
+                    >Controlled Components</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-forms/managing-forms-with-react-hook-form.html"
+                    >Managing Forms with React Hook Form</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-forms/applying-validation.html"
+                    >Applying Validation</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-forms/schema-based-validation-with-zod.html"
+                    >Schema Based Validation with Zod</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-forms/disabling-the-submit-button.html"
+                    >Disabling the Submit Button</a
+                  >
+                </li>
+                <!--^FORMS PROJECT: Expense Tracker-->
+                <h5 id="expenseTracker">PROJECT: Expense Tracker</h5>
+                <li>
+                  <a
+                    href="html/building-forms/project-expense-tracker-project-intro.html"
+                    >Expense Tracker Project Intro</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-forms/project-building-expenselist.html"
+                    >Building ExpenseList</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-forms/project-building-expense-filter.html"
+                    >Building ExpenseFilter</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-forms/project-building-the-expense-form.html"
+                    >Building the Expense Form</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/building-forms/project-integrating-with-react-hook-form-and-zod.html"
+                    >Integrating with React Hook Form and Zod</a
+                  >
+                </li>
+                <li>
+                  <a href="html/building-forms/project-adding-an-expense.html"
+                    >Adding an Expense</a
+                  >
+                </li>
+              </div>
+            </div>
             <!--* CONNECTING TO THE BACKEND -->
-            <h2 id="connectingToTheBackend">Connecting to the Backend</h2>
-            <li>
-              <a
-                href="html/connecting-to-the-backend/connecting-to-the-backend.html"
-                >Connecting to the Backend Intro</a
+            <div class="collapsible homepage-collapsible">
+              <h2
+                id="connectingToTheBackend"
+                class="sections-heading collapsible__homepage-heading"
               >
-            </li>
-            <li>
-              <a
-                href="html/connecting-to-the-backend/understanding-the-effect-hook.html"
-                >Understanding the Effect Hook</a
-              >
-            </li>
-            <li>
-              <a href="html/connecting-to-the-backend/effect-dependencies.html"
-                >Effect Dependencies</a
-              >
-            </li>
-            <li>
-              <a href="html/connecting-to-the-backend/effect-clean-up.html"
-                >Effect Clean Up</a
-              >
-            </li>
-            <li>
-              <a href="html/connecting-to-the-backend/fetching-data.html"
-                >Fetching Data</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/connecting-to-the-backend/understanding-http-requests.html"
-                >Understanding HTTP Requests</a
-              >
-            </li>
-            <li>
-              <a href="html/connecting-to-the-backend/handling-errors.html"
-                >Handling Errors</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/connecting-to-the-backend/working-with-async-and-await.html"
-                >Working with Async and Await</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/connecting-to-the-backend/cancelling-a-fetch-request.html"
-                >Cancelling a Fetch Request</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/connecting-to-the-backend/showing-a-loading-indicator.html"
-                >Showing a Loading Indicator</a
-              >
-            </li>
-            <li>
-              <a href="html/connecting-to-the-backend/deleting-data.html"
-                >Deleting Data</a
-              >
-            </li>
-            <li>
-              <a href="html/connecting-to-the-backend/creating-data.html"
-                >Creating Data</a
-              >
-            </li>
-            <li>
-              <a href="html/connecting-to-the-backend/updating-data.html"
-                >Updating Data</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/connecting-to-the-backend/extracting-a-reusable-api-client.html"
-                >Extracting a Reusable API Client</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/connecting-to-the-backend/extracting-the-user-service.html"
-                >Extracting the User Service</a
-              >
-            </li>
-            <li>
-              <a
-                href="html/connecting-to-the-backend/creating-a-generic-http-service.html"
-                >Creating a Generic HTTP Service</a
-              >
-            </li>
+                <img
+                  class="icon"
+                  src="../../imgs/icon-backend-connection.png"
+                  alt=""
+                />
+                Connecting to the Backend<img
+                  src="../../imgs/R.png"
+                  alt=""
+                  class="icon sections-icon collapsible__button"
+                />
+              </h2>
+              <div class="collapsible__content">
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/connecting-to-the-backend.html"
+                    >Connecting to the Backend Intro</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/understanding-the-effect-hook.html"
+                    >Understanding the Effect Hook</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/effect-dependencies.html"
+                    >Effect Dependencies</a
+                  >
+                </li>
+                <li>
+                  <a href="html/connecting-to-the-backend/effect-clean-up.html"
+                    >Effect Clean Up</a
+                  >
+                </li>
+                <li>
+                  <a href="html/connecting-to-the-backend/fetching-data.html"
+                    >Fetching Data</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/understanding-http-requests.html"
+                    >Understanding HTTP Requests</a
+                  >
+                </li>
+                <li>
+                  <a href="html/connecting-to-the-backend/handling-errors.html"
+                    >Handling Errors</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/working-with-async-and-await.html"
+                    >Working with Async and Await</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/cancelling-a-fetch-request.html"
+                    >Cancelling a Fetch Request</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/showing-a-loading-indicator.html"
+                    >Showing a Loading Indicator</a
+                  >
+                </li>
+                <li>
+                  <a href="html/connecting-to-the-backend/deleting-data.html"
+                    >Deleting Data</a
+                  >
+                </li>
+                <li>
+                  <a href="html/connecting-to-the-backend/creating-data.html"
+                    >Creating Data</a
+                  >
+                </li>
+                <li>
+                  <a href="html/connecting-to-the-backend/updating-data.html"
+                    >Updating Data</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/extracting-a-reusable-api-client.html"
+                    >Extracting a Reusable API Client</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/extracting-the-user-service.html"
+                    >Extracting the User Service</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="html/connecting-to-the-backend/creating-a-generic-http-service.html"
+                    >Creating a Generic HTTP Service</a
+                  >
+                </li>
+              </div>
+            </div>
           </ol>
         </section>
       </article>

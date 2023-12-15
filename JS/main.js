@@ -1,7 +1,7 @@
 // TAB ICON
 const head = document.getElementsByTagName('head')[0];
 const tabIcon = document.createElement("link");
-tabIcon.href = "../../imgs/react-icon.png";
+tabIcon.href = "/imgs/react-icon.png";
 tabIcon.rel = "icon";
 head.appendChild(tabIcon);
 
@@ -12,7 +12,7 @@ const body = document.body;
 const toTopIcon = document.createElement("img");
 const toTopLink = document.createElement("a");
 toTopLink.href = "#";
-toTopIcon.src = "../../imgs/R.png";
+toTopIcon.src = "/imgs/R.png";
 toTopIcon.classList.add("to-top");
 body.appendChild(toTopLink);
 toTopLink.appendChild(toTopIcon);
@@ -24,7 +24,7 @@ const theBottomOfPage = document.createElement('span');
 theBottomOfPage.id = "bottom"
 body.appendChild(theBottomOfPage);
 toBottomLink.href = "#bottom";
-toBottomIcon.src = "../../imgs/R.png";
+toBottomIcon.src = "/imgs/R.png";
 toBottomIcon.classList.add("to-bottom");
 body.appendChild(toBottomLink);
 toBottomLink.appendChild(toBottomIcon);
@@ -36,7 +36,7 @@ const backBtnIcon = document.createElement("img");
 backBtnIcon.addEventListener("click", function() {
   window.history.go(-1);
 }); 
-backBtnIcon.src = "../../imgs/R.png";
+backBtnIcon.src = "/imgs/R.png";
 backBtnIcon.classList.add("back-btn");
 body.appendChild(backBtnIcon);
 
@@ -64,7 +64,7 @@ domReady(() => {
 
 // Check the current page's filename
 const currentFilename = window.location.pathname.split('/').pop();
-if (currentFilename !== 'index.html') {
+if (currentFilename !== 'index.html' && currentFilename !== 'part-2.html') {
     createCollapsibleStructure();
 }
 
@@ -85,7 +85,7 @@ function createCollapsibleStructure() {
 
   // Create the icon for collapsing/expanding
   const icon = document.createElement('img');
-  icon.src = '../../imgs/R.png';
+  icon.src = '/imgs/R.png';
   icon.alt = '';
   icon.classList.add('icon', 'sections-icon', 'collapsible__button');
   heading.appendChild(icon);
