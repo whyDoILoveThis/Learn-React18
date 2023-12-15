@@ -192,6 +192,7 @@ a:hover {
     padding: 0.5rem 1rem;
     border: 1.5px solid rgba(255, 255, 255, 0.302);
     border-radius: 10px;
+    width:min-content;
 }
 
 /** COLLAPSIBLES */
