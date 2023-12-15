@@ -85,9 +85,9 @@ function createCollapsibleStructure() {
 
   // Create the icon for collapsing/expanding
   const icon = document.createElement('img');
-  icon.src = '/imgs/R.png';
+  icon.src = '/imgs/rr.png';
   icon.alt = '';
-  icon.classList.add('icon', 'sections-icon', 'collapsible__button');
+  icon.classList.add('sections-icon', 'collapsible__button');
   heading.appendChild(icon);
 
   // Create the collapsible content
