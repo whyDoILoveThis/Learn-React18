@@ -31,7 +31,7 @@ html a {
 body {
     visibility: none;
     box-sizing: border-box;
-    background: rgb(41, 35, 44);
+    background: rgb(19, 17, 21);
     /*background: url(../imgs/site-background.jpg) no-repeat center center fixed;*/
   background-size: cover;
   height: 100%;

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Setting Up React Query</title>
+  </head>
+  <body>
+    <a href="../part-2.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Setting Up React Query</h1>
+        <h2>Installation</h2>
+        <h4>Run this command to install React Query...</h4>
+        <div class="code">
+          <p><em class="orng">npm</em> i @tanstack/react-query@4.28</p>
+        </div>
+        <h3>
+          See the
+          <a
+            target="_blank"
+            href="https://tanstack.com/query/v4/docs/react/adapters/react-query"
+            >React Query Docs</a
+          >
+          for the latest version.
+        </h3>
+        <h2>Import classes to main.tsx</h2>
+        <h4>Open main.tsx, and add these imports...</h4>
+        <img
+          src="../../../imgs/part-2/react-query/setting-up-react-query/imports.PNG"
+          alt=""
+        />
+        <h3>
+          <em class="lite-yllw">Query Client</em> is the core object we use for
+          managing and caching remote data in React Query.
+        </h3>
+        <h4>So first, create a new instance of QueryClient...</h4>
+        <img
+          src="../../../imgs/part-2/react-query/setting-up-react-query/new-client.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          Then we need to pass this new instance to the using the
+          QueryClientProvider.
+        </h3>
+        <h4>So we wrap the app in a QueryClientProvider...</h4>
+        <img
+          src="../../../imgs/part-2/react-query/setting-up-react-query/wrap-the-app.PNG"
+          alt=""
+        />
+        <h4>
+          Then set the client prop to the new queryClient we just created...
+        </h4>
+        <img
+          src="../../../imgs/part-2/react-query/setting-up-react-query/pass-client-prop.PNG"
+          alt=""
+        />
+        <h3>Thats all you have to do to set up React Query.</h3>
+        <h3 class="grn">Next we will use it to fetch data.</h3>
+      </article>
+    </section>
+    <script src="/JS/main.js"></script>
+  </body>
+</html>
