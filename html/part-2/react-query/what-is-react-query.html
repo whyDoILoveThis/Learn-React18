@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>What is React Query</title>
+  </head>
+  <body>
+    <a href="../part-2.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>What is React Query</h1>
+        <h2>Let's begin</h2>
+        <h3>
+          Let's begin in the playround starter, and open the todo-list component
+          in the react-query folder.
+        </h3>
+        <img
+          src="../../../imgs/part-2/react-query/what-is-react-query/open-todo-list.PNG"
+          alt=""
+        />
+        <h3>This is how we typically fetch data from the backend in react.</h3>
+        <h4>
+          We use a couple of state hooks, one for data and another for errs...
+        </h4>
+        <img
+          src="../../../imgs/part-2/react-query/what-is-react-query/state-vars.PNG"
+          alt=""
+        />
+        <h4>
+          Then we use the effect hook to fetch data from the backend and store
+          it in the state vars...
+        </h4>
+        <img
+          src="../../../imgs/part-2/react-query/what-is-react-query/effect-hook.PNG"
+          alt=""
+        />
+        <h3>
+          Implementation will vary from one project to to another, but that
+          aside, there are a number of problems with this implementation.
+        </h3>
+        <h2>Problems with this implementation</h2>
+        <h3>
+          The first problem is that we are not canceling the request if the
+          component is un-mounted.
+        </h3>
+        <h3 class="grn">We learned about this in the first part.</h3>
+        <h3>
+          We learned that we use the effect hook to execute code that can have
+          side effects.
+        </h3>
+        <h3 class="orng">
+          Sometimes, inside the function that we pass to the effect hook, we
+          should pass a cleanup function to undo what we did before.
+        </h3>
+        <h3 class="red">
+          💡 In the case of HTTP requests, we should cancel them.
+        </h3>
+        <h3 class="red">
+          This is especially important in React-18, because by default the
+          strict mode is enabled which causes each component to be rendered
+          twice.
+        </h3>
+        <h3>
+          This means that if you dont cancel the request we will end up fetching
+          the data twice.
+        </h3>
+        <h2>Second problem</h2>
+        <h3>
+          The nexpt problem is that there is
+          <em class="lite-yllw">no separation of concerns.</em>
+        </h3>
+        <h3 class="orng">The querying logic is leaked into the component.</h3>
+        <h3>
+          If somewhere else we need the same piece of data we have to duplicate
+          the logic. Boo.
+        </h3>
+        <h3>No modularity, non-reusable. <em class="lite-yllw">Ewww.</em></h3>
+        <h3 class="grn">
+          To address this we need to extract this logic and encapulate it inside
+          of a hook.
+        </h3>
+        <h2>Third Problem</h2>
+        <h3>We are not retrying failed requests.</h3>
+        <h3>
+          If there is an err we show a message and move on.
+          <em class="lite-yllw">Horrible.</em>
+        </h3>
+        <h2>Fourth problem</h2>
+        <h3>Also we have no automatic refresh.</h3>
+        <h3>
+          So if the data changes while the user is on the page they won't see
+          the changes unless they refresh.
+        </h3>
+        <h2>Caching</h2>
+        <h3>
+          Not having caching is also a problem, it makes the app much slower.
+        </h3>
+        <h3>
+          <em class="lite-yllw">Caching: </em>The process of storing data in a
+          place where it can be accessed more quickly and efficiently in the
+          future.
+        </h3>
+        <h3 class="grn">
+          In react apps we can store frequently used data on the client(meaning
+          inside the users browser), so we don't have to fetch it from the
+          server everytime it's needed.
+        </h3>
+        <h2>The list of problems</h2>
+        <ul>
+          <li><em class="part-two-li">No request cancellation</em></li>
+          <li><em class="part-two-li">No separation of concerns</em></li>
+          <li><em class="part-two-li">No retries</em></li>
+          <li><em class="part-two-li">No automatic refresh</em></li>
+          <li><em class="part-two-li">No caching</em></li>
+        </ul>
+        <h3>
+          We could address all these limitations by writing more and more code,
+          but thats just more code to maintain.
+        </h3>
+        <h3>
+          This is where React Query comes in to save the day
+          <img
+            src="../../../imgs/part-2/react-query/what-is-react-query/super-query.png"
+            alt=""
+          />
+          It's a powerful library for managing data fetching, and caching in
+          React applications.
+        </h3>
+        <h2>Redux</h2>
+        <h3>Alot of people use Redux for caching.</h3>
+        <h3>
+          <em class="lite-yllw">Redux:</em> a popular state management library
+          for JavaScript applications.
+        </h3>
+        <h3 class="grn">
+          Redux allows us to store the state or data of an application in a
+          single, global store.
+        </h3>
+        <h3 class="orng">
+          All the store is, is a JavaScript object in the users browser. So alot
+          of people use it like a cache.
+        </h3>
+        <h3>
+          Redux is difficul to learn and has alot of boilerplate code that adds
+          unnecessary complexity.
+        </h3>
+        <h3 class="grn">React Query is alot simpler, and more lightweight.</h3>
+        <h3>
+          Redux is becoming more and more obsolete, and we definilely don't need
+          it for caching.
+        </h3>
+        <h3 class="red">
+          Some people will cry because they love Redux so much, but I hate it 😁
+        </h3>
+      </article>
+    </section>
+    <script src="/JS/main.js"></script>
+  </body>
+</html>
