@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Fetching Data</title>
+  </head>
+  <body>
+    <a href="../part-2.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Fetching Data</h1>
+        <h2>Query Hook</h2>
+        <h3 class="grn">Let's open back up the TodoList component.</h3>
+        <h3>
+          To fetch data with react query, we use the
+          <em class="lite-yllw">query hook</em>, which is defined in
+          <em class="lite-yllw">@tanstack/react-query</em>...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/query-hook.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>queryKey</h2>
+        <h3>
+          So we call this hook and then give it a config obj that will end up
+          with two propertys...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/use-query-obj.PNG"
+            alt=""
+          />
+          The first one is a our <em class="lite-yllw">queryKey</em>
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/query-key.PNG"
+            alt=""
+          />
+          The <em class="lite-yllw">queryKey</em> is just a unique identifier
+          for the query.
+          <br />
+          <br />
+          <em class="lite-grn">💡 It's used internally for caching.</em>
+          <br />
+          <br />
+        </h3>
+        <h3 class="grn">
+          So anytime we retrieve a piece of data from the backend, the data is
+          stored in the cache, and will be accessible via this key.
+        </h3>
+        <h3>We set the key to an array of one, or more values.</h3>
+        <h3 class="grn">
+          💡 The first value is often a string that identifies the type of data
+          we want to store here.
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/key-string.PNG"
+            alt=""
+          />
+          We can also have more values, like maybe for storing completed
+          todos...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/completed.PNG"
+            alt=""
+          />
+          We could also use an obj with completed set to true...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/completed-true.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>No right or wrong</h2>
+        <h3 class="red">
+          There is really no right or wrong when chosing a string or an object
+          for the key value.
+        </h3>
+        <h3>
+          How we want to structure the cache really depends on our application,
+          and it's requirements.
+        </h3>
+        <h3 class="orng">
+          For now we want to stick to a single value...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/key-string.PNG"
+            alt=""
+          />
+          But later in this section we will look at some more complicated
+          examples.
+        </h3>
+        <h2>Query Function</h2>
+        <h3>The second property is the queryFn</h3>
+        <h3>
+          This is the function that we use to fetch the data from the backend...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/queryfn.PNG"
+            alt=""
+          />
+          This funciton should return a promise that either resolves the data,
+          or throws an err.
+          <br />
+          <br />
+          So we pass an arrow func...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/arrow.PNG"
+            alt=""
+          />
+          Then we use axios to fetch the data from the backend...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/axios.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          💡 Here we are using axios, but you can use the fetch api, or any HTTP
+          librarys.
+        </h3>
+        <h3>
+          React Query doesn't care how we fetch the data, it's only concerned
+          with managing, and caching it.
+        </h3>
+        <h2>Storing the response</h2>
+        <h3>So, the get method returns a response object.</h3>
+        <h3 class="red">
+          We don't want to store that whole response object, we want to store
+          the actual data that we get from the backend.
+          <br />
+          <br />
+          So, after get, we call then, and use the resonse to return res.data...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/then.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>Separate the logic</h2>
+        <h3 class="grn">
+          We can also implement this logic <em class="lite-yllw">outside</em> of
+          our query...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/separate-logic.PNG"
+            alt=""
+          />
+        </h3>
+        <h4>Take a look at the signature of our function...</h4>
+        <img
+          src="../../../imgs/part-2/react-query/fetching-data/signature.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          This function returns a promise of type <em class="blu">any</em>
+        </h3>
+        <h3 class="red">Typescript doesn't like any types.😡</h3>
+        <h3>We should be more specific and take advantage of Typescript.</h3>
+        <h3 class="grn">
+          We want our function to return a promise of todo array.
+          <br />
+          <br />
+          To achieve that, we use angle brackets when calling the get method to
+          specify a generic type argument...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/todo-generic-type.PNG"
+            alt=""
+          />
+          Now if we look at the signature we see that it returns a Todo array...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/signature-again.PNG"
+            alt=""
+          />
+        </h3>
+        <h3>
+          💡 So, at runtime, React Query will call this function, and when the
+          promise is resolved we get an array of todos.
+          <br />
+          <br />
+          Then that array is stored in the cache against the queryKey.
+        </h3>
+        <h2>the query object</h2>
+        <h4>
+          So we call the query hook and get back a query object that we store
+          like this...
+        </h4>
+        <img
+          src="../../../imgs/part-2/react-query/fetching-data/store-query-obj.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          This query object has a bunch of
+          <em class="lite-yllw">propertys</em> like
+          <em class="lite-yllw">data, error, isLoading</em>, ect.
+        </h3>
+        <h3>We'll talk about them as we make it through this section.</h3>
+        <h3>
+          👁‍🗨For now, we are only interested in the data property. <br /><br />
+          So we can destructure it right away and grab the data property...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/destruct-data.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>Quick Code Cleanup</h2>
+        <h3 class="grn">
+          With this implementation we no longer need the state vars for data and
+          errs...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/dont-need-state-vars.PNG"
+            alt=""
+          />
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/state-gone.PNG"
+            alt=""
+          />
+          You can also remove the entire effect hook...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/remove-effect.PNG"
+            alt=""
+          />
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/effect-gone.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          We'll come back to the err handle later...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/save-err-handle-for-later.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>Rendering the data in markup</h2>
+        <h3>
+          So instead of mapping todos, we map the data...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/map-data.PNG"
+            alt=""
+          />
+          If you don't like the name 'data' you can change it like this...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/rename-data.PNG"
+            alt=""
+          />
+          Then we can use our custom name...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/use-todos-in-markup.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="red">
+          We have an err saying todos is possibly undefined...
+          <img
+            src="../../../imgs/part-2/react-query/fetching-data/undefined-err.PNG"
+            alt=""
+          />
+          This is because the call to the backend could fail, in which case
+          todos would be undefined.
+          <br />
+          <br />
+          <em class="lite-yllw"
+            >For fix we use optional chaining...
+            <img
+              src="../../../imgs/part-2/react-query/fetching-data/optional-chaining.PNG"
+              alt=""
+            />
+          </em>
+        </h3>
+        <h3 class="grn">This is how we fetch data with React Query</h3>
+        <h2>Benefits of this implementation</h2>
+        <h3 class="orng">
+          💡 We get a number of benefits with this implementation.
+        </h3>
+        <h4><em class="lite-yllw">Auto Retries:</em></h4>
+        <h3>
+          If the call to the server fails, React Query will retry a couple more
+          times.
+        </h3>
+        <h3>
+          This is something we can configure, and we will cover it in more
+          detail later.
+        </h3>
+        <h4><em class="lite-yllw">Auto Refetch</em></h4>
+        <h3>
+          We can configure this query to auto refetch after an alotted amount of
+          time.
+        </h3>
+        <h4><em class="lite-yllw">Caching</em></h4>
+        <h3>
+          The first time we fetch the data it is stored in the cache, and will
+          be fresh for a certain period of time.
+        </h3>
+        <h3>
+          Then the next time we need the same piece of data, if it's still in
+          the cache, we don't go to the server, we can rapidly retrieve it from
+          the cache
+        </h3>
+        <h3 class="grn">So this is how we fetch data.</h3>
+        <h3 class="grn">Next we will cover handling errors.</h3>
+      </article>
+    </section>
+    <script src="/JS/main.js"></script>
+  </body>
+</html>

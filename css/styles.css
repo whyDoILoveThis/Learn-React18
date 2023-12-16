@@ -43,6 +43,27 @@ body {
     padding-bottom: 80px;
 }
 
+body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #414141;
+}
+
+body::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #414141;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #a686ffa3;
+}
+
+
 .centerer {
     display: flex;
     justify-content: center;
@@ -50,7 +71,7 @@ body {
 
 .main-wrap {
     max-width: 600px;
-    padding: 3rem;
+    padding: 1rem;
     padding-top: 0.5rem;
     background: rgba(150, 150, 150, 0.068);
     border-radius: 16px;
@@ -609,7 +630,7 @@ h3 {
     background-color: rgba(0, 123, 255, 0.186);
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid rgba(0, 140, 255, 0.543);
+    border: 1px solid rgba(0, 140, 255, 0.691);
 }
 
 h3.grn {
@@ -621,10 +642,11 @@ h3.grn {
 }
 
 h3.orng {
+    color: rgb(255, 212, 131);
     background-color: rgba(255, 136, 0, 0.277);
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 157, 0, 0.543);
+    border: 1px solid rgba(255, 157, 0, 0.683);
 }
 
 .red {
@@ -632,8 +654,9 @@ h3.orng {
 }
 
 h3.red {
-    background-color: rgba(255, 0, 0, 0.17);
+    color: rgb(255, 154, 154);
+    background-color: rgba(255, 0, 0, 0.242);
     padding: 6px;
     border-radius: 10px;
-    border: 1px solid rgba(246, 46, 83, 0.256);
+    border: 1px solid rgba(255, 19, 62, 0.666);
 }
