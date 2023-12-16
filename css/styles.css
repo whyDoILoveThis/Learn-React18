@@ -60,6 +60,12 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.223);
 }
 
+.icon {
+    width: 40px;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
 b{
     color: rgb(186, 225, 255);
 }
@@ -131,6 +137,7 @@ ul > li {
     font-size: 40px;
     background-color: #ffffff18;
     padding: 0 0.7rem;
+    border-radius: 10px;
     
 }
 
@@ -171,7 +178,8 @@ li {
  }
 
 
-ol > li:nth-child(odd){
+ol > li:nth-child(odd),
+.collapsible__content > li:nth-child(odd){
     background-color: rgba(186, 186, 186, 0.133);
    
 }
@@ -194,14 +202,20 @@ a:hover {
     color: rgb(67, 164, 255);
 }
 
+.course-label {
+    margin-top: 2rem;
+}
+
 .course-link {
     display: flex;
     align-items: center;
     background-color: transparent;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.7rem;
     border: 1.5px solid rgba(255, 255, 255, 0.302);
     border-radius: 10px;
-    width:min-content;
+    width: max-content;
+    font-size: 18px;
+    margin-bottom: 0.5rem;
 }
 
 .course-link:hover {
@@ -209,6 +223,11 @@ a:hover {
     background-color: rgba(255, 255, 255, 0.044);
 }
 
+.course-link__icon {
+    width: 26px;
+    margin-right: 0.3rem;
+    padding: 0.2rem;
+}
 
 
 /** COLLAPSIBLES */
@@ -426,12 +445,6 @@ line-height: 1.5rem;
     justify-content: center;
 }
 
-.icon {
-    width: 40px;
-    padding: 0.5rem;
-    margin-right: 1rem;
-}
-
 .sections-icon {
     margin-left: 20px;
 }
@@ -578,6 +591,10 @@ img {
     color: orange;
 }
 
+.lite-grn {
+    color: rgb(82, 242, 82);
+}
+
 .grn {
     color: rgb(60, 162, 60);
 }
@@ -596,7 +613,7 @@ h3 {
 }
 
 h3.grn {
-    color: #6eda80;
+    color: #acfcb9;
     background-color: rgba(0, 255, 17, 0.186);
     padding: 10px;
     border-radius: 10px;
