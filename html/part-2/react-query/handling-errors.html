@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Handling Errors</title>
+  </head>
+  <body>
+    <a href="../part-2.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Hnandling Errors</h1>
+        <h2>Error Property</h2>
+        <h3>
+          The query obj we get back from the query hook also has a propery
+          called 'error'...
+          <img
+            src="/imgs/part-2/react-query/handling-errors/errors-property.PNG"
+            alt=""
+          />
+          It's job is to track errors while fetching data.
+        </h3>
+        <h3 class="grn">
+          Next, bring back in the error condition...
+          <img
+            src="/imgs/part-2/react-query/handling-errors/errs-condition.PNG"
+            alt=""
+          />
+          Aaaaaand we have a compilation err...
+          <img
+            src="/imgs/part-2/react-query/handling-errors/errs-err.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          The error is because React doesn't know how to render this error
+          object.
+        </h3>
+        <h3>
+          And if you look at the type of the error object it is unknown...
+
+          <img
+            src="/imgs/part-2/react-query/handling-errors/err-type-unk.PNG"
+            alt=""
+          />
+          React Query doesn't know the type of errs that might happen when
+          fetching data.
+          <br />
+          <br />
+          <em class="lite-yllw"
+            >The type the error will be is dependant on how we fetch the data.
+          </em>
+          <br />
+          <br />
+          Are we using axios, the fetch api, or some other http library?
+        </h3>
+        <h3 class="red">
+          In axios, all errors are instances of the Error interface, which is
+          available in all browsers.
+          <img
+            src="/imgs/part-2/react-query/handling-errors/error-interface.PNG"
+            alt=""
+          />
+          💡 So when calling the query hook we should specify the type of errors
+          that might happen when fetching data.
+        </h3>
+        <h2>Specifying error types</h2>
+        <h3 class="orng">
+          To do this we need to use angle brackets when defining the query
+          hook...
+          <img
+            src="/imgs/part-2/react-query/handling-errors/type-params.PNG"
+            alt=""
+          />
+          They all have a default value.
+        </h3>
+        <h3>
+          The first one is <em class="lite-yllw">TQueryFnData</em>, which is the
+          type of data we expect to get from the backend.
+        </h3>
+        <h3 class="grn">
+          So we need to set it to what we are expecting to get, which is a todo
+          array...
+          <img
+            src="/imgs/part-2/react-query/handling-errors/todo-arr.PNG"
+            alt=""
+          />
+        </h3>
+        <h3>
+          The second parameter is <em class="lite-yllw">TError</em>
+          <img
+            src="/imgs/part-2/react-query/handling-errors/terror.PNG"
+            alt=""
+          />
+          We should set it to Error...
+          <img
+            src="/imgs/part-2/react-query/handling-errors/erororororororo.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">
+          💡🎯 We can leave the rest of the parameters set to their default
+          value.
+        </h3>
+        <h3 class="orng">
+          Now you can see that the type of the error object is Error or null.
+          <br />
+          <br />
+          With that we can fix our comilation error by rendering one of the
+          propertys of our error object...
+          <img
+            src="/imgs/part-2/react-query/handling-errors/err-obj-propertys.PNG"
+            alt=""
+          />
+          💡 Render the message...
+          <img
+            src="/imgs/part-2/react-query/handling-errors/err-mesg.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>Return the TodoList in the App component</h2>
+        <img
+          src="/imgs/part-2/react-query/handling-errors/return-todolistintheapp.PNG"
+          alt=""
+        />
+        <h2>Start the development server</h2>
+        <h4>Next start the developement server...</h4>
+        <div class="code">
+          <p><em class="orng">npm</em> run dev</p>
+        </div>
+        <h4>You should get this...</h4>
+        <img
+          src="/imgs/part-2/react-query/handling-errors/get-this.PNG"
+          alt=""
+        />
+        <h2>Simulate an error</h2>
+        <h3>Now let's simulate an err...</h3>
+        <img
+          src="/imgs/part-2/react-query/handling-errors/simulated-err.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          💡 It should take a few moments because react query will retry a
+          couple of times.
+        </h3>
+        <h4>And we eventually get this...</h4>
+        <img
+          src="/imgs/part-2/react-query/handling-errors/metwrk-err.PNG"
+          alt=""
+        />
+      </article>
+    </section>
+    <script src="/JS/main.js"></script>
+  </body>
+</html>
