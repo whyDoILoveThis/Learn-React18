@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Creating a Custom Query Hook</title>
+  </head>
+  <body>
+    <a href="../part-2.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Creating a Custom Query Hook</h1>
+        <h2>Problem with current implementation</h2>
+        <h3>The propblem is that there is no separation of concerns.</h3>
+        <h3 class="orng">
+          The querying logic should not be inside of our component.
+        </h3>
+        <h3 class="grn">
+          We should separate the query logic into a separate reusable hook.
+        </h3>
+        <h2>Create the file</h2>
+        <h4>The first thing we need to do is create this file...</h4>
+        <img
+          src="/imgs/part-2/react-query/creating-a-custom-query-hook/create-hook-file.PNG"
+          alt=""
+        />
+        <h4>Then create and export a funtion called useTodos</h4>
+        <img
+          src="/imgs/part-2/react-query/creating-a-custom-query-hook/usetodoa.PNG"
+          alt=""
+        />
+        <h2>Add the code</h2>
+        <h4>Move the fetchTodos function to our hook...</h4>
+        <img
+          src="/imgs/part-2/react-query/creating-a-custom-query-hook/move-ode.PNG"
+          alt=""
+        />
+        <h4>Then move the Todo inteface too...</h4>
+        <img
+          src="/imgs/part-2/react-query/creating-a-custom-query-hook/interface.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          Now, in our hook we should call the query hook and return a query
+          object
+        </h3>
+        <h4>So we return the the useQuery in our hook.</h4>
+        <img
+          src="/imgs/part-2/react-query/creating-a-custom-query-hook/return.PNG"
+          alt=""
+        />
+        <h3>
+          Then to use our hook all we do is call useTodos()
+          <img
+            src="/imgs/part-2/react-query/creating-a-custom-query-hook/usetodoa.PNG"
+            alt=""
+          />
+        </h3>
+      </article>
+    </section>
+    <script src="/JS/main.js"></script>
+  </body>
+</html>
