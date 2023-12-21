@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Using React Query DevTools</title>
+  </head>
+  <body>
+    <a href="../part-2.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Using React Query DevTools</h1>
+        <h2>Install React Query DevTool</h2>
+        <h3 class="grn">
+          Similar to many frontend libraries, React Query comes with it's own
+          special devtool.
+        </h3>
+        <h3>It's a powerful tool for debugging, and monitoring our querys.</h3>
+        <h3>
+          <a
+            target="_blank"
+            href="https://tanstack.com/query/v4/docs/react/devtools"
+            ><em class="red">(web link)</em>
+            <em class="lite-yllw">React Query DevTool Docs📃</em>
+          </a>
+        </h3>
+        <h4>Install the devtool with this command...</h4>
+        <div class="code">
+          <p><em class="orng">npm</em> i @tanstack/react-query-devtools@4.28</p>
+        </div>
+        <h2>Add the tool to our app</h2>
+        <h3 class="grn">Open main.tsx</h3>
+        <h4>Next, import ReactQueryDevtools...</h4>
+        <img
+          src="/imgs/part-2/react-query/using-react-query-devtools/import-devtool.PNG"
+          alt=""
+        />
+        <h4>It comes from here...</h4>
+        <img
+          src="/imgs/part-2/react-query/using-react-query-devtools/namespace.PNG"
+          alt=""
+        />
+        <h4>Finally, add it to the component tree...</h4>
+        <img
+          src="/imgs/part-2/react-query/using-react-query-devtools/add-to-tree.PNG"
+          alt=""
+        />
+        <h3 class="orng">
+          💡 This is only included in the development build, so later when we
+          build for production, ReactQueryDevtools will not be included.
+        </h3>
+        <h2>Using the devtool</h2>
+        <h4>To open the devtool we have this nice icon...</h4>
+        <img
+          src="/imgs/part-2/react-query/using-react-query-devtools/react-query-devtool-tool-icon.PNG"
+          alt=""
+        />
+        <h4>When you open it you get this...</h4>
+        <img
+          src="/imgs/part-2/react-query/using-react-query-devtools/the-devtool.PNG"
+          alt=""
+        />
+        <h3>You can see the content of our cache.</h3>
+        <h4>Currently we have a single item with this key...</h4>
+        <img
+          src="/imgs/part-2/react-query/using-react-query-devtools/single-item.PNG"
+          alt=""
+        />
+        <h2>Query details</h2>
+        <h4>We can click on this key to see more details...</h4>
+        <img
+          src="/imgs/part-2/react-query/using-react-query-devtools/more-details.PNG"
+          alt=""
+        />
+        <h3>
+          The details show the key, the number of observers, and when it was
+          last updated.
+        </h3>
+        <h3>
+          💡 The number of <em class="lite-yllw">observers</em> refers to the
+          number of <em class="lite-yllw">components</em> using this query.
+        </h3>
+        <h3 class="orng">
+          If this component becomes un-mounted (meaning removed from the screen)
+          it will be removed from the observers list.
+        </h3>
+        <h3 class="red">
+          📢 If the number of observers reaches zero, the query will be
+          <em class="lite-yllw">inactive</em>.
+        </h3>
+        <h3 class="grn">
+          Inactive querys will eventually get garbage collected, and removed
+          from the cache.
+          <br />
+          <br />
+          We will talk about that in the next lesson.
+        </h3>
+        <h2>Actions</h2>
+        <h3>
+          There are several useful actions.
+          <img
+            src="/imgs/part-2/react-query/using-react-query-devtools/actions.PNG"
+            alt=""
+          />
+          <br />
+          <br />
+          We can...
+          <br />
+          <br />
+          ✔ <em class="lite-yllw">Refetch</em> a query
+          <br />
+          ✔ <em class="lite-yllw">Invalidate</em>, which we will talk about
+          later in the section
+          <br />
+          ✔ <em class="lite-yllw">Trigger loading</em> to trigger the loading
+          state
+          <br />
+          ✔ <em class="lite-yllw">Trigger error</em> to trigger the error state
+        </h3>
+        <h2>Data</h2>
+        <h4>We can also view the data associated with this key...</h4>
+        <img
+          src="/imgs/part-2/react-query/using-react-query-devtools/data.PNG"
+          alt=""
+        />
+        <h2>Query explorer</h2>
+        <h4>Here we can see all the propertys of our query...</h4>
+        <img
+          src="/imgs/part-2/react-query/using-react-query-devtools/query-explorer.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          This is not something we use all that often, but something useful to
+          know is that all our querys have a default cacheTime...
+          <img
+            src="/imgs/part-2/react-query/using-react-query-devtools/cachetime.PNG"
+            alt=""
+          />
+          It is 300,000 miliseconds, which is 5 minutes.
+        </h3>
+        <h3 class="orng">
+          That means, if our query has no observers, and is
+          <em class="red">inactive</em> for 5 mins, it will be garbage
+          collected.
+        </h3>
+        <h3 class="grn">
+          This is something we can configure, and we will do that in the next
+          lesson.
+        </h3>
+      </article>
+    </section>
+    <script src="/JS/main.js"></script>
+  </body>
+</html>
