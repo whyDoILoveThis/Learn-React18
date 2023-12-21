@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Customizing Query Settings</title>
+  </head>
+  <body>
+    <a href="../part-2.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Customizing Query Settings</h1>
+        <h2>Topic im talking about</h2>
+        <h3>
+          Our querys have a few default settings that work in most situations,
+          but we can always customize them
+          <em class="lite-yllw">per query</em> or
+          <em class="lite-yllw">globally</em>.
+        </h3>
+        <h3 class="grn">Open main.tsx</h3>
+        <h3>
+          On the line where we create a new QueryClient we can pass a
+          configuration object...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/config-obj.PNG"
+            alt=""
+          />
+          Here we set defaultOptions to an object...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/default-options.PNG"
+            alt=""
+          />
+          And in this object we set queries to an object...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/queries.PNG"
+            alt=""
+          />
+        </h3>
+        <h3>
+          In the queries object we can override the default settings for our
+          queries <em class="lite-yllw">globally</em>.
+        </h3>
+        <h3 class="grn">
+          The first setting we are going to look at is
+          <em class="lite-yllw">retry</em>.
+        </h3>
+        <h2>retry</h2>
+        <h4>Retry has a default value of 3...</h4>
+        <img
+          src="/imgs/part-2/react-query/customizing-query-settings/retry-default.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          💡 This means if the query fails, React Query will retry 3 more time.
+        </h3>
+        <h3>
+          Let's see how this works by simulating an err when fetching the
+          todos...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/simulate-err.PNG"
+            alt=""
+          />
+          Now if you look at the network tab in the browser devtool, you will
+          see the initial request, and 3 more retrys...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/retrys.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>cacheTime</h2>
+        <h3 class="grn">
+          The next setting we are going to look at is cacheTime.
+        </h3>
+        <h4>It has a default value of 300,000 or 5mins...</h4>
+        <img
+          src="/imgs/part-2/react-query/customizing-query-settings/cachetime-default.PNG"
+          alt=""
+        />
+        <h3>
+          <div class="centerer" style="font-size: 24px">💡</div>
+          <br />
+          This means, if the query has no observer, then the query is considered
+          <em class="red">inactive</em>.
+          <br />
+          <br />
+          And after 5 mins the inactive query is removed from the cache.
+          <br />
+          <br />
+          <em class="lite-yllw">This is called garbage collection.</em>
+        </h3>
+        <h3>
+          The default value makes sense for most applications, but you can
+          always change it to meet requirements.
+        </h3>
+        <h2>StaleTime</h2>
+        <h3 class="grn">The next setting we will look at is staleTime.</h3>
+        <h3>This specifys how long the data is considered fresh.</h3>
+        <h3 class="orng">
+          The default value for staleTime is 0, which means that the moment we
+          get a piece of data it is treated as old.
+          <br />
+          <br />
+          So, the next time we need the same piece of data, React Query will
+          refetch fresh data from the backend.
+        </h3>
+        <h3>
+          To simulate this chage it to 10 seconds...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/new-staletime.PNG"
+            alt=""
+          />
+          We have a green box indicating that our todos are fresh.
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/indicating-fresh.PNG"
+            alt=""
+          />
+          But after 10 seconds they become stale...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/indeicaitng-stale.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          The number you see represents the number of observers.
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/stale-count.png"
+            alt=""
+          />
+        </h3>
+        <h3>
+          One of the wonderful things about react query is that it automatically
+          refeshes data under 3 conditions.
+        </h3>
+        <h4>Will auto refresh when...</h4>
+        <ul>
+          <li><em class="part-two-li">When the network is reconnected</em></li>
+          <li><em class="part-two-li">When a component is mounted </em></li>
+          <li><em class="part-two-li">When the window is refocused</em></li>
+        </ul>
+        <h3>
+          Each of these have a config property...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/refetch-settings.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>How refetching works</h2>
+        <h4>This is the process React Query takes when refetching data...</h4>
+        <img
+          src="/imgs/part-2/react-query/customizing-query-settings/react-query-refetch.gif"
+          alt=""
+        />
+        <h3 class="grn">
+          So, most of the time we don't need to change these settings, because
+          the default settings work good in most cases.
+        </h3>
+        <h3>
+          💡 The only setting that we customize often is the staleTime.
+          <br />
+          <br />
+          And the staletime is dependant on the query.
+          <br />
+          <br />Some pieces of data get updated less frequently than others, so
+          we should give them a higher staletime.
+        </h3>
+        <h2>Locally scoped query settings</h2>
+        <h3>
+          Moving forward we are not going to use global settings.
+          <br />
+          <br />
+          So change all this...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/remove.PNG"
+            alt=""
+          />
+          To this...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/gone.PNG"
+            alt=""
+          />
+        </h3>
+
+        <h3 class="grn">
+          Instead, go the query hook in useTodos and define the settings here...
+          <img
+            src="/imgs/part-2/react-query/customizing-query-settings/local-staletime.PNG"
+            alt=""
+          />
+        </h3>
+      </article>
+    </section>
+    <script src="/JS/main.js"></script>
+  </body>
+</html>
