@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Parameterized Queries</title>
+  </head>
+  <body>
+    <a href="../part-2.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>Parameterized Queries</h1>
+        <h2>Topic im talking about</h2>
+        <h3 class="grn">
+          Now let's see how we can fetch hierarchy calls, or
+          <em class="lite-yllw">nested resources</em>.
+        </h3>
+        <h3>
+          We want to create a dropdown list at the top that is populated with a
+          list of users...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/user-list.PNG"
+            alt=""
+          />
+          Then when we select a user, we should only see the posts by that user.
+        </h3>
+        <h2>Select element</h2>
+        <h4>Add this element to the PostList component...</h4>
+        <img
+          src="/imgs/part-2/react-query/parameterized-queries/select.PNG"
+          alt=""
+        />
+        <h3>💡 Notice that we are using bootstrap.</h3>
+        <h4>Then wrap the jsx in a fragment...</h4>
+        <img
+          src="/imgs/part-2/react-query/parameterized-queries/frag.PNG"
+          alt=""
+        />
+        <h2>The users</h2>
+        <h3 class="orng">
+          In a real app we would render the users dynamically, but that is a
+          distraction from what we are learning here.
+        </h3>
+        <h4>So we simply hard code some options for selecting users...</h4>
+        <img
+          src="/imgs/part-2/react-query/parameterized-queries/options.PNG "
+          alt=""
+        />
+        <h4>We get this...</h4>
+        <img
+          src="/imgs/part-2/react-query/parameterized-queries/get-this.PNG"
+          alt=""
+        />
+        <h3 class="grn">
+          Next we need a state var to keep track of the selected user.
+        </h3>
+        <h3>
+          When the selected user changes, we should filter the posts by that
+          user.
+        </h3>
+        <h2>Selected user state</h2>
+        <h4>Start with a useState of type number...</h4>
+        <img
+          src="/imgs/part-2/react-query/parameterized-queries/uststate-number.PNG"
+          alt=""
+        />
+        <h4>Call it userId...</h4>
+        <img
+          src="/imgs/part-2/react-query/parameterized-queries/userid.PNG"
+          alt=""
+        />
+        <h3>
+          Now we set the onChange of the select element to a funtion that takes
+          in an event object...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/event.PNG"
+            alt=""
+          />
+          Then call setUserId and pass the value of the event target...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/event-target.PNG"
+            alt=""
+          />
+          <br />
+          <br />
+          💡💥We have a compilation error because the value attribute of the
+          options is a string, but we had to set the type to a number.
+          <br />
+          <br />
+          For fix, simply parseInt the value...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/parseint.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">
+          We should also set the value of the select element to the userId so in
+          the next render the correct option will be selected...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/value-of-select.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>Filtering the posts</h2>
+        <h3 class="orng">
+          In this component we are using our usePosts hook, and it currently
+          dosn't have any parameters, but we should add the userId as a
+          parameter so we can filter the posts by that user.
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/userid-param.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">Open the usePosts hook.</h3>
+        <h4>Add userId as a parameter to it...</h4>
+        <img
+          src="/imgs/part-2/react-query/parameterized-queries/param.PNG"
+          alt=""
+        />
+        <h4>
+          <em class="lite-yllw">OR</em> undefined, because initially it's
+          unselected...
+        </h4>
+        <img
+          src="/imgs/part-2/react-query/parameterized-queries/undefined.PNG"
+          alt=""
+        />
+        <h2>The keys</h2>
+        <h3>So far we have only had simple keys with a single value.</h3>
+        <h3 class="orng">
+          But now that we are dealing with hierarchial data we should structure
+          our key a little differently.
+          <br />
+          <br />
+          We should follow a hierarchial structure that represents the
+          relationship between our objects.
+        </h3>
+        <h3>
+          We start with the top level object, followed by the userId, and the
+          posts
+          <img src="/imgs/part-2/react-query/parameterized-queries/" alt="" />
+          This is the same pattern we use when designing urls for our apis.
+          <br />
+          <br />
+          For example, if you wanted to create an api for fetching the posts by
+          user you would use an endpoint like this...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/endpoint-comnt.PNG"
+            alt=""
+          />
+          We are following the same pattern in our key, as we go from left to
+          right, the data gets more and more specific.
+        </h3>
+        <h3 class="red">
+          Here's the thing...
+          <br />
+          <br />
+          The userId is the parameter for this query.
+          <br />
+          <br />
+          Everytime the value of the userId changes, React Query will fetch the
+          posts from that user from the backend.
+        </h3>
+        <h3 class="grn">
+          This is very similar to the dependency array of the effect hook.
+          <br />
+          <br />
+          Anytime any of the dependencies change, the effect hook gets
+          re-executed.
+          <br />
+          <br />
+          We learned about that
+          <a
+            href="/html/connecting-to-the-backend/effect-dependencies.html#Thesolutiontotheproblem"
+            >(here)</a
+          >
+        </h3>
+        <h3>
+          We have the same concept here.
+          <br />
+          <br />
+          Anytime the userId changes our query will get re-executed.
+        </h3>
+        <h2>Passing the userId to the backend</h2>
+        <h3 class="red">
+          Jsonplaceholder supports filtering by string, so we could do this...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/string-filter.PNG"
+            alt=""
+          />
+          💩👎 But this is ugly. Please don't do this.
+        </h3>
+        <h3 class="grn">
+          A nicer way is to pass an obj here...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/pass-an-obj.PNG"
+            alt=""
+          />
+          Here we set params to an obj...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/params-obj.PNG"
+            alt=""
+          />
+          In this object we add all the query string parameters...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/user-param.PNG"
+            alt=""
+          />
+        </h3>
+        <h2>Test what we have</h2>
+        <h3>
+          Initially no user is selected, so select a user, and we will only see
+          the posts by that user.
+        </h3>
+        <h3>
+          Let's look at the cache in devtools.
+          <br />
+          <br />
+          Currently we have two items in the cache, user 2 posts, and the posts
+          from all users...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/cache.PNG"
+            alt=""
+          />
+          User 2 was active, but when we select the empty option, all the posts
+          are selected again...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/all-users.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="grn">
+          The key for all users is ugly with null in the middle.
+          <br />
+          <br />
+          Let's fix that!
+          <br />
+          <br />
+          When setting the key just write a condition...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/condition-for-key.PNG"
+            alt=""
+          />
+          That's much better...
+          <img
+            src="/imgs/part-2/react-query/parameterized-queries/fixed-better.PNG"
+            alt=""
+          />
+        </h3>
+        <h2 class="red">IMPORTANT NOTE</h2>
+        <h3>
+          Now, if we select a different user we see a loading indicator for a
+          flash.
+          <br />
+          <br />
+          But thanks to React Query, once those items have been added to the
+          cache, they will load instantly when selected.
+          <br />
+          <br />
+          💡 Meaning zero load time!!
+        </h3>
+        <h3 class="grn">THANKS REACT QUERY!!</h3>
+      </article>
+    </section>
+    <script src="/JS/main.js"></script>
+  </body>
+</html>
