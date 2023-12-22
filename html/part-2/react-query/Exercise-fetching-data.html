@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="http://example.com/favicon.png" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>EXERCISE: Fetching Data</title>
+  </head>
+  <body>
+    <a href="../part-2.html" class="home">HOME</a>
+    <section class="centerer">
+      <article class="main-wrap">
+        <h1>EXERCISE: Fetching Data</h1>
+        <h2>Exercise Details</h2>
+        <h3>Here is an exercise for you.</h3>
+        <h3 class="grn">
+          In the react-query folder of the project you should find a component
+          called PostList.
+          <img
+            src="/imgs/part-2/react-query/Exercise-fetching-data/postlist.PNG"
+            alt=""
+          />
+        </h3>
+        <h3>
+          In this component we are using the state and effect hooks to retrieve
+          posts from the backend.
+          <img
+            src="/imgs/part-2/react-query/Exercise-fetching-data/example.PNG"
+            alt=""
+          />
+        </h3>
+        <h3 class="orng">
+          You need to use what you have learned in the past few lessons to
+          create a custom hook for fetching the posts using react query.
+        </h3>
+        <!---->
+        <!--* Exercise Solution-->
+        <!---->
+        <h3 class="red">
+          Please keep the solution hidden until you have tried yourself.
+        </h3>
+        <div class="collapsible exercise-collapsible">
+          <h2 class="sections-heading collapsible__heading">
+            SOLUTION<img
+              src="/imgs/rr.png"
+              alt=""
+              class="icon sections-icon collapsible__button"
+            />
+          </h2>
+          <div class="collapsible__content">
+            <h4>Create a new hook for the posts...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/useposts.PNG"
+              alt=""
+            />
+            <h4>In this hook create a function with the same name...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/funct.PNG"
+              alt=""
+            />
+            <h4>Then call useQuery and pass an object...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/usequery.PNG"
+              alt=""
+            />
+            <h4>In that object set the queryKey, and give it a queryFn...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/obj.PNG"
+              alt=""
+            />
+            Run the axios call in the queryFn...
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/run-call.PNG"
+              alt=""
+            />
+            <h4>Import axios...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/import-axios.PNG"
+              alt=""
+            />
+            <h4>
+              And we don't care about setting the posts, we just want to return
+              the data of the response...
+            </h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/res-data.PNG"
+              alt=""
+            />
+            <h4>Let's set the staleTime to 1 min...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/staletime.PNG"
+              alt=""
+            />
+            <h4>Then export the hook...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/export.PNG"
+              alt=""
+            />
+            <h3>Go back to PostList.tsx</h3>
+            <h4>Remove the state, and effect hook...</h4>
+            <h3>
+              <img
+                src="/imgs/part-2/react-query/Exercise-fetching-data/remove.PNG"
+                alt=""
+              />
+
+              Instead, call usePosts, and destructure
+              <em class="lite-yllw">data, error, </em>and
+              <em class="lite-yllw">isLoading</em>.
+            </h3>
+            <h2>Compilation Error Fix</h2>
+            <h3 class="red">
+              We have a compilation error on the error...
+              <img
+                src="/imgs/part-2/react-query/Exercise-fetching-data/error-on-error.PNG"
+                alt=""
+              />
+              Because React doesn't know how to render the error message...
+            </h3>
+            <h3 class="grn">
+              To fix this go back to the hook, and define generic type argments
+              when calling the query hook...
+              <img
+                src="/imgs/part-2/react-query/Exercise-fetching-data/pass-type-arg.PNG"
+                alt=""
+              />
+              We should expect a post, and an Error object...
+              <img
+                src="/imgs/part-2/react-query/Exercise-fetching-data/args.PNG"
+                alt=""
+              />
+            </h3>
+            <h3 class="red">
+              💡 We have an err on the Post array because we need to move it's
+              interface to here...
+              <br />
+              <br />
+              So grab the interface defined in
+              <em class="lite-yllw">PostList.tsx</em> and add it to the hook...
+              <img
+                src="/imgs/part-2/react-query/Exercise-fetching-data/interface.PNG"
+                alt=""
+              />
+            </h3>
+            <h3 class="grn">Good. We are done with the hook.</h3>
+            <h3>
+              Now back to the component, render error.message...
+              <img
+                src="/imgs/part-2/react-query/Exercise-fetching-data/err-msg.PNG"
+                alt=""
+              />
+            </h3>
+            <h4 class="red">And we no longer have posts...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/no-more-posts.PNG"
+              alt=""
+            />
+            <h4>Instead, use data...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/data.PNG"
+              alt=""
+            />
+            <h4>
+              Data could be undefined, so use
+              <em class="lite-yllw">optional chaining</em>...
+            </h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/optional-chain.PNG"
+              alt=""
+            />
+            <h2>Finally</h2>
+            <h4>Render the PostList in the app...</h4>
+            <img
+              src="/imgs/part-2/react-query/Exercise-fetching-data/app-post-add.PNG"
+              alt=""
+            />
+            <h3 class="grn">
+              With that you should see the list of posts in the browser.
+            </h3>
+            <h3>
+              The last thing we want to do is add a loading indicator...
+              <img
+                src="/imgs/part-2/react-query/Exercise-fetching-data/isloading.PNG"
+                alt=""
+              />
+            </h3>
+          </div>
+        </div>
+        <!---->
+        <!---->
+        <!---->
+      </article>
+    </section>
+    <script src="/JS/main.js"></script>
+  </body>
+</html>
